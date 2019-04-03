@@ -1,26 +1,54 @@
-<ng-template #content let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <form>
-      <div class="form-group">
-        <label for="dateOfBirth">Date of birth</label>
-        <div class="input-group">
-          <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
-          </div>
-        </div>
+<div class="container">
+<div class="card-deck">
+    <div class="card m-4 border border-secondary border border-secondary">
+      <img src="https://images.freeimages.com/images/large-previews/b89/irish-pub-1231950.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Card 1</h5>
+        <p class="card-text">Description de l'établissment</p>
       </div>
-    </form>
+      <button type="submit" class="btn btn-outline-secondary">Plus d'infos</button>
+    </div>
+    <div class="card m-4 border border-secondary">
+      <img src="https://images.freeimages.com/images/large-previews/00a/english-town-pub-1565179.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Card 2</h5>
+        <p class="card-text">Description de l'établissment</p>
+      </div>
+      <button type="submit" class="btn btn-outline-secondary">Plus d'infos</button>
+    </div>
+    <div class="card m-4 border border-secondary">
+      <img src="https://images.freeimages.com/images/large-previews/f06/irish-pub-1233434.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Card 3</h5>
+        <p class="card-text">Description de l'établissment</p>
+      </div>
+      <button type="submit" class="btn btn-outline-secondary">Plus d'infos</button>
+    </div>
   </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
-  </div>
-</ng-template>
-
-<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button>
+  <div class="card-deck">
+      <div class="card m-4 border border-secondary">
+        <img src="https://images.freeimages.com/images/large-previews/8d4/restaurant-1219124.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Card 1</h5>
+          <p class="card-text">Description de l'établissment</p>
+        </div>
+        <button type="submit" class="btn btn-outline-secondary">Plus d'infos</button>
+      </div>
+      <div class="card m-4 border border-secondary">
+        <img src="https://images.freeimages.com/images/large-previews/944/buda-restaurant-1223975.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Card 2</h5>
+          <p class="card-text">Description de l'établissment</p>
+        </div>
+        <button type="submit" class="btn btn-outline-secondary">Plus d'infos</button>
+      </div>
+      <div class="card m-4 border border-secondary">
+        <img src="https://images.freeimages.com/images/large-previews/8d4/restaurant-1219124.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Card 3</h5>
+          <p class="card-text">Description de l'établissment</p>
+        </div>
+        <button type="submit" class="btn btn-outline-secondary">Plus d'infos</button>
+      </div>
+    </div>
+</div>

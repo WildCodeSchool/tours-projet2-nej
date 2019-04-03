@@ -4,11 +4,12 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
-import { EstablishmentHomepageComponent } from './establishment-homepage/establishment-homepage.component';
+import { EstablishmentHomepageComponent }
+from './establishment-homepage/establishment-homepage.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,7 @@ import { EstablishmentHomepageComponent } from './establishment-homepage/establi
     HeaderComponent,
     FooterComponent,
     SearchBarComponent,
-    EstablishmentHomepageComponent
+    EstablishmentHomepageComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,6 +26,6 @@ import { EstablishmentHomepageComponent } from './establishment-homepage/establi
     FormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

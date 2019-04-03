@@ -3,9 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 
 const routes: Routes = [
-  {path: '',
-  component: SearchBarComponent,
-  } 
+  {
+    path: '',
+    component: SearchBarComponent,
+  }
 ];
 
 @NgModule({

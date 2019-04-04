@@ -22,3 +22,20 @@
   </div> 
 </nav>
 <!--carroussel-->
+<ngb-carousel *ngIf="images">
+  <ng-template ngbSlide>
+    <img src="../assets/images/banner1.jpg" alt="Random first slide">
+    <div class="carousel-caption">
+     </div>
+  </ng-template>
+  <ng-template ngbSlide>
+    <img src="../assets/images/banner2.jpg" alt="Random second slide">
+    <div class="carousel-caption">
+    </div>
+  </ng-template>
+  <ng-template ngbSlide>
+    <img src="../assets/images/banner3.jpg" alt="Random third slide">
+    <div class="carousel-caption">
+    </div>
+  </ng-template>
+</ngb-carousel>

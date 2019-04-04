@@ -1,54 +1,161 @@
 <div class="container">
-<div class="card-deck">
+  <div class="card-deck">
     <div class="card m-4 border border-secondary border border-secondary">
-      <img src="https://images.freeimages.com/images/large-previews/b89/irish-pub-1231950.jpg" class="card-img-top" alt="...">
+      <img
+        src="https://images.freeimages.com/images/large-previews/b89/irish-pub-1231950.jpg"
+        class="card-img-top"
+        alt="..."
+      />
       <div class="card-body">
         <h5 class="card-title">Card 1</h5>
         <p class="card-text">Description de l'établissment</p>
       </div>
-      <button type="submit" class="btn btn-outline-secondary">Plus d'infos</button>
+      <ng-template #content let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">
+            Infos et réservation
+          </h4>
+          <button
+            type="button"
+            class="close"
+            aria-label="Close"
+            (click)="modal.dismiss('Cross click')"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <img
+            src="https://images.freeimages.com/images/large-previews/b89/irish-pub-1231950.jpg"
+            class="card-img-top"
+            alt="..."
+          />
+          <h5 class="card-title">Card 1</h5>
+          <p class="card-text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
+            eget arcu a lorem porta luctus. Mauris placerat nec elit non
+            viverra. Cras iaculis orci scelerisque, malesuada neque at, aliquam
+            orci. Vivamus lobortis massa odio, nec ultricies lorem ullamcorper
+            eget. Mauris fringilla ut metus id hendrerit. Mauris in massa
+            porttitor, gravida felis eu, maximus arcu. Proin ullamcorper maximus
+            purus, feugiat viverra est posuere non. Duis vitae neque vitae magna
+            fringilla ultricies vel et dolor. Quisque tempor ut eros quis
+            lacinia. Curabitur odio lacus, rhoncus eget gravida non, dictum et
+            eros. Suspendisse varius efficitur laoreet. Morbi ac pretium ante,
+            vitae iaculis lacus. Praesent feugiat non massa id ultricies.
+            Vestibulum gravida vel augue eu hendrerit. Integer tempus ac urna et
+            scelerisque. Donec sodales blandit pulvinar. Morbi ac risus sed
+            lorem malesuada facilisis sed quis purus.
+          </p>
+          <form>
+            <div class="form-group">
+              <label for="dateOfBirth">Date de réservation</label>
+              <div class="input-group">
+                <input
+                  id="dateOfBirth"
+                  class="form-control"
+                  placeholder="Date de réservation"
+                  name="dp"
+                  ngbDatepicker
+                  #dp="ngbDatepicker"
+                />
+                <div class="input-group-append">
+                  <button
+                    class="btn btn-outline-secondary calendar"
+                    (click)="dp.toggle()"
+                    type="button"
+                  ></button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-outline-dark"
+            (click)="modal.close('Save click')"
+          >
+            Save
+          </button>
+        </div>
+      </ng-template>
+
+      <button class="btn btn-lg btn-outline-primary" (click)="open(content)">
+        Réservation
+      </button>
     </div>
     <div class="card m-4 border border-secondary">
-      <img src="https://images.freeimages.com/images/large-previews/00a/english-town-pub-1565179.jpg" class="card-img-top" alt="...">
+      <img
+        src="https://images.freeimages.com/images/large-previews/00a/english-town-pub-1565179.jpg"
+        class="card-img-top"
+        alt="..."
+      />
       <div class="card-body">
         <h5 class="card-title">Card 2</h5>
         <p class="card-text">Description de l'établissment</p>
       </div>
-      <button type="submit" class="btn btn-outline-secondary">Plus d'infos</button>
+      <button type="submit" class="btn btn-outline-secondary">
+        Plus d'infos
+      </button>
     </div>
     <div class="card m-4 border border-secondary">
-      <img src="https://images.freeimages.com/images/large-previews/f06/irish-pub-1233434.jpg" class="card-img-top" alt="...">
+      <img
+        src="https://images.freeimages.com/images/large-previews/f06/irish-pub-1233434.jpg"
+        class="card-img-top"
+        alt="..."
+      />
       <div class="card-body">
         <h5 class="card-title">Card 3</h5>
         <p class="card-text">Description de l'établissment</p>
       </div>
-      <button type="submit" class="btn btn-outline-secondary">Plus d'infos</button>
+      <button type="submit" class="btn btn-outline-secondary">
+        Plus d'infos
+      </button>
     </div>
   </div>
   <div class="card-deck">
-      <div class="card m-4 border border-secondary">
-        <img src="https://images.freeimages.com/images/large-previews/8d4/restaurant-1219124.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card 1</h5>
-          <p class="card-text">Description de l'établissment</p>
-        </div>
-        <button type="submit" class="btn btn-outline-secondary">Plus d'infos</button>
+    <div class="card m-4 border border-secondary">
+      <img
+        src="https://images.freeimages.com/images/large-previews/8d4/restaurant-1219124.jpg"
+        class="card-img-top"
+        alt="..."
+      />
+      <div class="card-body">
+        <h5 class="card-title">Card 1</h5>
+        <p class="card-text">Description de l'établissment</p>
       </div>
-      <div class="card m-4 border border-secondary">
-        <img src="https://images.freeimages.com/images/large-previews/944/buda-restaurant-1223975.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card 2</h5>
-          <p class="card-text">Description de l'établissment</p>
-        </div>
-        <button type="submit" class="btn btn-outline-secondary">Plus d'infos</button>
-      </div>
-      <div class="card m-4 border border-secondary">
-        <img src="https://images.freeimages.com/images/large-previews/8d4/restaurant-1219124.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card 3</h5>
-          <p class="card-text">Description de l'établissment</p>
-        </div>
-        <button type="submit" class="btn btn-outline-secondary">Plus d'infos</button>
-      </div>
+      <button type="submit" class="btn btn-outline-secondary">
+        Plus d'infos
+      </button>
     </div>
+    <div class="card m-4 border border-secondary">
+      <img
+        src="https://images.freeimages.com/images/large-previews/944/buda-restaurant-1223975.jpg"
+        class="card-img-top"
+        alt="..."
+      />
+      <div class="card-body">
+        <h5 class="card-title">Card 2</h5>
+        <p class="card-text">Description de l'établissment</p>
+      </div>
+      <button type="submit" class="btn btn-outline-secondary">
+        Plus d'infos
+      </button>
+    </div>
+    <div class="card m-4 border border-secondary">
+      <img
+        src="https://images.freeimages.com/images/large-previews/8d4/restaurant-1219124.jpg"
+        class="card-img-top"
+        alt="..."
+      />
+      <div class="card-body">
+        <h5 class="card-title">Card 3</h5>
+        <p class="card-text">Description de l'établissment</p>
+      </div>
+      <button type="submit" class="btn btn-outline-secondary">
+        Plus d'infos
+      </button>
+    </div>
+  </div>
 </div>

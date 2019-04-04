@@ -10,6 +10,7 @@ import { FooterComponent } from './footer/footer.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { EstablishmentHomepageComponent }
 from './establishment-homepage/establishment-homepage.component';
+import { UserHomepageComponent } from './user-homepage/user-homepage.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ from './establishment-homepage/establishment-homepage.component';
     FooterComponent,
     SearchBarComponent,
     EstablishmentHomepageComponent,
+    UserHomepageComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="m-5">
+    <label>Chercher un établissement</label>
+    <div class="d-flex justify-content-center">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Indiquez l'établissement recherché"
+      />
+      <div ngbDropdown class="d-inline-block">
+        <button class="form-control" id="dropDownBarRest" ngbDropdownToggle>
+          Bars | Restaurants
+        </button>
+        <div ngbDropdownMenu aria-labelledby="dropDownBarRest">
+          <button ngbDropdownItem>Bars</button>
+          <button ngbDropdownItem>Restaurants</button>
+          <button ngbDropdownItem>Bars et Restaurants</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

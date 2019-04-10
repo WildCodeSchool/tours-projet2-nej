@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Establishment } from '../models/etablishment.models';
+import { Etablishment } from '../models/etablishment.models';
 
 @Injectable({
   providedIn: 'root',
 })
 export class EtablishmentService {
-  establishement:Establishment;
-  establishements: Establishment[];
+  etablishement:Etablishment;
+  etablishements: Etablishment[];
   constructor() { }
-  getestablishements(): Establishment[] {
+  getetablishements(): Etablishment[] {
   // Récupération des etablissement en format 'string'
-    return this.establishements;
+    return this.etablishements;
   }
 }

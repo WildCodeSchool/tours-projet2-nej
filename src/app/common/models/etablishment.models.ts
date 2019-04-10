@@ -1,4 +1,4 @@
-export class Establishment {
+export class Etablishment {
   constructor(public name: string, public img: string, public price: number,
               public type: String,
               public adress: {

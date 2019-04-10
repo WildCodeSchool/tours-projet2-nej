@@ -5,9 +5,11 @@ import { Booking } from '../models/booking.model';
   providedIn: 'root',
 })
 export class BookingService {
-  
-
-  constructor() {
+  booking:Booking;
+  bookings: Booking[];
+  constructor() { }
+  getbooking(): Booking[] {
+  // Récupération des etablissement en format 'string'
+    return this.bookings;
   }
-
 }

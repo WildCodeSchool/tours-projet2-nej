@@ -11,6 +11,7 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
 import { EstablishmentHomepageComponent }
 from './establishment-homepage/establishment-homepage.component';
 import { UserHomepageComponent } from './user-homepage/user-homepage.component';
+import { EtablishementComponent } from './etablishement/etablishement.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { UserHomepageComponent } from './user-homepage/user-homepage.component';
     SearchBarComponent,
     EstablishmentHomepageComponent,
     UserHomepageComponent,
+    EtablishementComponent,
   ],
   imports: [
     BrowserModule,

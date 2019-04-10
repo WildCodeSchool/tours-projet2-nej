@@ -11,6 +11,9 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
 import { EstablishmentHomepageComponent }
 from './establishment-homepage/establishment-homepage.component';
 import { UserHomepageComponent } from './user-homepage/user-homepage.component';
+import { ProfileComponent } from './profile/profile.component';
+
+import { ProfileService } from './common/services/profile.service';
 
 @NgModule({
   declarations: [
@@ -20,6 +23,7 @@ import { UserHomepageComponent } from './user-homepage/user-homepage.component';
     SearchBarComponent,
     EstablishmentHomepageComponent,
     UserHomepageComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,7 +31,9 @@ import { UserHomepageComponent } from './user-homepage/user-homepage.component';
     NgbModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [
+    ProfileService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

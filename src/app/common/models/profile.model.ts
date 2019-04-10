@@ -1,6 +1,3 @@
-import { patchComponentDefWithScope } from '@angular/core/src/render3/jit/module';
-import { EmailValidator } from '@angular/forms';
-
 export class Profile {
 
   constructor(

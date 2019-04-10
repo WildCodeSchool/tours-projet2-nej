@@ -1,3 +1,76 @@
-<p>
-  profile works!
-</p>
+<div class="container">
+  <div class="form-row">
+    <div class="col-sm-12">
+      <form [formGroup]="profileForm">
+        <h1>My profile:</h1>
+        <label for="">
+          First Name:
+          <input type="text" formControlName="firstName">
+        </label>
+
+        <label>
+          Last Name:
+          <input type="text" formControlName="lastName">
+        </label>
+
+        <label>
+          Siret:
+          <input type='number' formControlName="siret">
+        </label>
+
+        <label>
+          Siren:
+          <input type='number' formControlName="siren">
+        </label>
+
+        <label>
+          Key:
+          <input type='number' formControlName="key">
+        </label>
+
+      <div formGroupName='address'>
+        <h3>My address:</h3>
+
+        <label>
+          Street:
+          <input type='string' formControlName="street">
+        </label>
+    
+        <label>
+          Zipcode:
+          <input type='number' formControlName="zipCode">
+        </label>
+    
+        <label>
+          City:
+          <input type='string' formControlName="city">
+        </label>
+
+        <label>
+          Number:
+          <input type='number' formControlName="number">
+        </label>
+      </div>
+      <div formGroupName='contact'>
+        <h3>My contact:</h3>
+
+        <label>
+          Fax:
+          <input type='number' formControlName="fax">
+        </label>
+    
+        <label>
+          Phone:
+          <input type='number' formControlName="phone">
+        </label>
+
+        <label>
+          Email:
+          <input type='string' formControlName="email">
+        </label>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+ </div>
+</div>

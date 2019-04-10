@@ -37,7 +37,7 @@ export class BookingComponent implements OnInit {
   });
 
   onSubmit() {
-    console.log(this.bookingForm.value)
+    console.log(this.bookingForm.value);
   }
 
   ngOnInit() {
@@ -45,7 +45,7 @@ export class BookingComponent implements OnInit {
     this.bookingForm.valueChanges.subscribe((value) => {
       console.log('Valeurs saisies', value);
     });
-
+    
     this.service.getFromAPI();
   }
 }

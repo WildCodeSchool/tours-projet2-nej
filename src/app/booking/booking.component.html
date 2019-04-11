@@ -1,8 +1,8 @@
 <div class="container">
-<h1 class="mt-4">Formulaire de réservation</h1>
+<h2 class="mt-4 ">Formulaire de réservation</h2>
 
 <form (ngSubmit)="onSubmit()" [formGroup]="bookingForm" #myForm="ngForm">
-   <h2>Date de réservation</h2>
+   <h3>Date de réservation</h3>
 
    <div formGroupName="date" class="row">
       <label class="col-6">
@@ -22,7 +22,7 @@
       </label>
    </div>
 
-   <h2>Client</h2>
+   <h3>Client</h3>
 
    <div formGroupName="owner">
       <label>
@@ -110,7 +110,7 @@
       </div>
    </div>
 
-   <h2>Divers</h2>
+   <h3>Divers</h3>
    <label for="numbersPers">
       <p class="label-txt">Nombre de personnes</p>
       <input

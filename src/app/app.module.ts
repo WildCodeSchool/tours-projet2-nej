@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,11 +10,9 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { EstablishmentHomepageComponent }
-from './establishment-homepage/establishment-homepage.component';
+  from './establishment-homepage/establishment-homepage.component';
 import { UserHomepageComponent } from './user-homepage/user-homepage.component';
 import { ProfileComponent } from './profile/profile.component';
-
-import { ProfileService } from './common/services/profile.service';
 import { JwtModule } from '@auth0/angular-jwt';
 
 @NgModule({
@@ -32,9 +31,7 @@ import { JwtModule } from '@auth0/angular-jwt';
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
-  ],
-  providers: [
-    ProfileService,
+    HttpClientModule,
     JwtModule.forRoot({
       config: {
         whitelistedDomains: ['open-reza.herokuapp.com'],
@@ -44,6 +41,7 @@ import { JwtModule } from '@auth0/angular-jwt';
       },
     }),
   ],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

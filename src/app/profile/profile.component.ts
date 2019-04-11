@@ -12,9 +12,6 @@ export class ProfileComponent implements OnInit {
 
   constructor(private service: ProfileService, private fb: FormBuilder) {}
 
-  public profile: Profile;
-  public profiles: Profile[] = [];
-
   profileForm = this.fb.group({
 
     firstName: [''],
@@ -36,12 +33,19 @@ export class ProfileComponent implements OnInit {
       email: [''],
     }),
   });
-  onSubmit() {
+
+  public ngOnInit(): void {
     console.log(this.profileForm.value);
+
+    this.service.getMyProfiles().subscribe(
+      (profile: Profile) => {
+        this.profileForm.patchValue(profile);
+      },
+    );
   }
 
-  ngOnInit() {
-
+  onSubmit() {
+    console.log(this.profileForm.value);
   }
 
 }

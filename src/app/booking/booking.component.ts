@@ -45,7 +45,5 @@ export class BookingComponent implements OnInit {
     this.bookingForm.valueChanges.subscribe((value) => {
       console.log('Valeurs saisies', value);
     });
-    
-    this.service.getFromAPI();
   }
 }

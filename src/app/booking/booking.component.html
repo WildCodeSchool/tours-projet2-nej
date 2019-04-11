@@ -6,43 +6,43 @@
 
       <form (ngSubmit)="onSubmit()" [formGroup]="bookingForm" #myForm="ngForm">
 
-         <div formGroupName="dateBooking" class="row">
+         <div formGroupName="date" class="row">
          <div class="form-group col-6">
             <label for="dateIn">Date de début</label>
             <input
-               type="datetime-local"
+               type="datetime"
                class="form-control"
-               formControlName="dateInBooking"
+               formControlName="start"
             />
          </div>
          <div class="form-group col-6">
             <label for="dateOut">Date de fin</label>
             <input
-               type="datetime-local"
+               type="datetime"
                class="form-control"
-               formControlName="dateOutBooking"
+               formControlName="end"
             />
          </div>
          </div>
 
-         <div formGroupName="ownerInfo">
+         <div formGroupName="owner">
          <div class="form-group">
             <label for="name">Nom</label>
             <input
                type="text"
                class="form-control"
                id="name"
-               formControlName="nameBooking"
+               formControlName="name"
             />
          </div>
-         <div formGroupName="Adress" class="row">
+         <div formGroupName="address" class="row">
             <div class="form-group col-4">
                <label for="zipCode">Code postal</label>
                <input
                type="text"
                class="form-control"
                id="zipCode"
-               formControlName="zipCodeBooking"
+               formControlName="zipCode"
                />
             </div>
             <div class="form-group col-8">
@@ -51,7 +51,7 @@
                type="text"
                class="form-control"
                id="townName"
-               formControlName="townNameBooking"
+               formControlName="city"
                />
             </div>
             <div class="form-group col-2">
@@ -60,7 +60,7 @@
                type="text"
                class="form-control"
                id="streetNumber"
-               formControlName="streetNumberBooking"
+               formControlName="number"
                />
             </div>
             <div class="form-group col-10">
@@ -69,18 +69,18 @@
                type="text"
                class="form-control"
                id="streetName"
-               formControlName="streetNameBooking"
+               formControlName="street"
                />
             </div>
          </div>
-         <div formGroupName="Contact" class="row">
+         <div formGroupName="contact" class="row">
             <div class="form-group col-6">
                <label for="phone">Téléphone</label>
                <input
                type="text"
                class="form-control"
                id="phone"
-               formControlName="phoneBooking"
+               formControlName="phone"
                />
             </div>
             <div class="form-group col-6">
@@ -89,7 +89,7 @@
                type="text"
                class="form-control"
                id="email"
-               formControlName="emailBooking"
+               formControlName="email"
                />
             </div>
          </div>
@@ -101,7 +101,7 @@
             type="number"
             class="form-control"
             id="numbersPers"
-            formControlName="numberPersBooking"
+            formControlName="numbers"
          />
          </div>
 
@@ -111,15 +111,13 @@
             type="text"
             class="form-control"
             id="establishmentBooking"
-            formControlName="establishmentBooking"
+            formControlName="establishment"
          />
          </div>
          <div class="d-flex justify-content-center mb-5">
          <button type="submit">Sauvegarder</button>
          </div>
-         
+
       </form>
-
    </div>
-
 </div>

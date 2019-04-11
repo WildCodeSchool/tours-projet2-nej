@@ -1,14 +1,8 @@
 export class Booking {
   constructor(
     public date: {
-      am: {
-        start: Date;
-        end: Date;
-      };
-      pm: {
-        start: Date;
-        end: Date;
-      };
+      start: Date;
+      end: Date;
     },
     public owner: {
       name: String;

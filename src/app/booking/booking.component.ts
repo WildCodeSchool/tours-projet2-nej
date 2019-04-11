@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Booking } from '../common/models/booking.model';
 import { BookingService } from '../common/services/booking.service';
 import { FormBuilder } from '@angular/forms';
+import { ParamMap, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-booking',
@@ -9,43 +10,55 @@ import { FormBuilder } from '@angular/forms';
   styleUrls: ['./booking.component.css']
 })
 export class BookingComponent implements OnInit {
+  route: any;
+  id: string;
+  public bookings: Booking;
+
   constructor(private service: BookingService, private fb: FormBuilder) {}
 
-  public booking: Booking;
-  public bookings: Booking[] = [];
-
   bookingForm = this.fb.group({
-    dateBooking: this.fb.group({
-      dateInBooking: [''],
-      dateOutBooking: [''],
+    date: this.fb.group({
+      start: [''],
+      end: [''],
     }),
-    ownerInfo: this.fb.group({
-      nameBooking:[''],
-      Adress: this.fb.group({
-        streetNameBooking: [''],
-        zipCodeBooking: [''],
-        townNameBooking: [''],
-        streetNumberBooking: [''],
+    owner: this.fb.group({
+      name: [''],
+      address: this.fb.group({
+        street: [''],
+        zipCode: [''],
+        city: [''],
+        number: [''],
       }),
-      Contact: this.fb.group({
-        phoneBooking: [''],
-        emailBooking: [''],
+      contact: this.fb.group({
+        phone: [''],
+        email: [''],
       }),
     }),
-    numberPersBooking: [''],
-    establishmentBooking: [''],
+    numbers: [''],
+    establishment: [''],
   });
 
-  onSubmit() {
-    console.log(this.bookingForm.value);
+  ngOnInit() {
+    this.service.getBooking().subscribe((bookingValues: Booking) => {
+      this.bookings = bookingValues;
+      this.bookingForm.patchValue(bookingValues);
+    });
   }
 
-  ngOnInit() {
-
-    this.bookingForm.valueChanges.subscribe((value) => {
-      console.log('Valeurs saisies', value);
-    });
-    
-    this.service.getFromAPI();
+  onSubmit() {
+    console.log(JSON.stringify(this.bookingForm.value));
   }
 }
+
+// Valeurs par défaut ?
+//
+//
+
+// this.service.getFromAPI().subscribe(
+//   (id) => {
+//     this.bookingForm.controls[''].patchValue('id');
+//   }
+// Route pour id:
+// this.route.paramMap.subscribe((params: ParamMap) => {
+//   this.id = params.get('id');
+// });

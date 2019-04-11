@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Profile } from '../common/models/profile.model';
 import { ProfileService } from '../common/services/profile.service';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-profile',
@@ -9,27 +9,35 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit {
-  profileForm = new FormGroup({
-    firstName: new FormControl(''),
-    lastName: new FormControl(''),
-    siret: new FormControl(''),
-    siren: new FormControl(''),
-    key: new FormControl(''),
-    address: new FormGroup({
-      street: new FormControl(''),
-      zipCode: new FormControl(''),
-      city: new FormControl(''),
-      number: new FormControl(''),
+
+  constructor(private service: ProfileService, private fb: FormBuilder) {}
+
+  public profile: Profile;
+  public profiles: Profile[] = [];
+
+  profileForm = this.fb.group({
+
+    firstName: [''],
+    lastName: [''],
+    siret: [''],
+    siren: [''],
+    key: [''],
+
+    address: this.fb.group({
+      street: [''],
+      zipCode: [''],
+      city: [''],
+      number: [''],
     }),
-    contact: new FormGroup({
-      fax: new FormControl(''),
-      phone: new FormControl(''),
-      email: new FormControl(''),
+
+    contact: this.fb.group({
+      fax: [''],
+      phone: [''],
+      email: [''],
     }),
   });
-
-  constructor() {
-
+  onSubmit() {
+    console.log(this.profileForm.value);
   }
 
   ngOnInit() {

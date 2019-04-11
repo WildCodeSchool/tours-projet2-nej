@@ -1,76 +1,109 @@
 <div class="container">
-  <div class="form-row">
-    <div class="col-sm-12">
-      <form [formGroup]="profileForm">
-        <h1>My profile:</h1>
-        <label for="">
-          First Name:
-          <input type="text" formControlName="firstName">
-        </label>
 
-        <label>
-          Last Name:
-          <input type="text" formControlName="lastName">
-        </label>
-
-        <label>
-          Siret:
-          <input type='number' formControlName="siret">
-        </label>
-
-        <label>
-          Siren:
-          <input type='number' formControlName="siren">
-        </label>
-
-        <label>
-          Key:
-          <input type='number' formControlName="key">
-        </label>
-
-      <div formGroupName='address'>
-        <h3>My address:</h3>
-
-        <label>
-          Street:
-          <input type='string' formControlName="street">
-        </label>
+    <h1 class="mt-4">MON PROFIL</h1>
     
-        <label>
-          Zipcode:
-          <input type='number' formControlName="zipCode">
-        </label>
+       <div class="mt-3">
     
-        <label>
-          City:
-          <input type='string' formControlName="city">
-        </label>
-
-        <label>
-          Number:
-          <input type='number' formControlName="number">
-        </label>
-      </div>
-      <div formGroupName='contact'>
-        <h3>My contact:</h3>
-
-        <label>
-          Fax:
-          <input type='number' formControlName="fax">
-        </label>
+          <form (ngSubmit)="onSubmit()" [formGroup]="profileForm" #myForm="ngForm">
     
-        <label>
-          Phone:
-          <input type='number' formControlName="phone">
-        </label>
-
-        <label>
-          Email:
-          <input type='string' formControlName="email">
-        </label>
-      </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-  </div>
- </div>
-</div>
+              <div class="row">
+                  <div class="form-group col-6">
+                     <label for="firstName">Prénom:</label>
+                     <input
+                        type="text"
+                        class="form-control"
+                        formControlName="firstName"/>
+                  </div>
+                  <div class="form-group col-6">
+                     <label for="lastName">Nom</label>
+                     <input
+                        type="text"
+                        class="form-control"
+                        formControlName="lastName"/>
+                  </div>
+                  <div class="form-group col-4">
+                      <label for="siret">Siret:</label>
+                      <input
+                        type="number"
+                        class="form-control"
+                        formControlName="siret"/>
+                  </div>
+                  <div class="form-group col-4">
+                      <label for="siren">Siren:</label>
+                      <input
+                        type="number"
+                        class="form-control"
+                        formControlName="siren"/>
+                  </div>
+                  <div class="form-group col-4">
+                      <label for="key">Key:</label>
+                      <input
+                        type="number"
+                        class="form-control"
+                        formControlName="key"/>
+                  </div>
+              </div>
+              <h4>Mon adresse</h4>
+              <div formGroupName="address" class="row">
+                  <div class="form-group col-12">
+                      <label for="street">Street:</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        formControlName="street"/>
+                  </div>
+                  <div class="form-group col-4">
+                      <label for="zipCode">Zipcode:</label>
+                      <input
+                        type="number"
+                        class="form-control"
+                        formControlName="zipCode"/>
+                  </div>
+                  <div class="form-group col-4">
+                      <label for="city">City:</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        formControlName="city"/>
+                  </div>
+                  <div class="form-group col-4">
+                      <label for="number">Number:</label>
+                      <input
+                        type="number"
+                        class="form-control"
+                        formControlName="number"/>
+                  </div>
+              </div>
+              <h4>Contact</h4>
+              <div formGroupName="contact" class="row">
+                  <div class="form-group col-4">
+                      <label for="fax">Fax:</label>
+                      <input
+                        type="number"
+                        class="form-control"
+                        formControlName="fax"/>
+                  </div>
+                  <div class="form-group col-4">
+                      <label for="phone">Phone</label>
+                      <input
+                        type="number"
+                        class="form-control"
+                        formControlName="phone"/>
+                  </div>
+                  <div class="form-group col-4">
+                      <label for="email">Email:</label>
+                      <input
+                        type="email"
+                        class="form-control"
+                        formControlName="email"/>
+                  </div>
+              </div>
+              <div class="d-flex justify-content-center mb-5">
+                <button type="submit">Sauvegarder</button>
+              </div>
+             
+          </form>
+    
+       </div>
+    
+    </div>

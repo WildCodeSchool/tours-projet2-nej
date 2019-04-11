@@ -7,7 +7,7 @@ import { ParamMap, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-booking',
   templateUrl: './booking.component.html',
-  styleUrls: ['./booking.component.css']
+  styleUrls: ['./booking.component.css'],
 })
 export class BookingComponent implements OnInit {
   id: string;
@@ -16,13 +16,13 @@ export class BookingComponent implements OnInit {
   constructor(
     private service: BookingService,
     private fb: FormBuilder,
-    public route: ActivatedRoute
+    public route: ActivatedRoute,
   ) {}
 
   bookingForm = this.fb.group({
     date: this.fb.group({
       start: [''],
-      end: ['']
+      end: [''],
     }),
     owner: this.fb.group({
       name: [''],
@@ -30,15 +30,15 @@ export class BookingComponent implements OnInit {
         street: [''],
         zipCode: [''],
         city: [''],
-        number: ['']
+        number: [''],
       }),
       contact: this.fb.group({
         phone: [''],
-        email: ['']
-      })
+        email: [''],
+      }),
     }),
     numbers: [''],
-    establishment: ['']
+    establishment: [''],
   });
 
   ngOnInit() {

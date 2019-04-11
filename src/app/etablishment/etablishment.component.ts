@@ -2,22 +2,22 @@ import { Component, OnInit } from '@angular/core';
 import { EtablishmentService } from '../common/services/etablishment.service';
 import { FormBuilder } from '@angular/forms';
 import { Etablishment } from '../common/models/etablishment.models';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 @Component({
   selector: 'app-etablishment',
   templateUrl: './etablishment.component.html',
   styleUrls: ['./etablishment.component.css'],
 })
 export class EtablishmentComponent implements OnInit {
-  public etablishments: Etablishment[] = [];
-  constructor(private service: EtablishmentService,  private fb: FormBuilder) {}
+  public id :string;
+  public etablishments: Etablishment;
+  constructor(private route: ActivatedRoute, private service: EtablishmentService,
+              private fb: FormBuilder) {}
   etablishmentForm = this.fb.group({
     name: [''],
-    img: [''],
-    price: [''],
-    type: [''],
     profile: [''],
     description: [''],
-    adress: this.fb.group({
+    address: this.fb.group({
       street: [''],
       zipCode: [''],
       city: [''],
@@ -41,10 +41,15 @@ export class EtablishmentComponent implements OnInit {
     console.log(this.etablishmentForm.value);
   }
   public ngOnInit(): void {
-    this.service.getEtablishment().subscribe(
-          (res: Etablishment[]) => {
+
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      const id = params.get('id');
+      this.service.getEtablishment(id).subscribe(
+          (res: Etablishment) => {
             this.etablishments = res;
+            this.etablishmentForm.patchValue(res);
           },
       );
+    });
   }
 }

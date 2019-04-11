@@ -8,19 +8,18 @@ import { map } from 'rxjs/operators';
 })
 export class EtablishmentService {
   etablishement: Etablishment;
-  etablishements: Etablishment[];
   private service: HttpClient;
-
   // tslint:disable-next-line: variable-name
   constructor(paramService: HttpClient) {
     this.service = paramService;
   }
-  public getEtablishment(): Observable<Etablishment[]> {
-    const obs1: Observable<any> = this.service.get('');
+  public getEtablishment(id:string): Observable<Etablishment> {
+    const obs1: Observable<any> = this.service.get(
+      `http://open-reza.herokuapp.com:80/api/establishments/${id}`);
 
     return obs1.pipe(
       map((paramEtablishment: any) => {
-        return paramEtablishment as Etablishment[];
+        return paramEtablishment as Etablishment;
       }),
     );
   }

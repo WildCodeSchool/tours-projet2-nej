@@ -1,7 +1,6 @@
 export class Etablishment {
-  constructor(public name: string, public img: string, public price: number,
-              public type: String,
-              public adress: {
+  constructor(public name: string,
+              public address: {
                 street: string,
                 zipCode: string,
                 city: String,

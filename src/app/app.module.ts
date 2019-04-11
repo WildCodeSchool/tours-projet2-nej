@@ -12,7 +12,6 @@ import { EstablishmentHomepageComponent } from
 import { UserHomepageComponent } from './user-homepage/user-homepage.component';
 import { EtablishmentComponent } from './etablishment/etablishment.component';
 import { JwtModule } from '@auth0/angular-jwt';
-import { BookingComponent } from './booking/booking.component';
 import { HttpClientModule } from  '@angular/common/http';
 
 @NgModule({
@@ -24,7 +23,6 @@ import { HttpClientModule } from  '@angular/common/http';
     EstablishmentHomepageComponent,
     UserHomepageComponent,
     EtablishmentComponent,
-    BookingComponent,
   ],
   imports: [
     BrowserModule,

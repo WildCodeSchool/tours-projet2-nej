@@ -1,83 +1,128 @@
 <div class="container">
+  <h1 class="mt-4">Establishment</h1>
+  <div class="mt-3">
+    <form (ngSubmit)="onSubmit()" [formGroup]="etablishmentForm" #myForm="ngForm">
+      <label for="name">
+        <p class="label-txt">Name</p>
+        <input type="text" id="name" class="input" formControlName="name" />
+        <div class="line-box">
+          <div class="line"></div>
+        </div>
+      </label>
 
-  <form (ngSubmit)="onSubmit()" [formGroup]="EstablishmentForm" #myForm="ngForm">
-      <div class="form-group">
-        <label for="name">Name</label>
-        <input type="name" class="form-control" formControlName="name" />
-      </div>
-      <div class="form-group">
-        <label for="img">Images</label>
-        <input type="image" class="form-control" formControlName="img" />
-      </div>
-      <div class="form-group">
-        <label for="price">Price</label>
-        <input type="price" class="form-control" formControlName="price" />
-      </div>
-      <div class="form-group">
-        <label for="type">Type</label>
-        <input type="type" class="form-control" formControlName="type" />
-      </div>
-      <div class="form-group">
-        <label for="profile">Profile</label>
-        <input type="profile" class="form-control" formControlName="profile" />
-      </div>
-      <div class="form-group">
-        <label for="description">Description</label>
-        <input type="description" class="form-control" formControlName="description" />
-      </div>
-    </div>
-    <div formGroupName="adress">
-      <div class="form-group">
-        <label for="street">Street</label>
-        <input type="text" class="form-control" id="name" formControlName="street" />
-      </div>
-      <div class="form-group">
-        <label for="Zipcode">Zipcode</label>
-        <input type="text" class="form-control" id="Zipcode" formControlName="zipCode" />
-      </div>
-      <div class="form-group">
-        <label for="city">City</label>
-        <input type="text" class="form-control" id="City" formControlName="city" />
-      </div>
-      <div class="form-group">
-        <label for="Number">Number</label>
-        <input type="number" class="form-control" id="Number" formControlName="number" />
-      </div>
-    </div>
-    <div formGroupName="contact">
-      <div class="form-group">
-        <label for="phone">Téléphone</label>
-        <input type="text" class="form-control" id="phone" formControlName="phone" />
-      </div>
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="text" class="form-control" id="email" formControlName="email" />
-      </div>
-      <div class="form-group">
-        <label for="site">Site</label>
-        <input type="text" class="form-control" id="site" formControlName="site" />
-      </div>
-    </div>
-    <div formGroupName="networks">
-      <div class="form-group">
-        <label for="name">Name</label>
-        <input type="name" class="form-control" id="name" formControlName="name" />
-      </div>
-      <div class="form-group">
-        <label for="link">Link</label>
-        <input type="text" class="form-control" id="link" formControlName="link" />
-      </div>
-    </div>
-    <div formGroupName="medias">
-        <div class="form-group">
-          <label for="url">Url</label>
-          <input type="url" class="form-control" id="url" formControlName="url" />
+      <label for="profile">
+        <p class="label-txt">Profile</p>
+        <input type="text" id="profile" class="input" formControlName="profile" />
+        <div class="line-box">
+          <div class="line"></div>
         </div>
-        <div class="form-group">
-          <label for="order">order</label>
-          <input type="number" class="form-control" id="order" formControlName="order" />
+      </label>
+
+      <label for="description">
+        <p class="label-txt">Description</p>
+        <input type="text" id="description" class="input" formControlName="description" />
+        <div class="line-box">
+          <div class="line"></div>
         </div>
+      </label>
+
+      <h3>Address</h3>
+
+      <div formGroupName="address">
+        <label for="street">
+          <p class="label-txt">Street</p>
+          <input type="text" class="input" id="name" formControlName="street" />
+          <div class="line-box">
+            <div class="line"></div>
+          </div>
+        </label>
+
+        <label for="Zipcode">
+          <p class="label-txt">zipCode</p>
+          <input type="text" class="input" id="Zipcode" formControlName="zipCode" />
+          <div class="line-box">
+            <div class="line"></div>
+          </div>
+        </label>
+
+        <label for="city">
+          <p class="label-txt">City</p>
+          <input type="text" class="input" id="City" formControlName="city" />
+          <div class="line-box">
+            <div class="line"></div>
+          </div>
+        </label>
+
+        <label for="number">
+          <p class="label-txt">Number</p>
+          <input type=" text" class="input" id="Number" formControlName="number" />
+          <div class="line-box">
+            <div class="line"></div>
+          </div>
+        </label>
+      </div>
+
+      <h3>Contact</h3>
+
+      <div formGroupName="contact">
+        <label for="phone">
+          <p class="label-txt">Phone</p>
+          <input type="text" class="input" id="phone" formControlName="phone" />
+          <div class="line-box">
+            <div class="line"></div>
+          </div>
+        </label>
+
+        <label for="email">
+          <p class="label-txt">Email</p>
+          <input type="text" class="input" id="email" formControlName="email" />
+          <div class="line-box">
+            <div class="line"></div>
+          </div>
+        </label>
+      </div>
+
+      <h3>Networks</h3>
+
+        <div formGroupName="networks">
+          <label for="name">
+            <p class="label-txt">Name</p>
+            <input type="text" class="input" id="name" formControlName="name" />
+            <div class="line-box">
+              <div class="line"></div>
+            </div>
+          </label>
+
+          <label for="link">
+            <p class="label-txt">Link</p>
+            <input type="text" class="input" id="link" formControlName="link" />
+            <div class="line-box">
+              <div class="line"></div>
+            </div>
+          </label>
+        </div>
+
+        <h3>Medias</h3>
+
+        <div formGroupName="medias">
+          <label for="url">
+            <p class="label-txt">Url</p>
+            <input type="text" class="input" id="url" formControlName="url" />
+            <div class="line-box">
+              <div class="line"></div>
+            </div>
+          </label>
+
+          <label for="order">
+            <p class="label-txt">Order</p>
+            <input type="number" class="input" id="order" formControlName="order" />
+            <div class="line-box">
+              <div class="line"></div>
+            </div>
+          </label>
+        </div>
+
+        <button type="submit">Sauvegarder</button>
+    </form>
+  </div>
 </div>
-<button type="submit">Sauvegarder</button>
-
-</form>

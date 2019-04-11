@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { SearchBarComponent } from './search-bar/search-bar.component';
 import { UserHomepageComponent } from './user-homepage/user-homepage.component';
-import { EstablishmentHomepageComponent }
-  from './establishment-homepage/establishment-homepage.component';
+import { BookingComponent } from './booking/booking.component'
 import { EtablishmentComponent } from './etablishment/etablishment.component';
 
 const routes: Routes = [
   { path: '', component: UserHomepageComponent },
   { path: 'etablishment', component: EtablishmentComponent },
-  { path: 'etablishment/:id', component: EtablishmentComponent },
+  { path: 'etablishment/:id', component: EtablishmentComponent }
+  { path: 'booking', component: BookingComponent },
+  { path: 'booking/:id', component: BookingComponent,
+  },
 ];
 
 @NgModule({

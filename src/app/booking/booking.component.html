@@ -1,0 +1,144 @@
+<div class="container">
+<h2 class="mt-4 ">Formulaire de réservation</h2>
+
+<form (ngSubmit)="onSubmit()" [formGroup]="bookingForm" #myForm="ngForm">
+   <h3>Date de réservation</h3>
+
+   <div formGroupName="date" class="row">
+      <label class="col-6">
+      <p class="label-txt">Date de début</p>
+      <input type="datetime" class="input" formControlName="start" />
+      <div class="line-box">
+         <div class="line"></div>
+      </div>
+      </label>
+
+      <label class="col-6">
+      <p class="label-txt">Date de fin</p>
+      <input type="datetime" class="input" formControlName="end" />
+      <div class="line-box">
+         <div class="line"></div>
+      </div>
+      </label>
+   </div>
+
+   <h3>Client</h3>
+
+   <div formGroupName="owner">
+      <label>
+      <p class="label-txt">Nom</p>
+      <input type="text" class="input" id="name" formControlName="name" />
+      <div class="line-box">
+         <div class="line"></div>
+      </div>
+      </label>
+
+      <h3>Adresse</h3>
+
+      <div formGroupName="address" class="row">
+      <label class=" col-4" for="zipCode">
+         <p class="label-txt">Code postal</p>
+         <input
+            type="text"
+            class="input"
+            id="zipCode"
+            formControlName="zipCode"
+         />
+         <div class="line-box">
+            <div class="line"></div>
+         </div>
+      </label>
+
+      <label class="col-8" for="townName">
+         <p class="label-txt">Ville</p>
+         <input
+            type="text"
+            class="input"
+            id="townName"
+            formControlName="city"
+         />
+         <div class="line-box">
+            <div class="line"></div>
+         </div>
+      </label>
+
+      <label class="col-4" for="streetNumber">
+         <p class="label-txt">Numéro de rue</p>
+         <input
+            type="text"
+            class="input"
+            id="streetNumber"
+            formControlName="number"
+         />
+         <div class="line-box">
+            <div class="line"></div>
+         </div>
+      </label>
+
+      <label class="col-8" for="streetName">
+         <p class="label-txt">Rue</p>
+         <input
+            type="text"
+            class="input"
+            id="streetName"
+            formControlName="street"
+         />
+         <div class="line-box">
+            <div class="line"></div>
+         </div>
+      </label>
+      </div>
+
+      <h3>Contact</h3>
+
+      <div formGroupName="contact" class="row">
+      <label class="col-6" for="phone">
+         <p class="label-txt">Téléphone</p>
+         <input type="text" class="input" id="phone" formControlName="phone" />
+         <div class="line-box">
+            <div class="line"></div>
+         </div>
+      </label>
+
+      <label class="col-6" for="email">
+         <p class="label-txt">Email</p>
+         <input type="text" class="input" id="email" formControlName="email" />
+         <div class="line-box">
+            <div class="line"></div>
+         </div>
+      </label>
+      </div>
+   </div>
+
+   <h3>Divers</h3>
+   <label for="numbersPers">
+      <p class="label-txt">Nombre de personnes</p>
+      <input
+      type="text"
+      class="input"
+      id="numbersPers"
+      formControlName="numbers"
+      />
+      <div class="line-box">
+      <div class="line"></div>
+      </div>
+   </label>
+
+   <label for="establishmentBooking">
+      <p class="label-txt">Établissement</p>
+      <input
+      type="text"
+      class="input"
+      id="establishmentBooking"
+      formControlName="establishment"
+      />
+      <div class="line-box">
+      <div class="line"></div>
+      </div>
+   </label>
+
+   <div class="d-flex justify-content-center mb-5">
+      <button type="submit">Sauvegarder</button>
+   </div>
+</form>
+</div>

@@ -2,18 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { EtablishmentService } from '../common/services/etablishment.service';
 import { FormBuilder } from '@angular/forms';
 import { Etablishment } from '../common/models/etablishment.models';
-
 @Component({
   selector: 'app-etablishment',
   templateUrl: './etablishment.component.html',
   styleUrls: ['./etablishment.component.css'],
 })
 export class EtablishmentComponent implements OnInit {
-
-  constructor(private service: EtablishmentService,  private fb: FormBuilder) { }
-  public etablishment: Etablishment;
-  public etablishments: Etablishment[];
-
+  public etablishments: Etablishment[] = [];
+  constructor(private service: EtablishmentService,  private fb: FormBuilder) {}
   etablishmentForm = this.fb.group({
     name: [''],
     img: [''],
@@ -41,17 +37,14 @@ export class EtablishmentComponent implements OnInit {
       order:[''],
     }),
   });
-
-  onSubmit() {
-    console.log(this.etablishmentForm.value)
+  public onSubmit() {
+    console.log(this.etablishmentForm.value);
   }
-
-  ngOnInit() {
-
-    this.etablishmentForm.valueChanges.subscribe((value) => {
-      console.log('Valeurs saisies', value);
-    });
-
-    this.service.getetablishements();
+  public ngOnInit(): void {
+    this.service.getEtablishment().subscribe(
+          (res: Etablishment[]) => {
+            this.etablishments = res;
+          },
+      );
   }
 }

@@ -14,6 +14,7 @@ import { UserHomepageComponent } from './user-homepage/user-homepage.component';
 import { ProfileComponent } from './profile/profile.component';
 
 import { ProfileService } from './common/services/profile.service';
+import { JwtModule } from '@auth0/angular-jwt';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,13 @@ import { ProfileService } from './common/services/profile.service';
   ],
   providers: [
     ProfileService,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => {
+          return localStorage.getItem('token');
+        },
+      },
+    }),
   ],
   bootstrap: [AppComponent],
 })

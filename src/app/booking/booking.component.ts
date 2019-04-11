@@ -10,16 +10,19 @@ import { ParamMap, ActivatedRoute } from '@angular/router';
   styleUrls: ['./booking.component.css']
 })
 export class BookingComponent implements OnInit {
-  route: any;
   id: string;
   public bookings: Booking;
 
-  constructor(private service: BookingService, private fb: FormBuilder) {}
+  constructor(
+    private service: BookingService,
+    private fb: FormBuilder,
+    public route: ActivatedRoute
+  ) {}
 
   bookingForm = this.fb.group({
     date: this.fb.group({
       start: [''],
-      end: [''],
+      end: ['']
     }),
     owner: this.fb.group({
       name: [''],
@@ -27,38 +30,32 @@ export class BookingComponent implements OnInit {
         street: [''],
         zipCode: [''],
         city: [''],
-        number: [''],
+        number: ['']
       }),
       contact: this.fb.group({
         phone: [''],
-        email: [''],
-      }),
+        email: ['']
+      })
     }),
     numbers: [''],
-    establishment: [''],
+    establishment: ['']
   });
 
   ngOnInit() {
-    this.service.getBooking().subscribe((bookingValues: Booking) => {
-      this.bookings = bookingValues;
-      this.bookingForm.patchValue(bookingValues);
+    // Route par id
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      const id = params.get('id');
+      // Récupération de getBooking depuis le service
+      this.service.getBooking(id).subscribe((bookingValues: Booking) => {
+        this.bookings = bookingValues;
+        // Le formulaire a pour valeurs par défaut les données récupérées
+        this.bookingForm.patchValue(bookingValues);
+      });
     });
   }
 
   onSubmit() {
+    // Vérification des données saisies
     console.log(JSON.stringify(this.bookingForm.value));
   }
 }
-
-// Valeurs par défaut ?
-//
-//
-
-// this.service.getFromAPI().subscribe(
-//   (id) => {
-//     this.bookingForm.controls[''].patchValue('id');
-//   }
-// Route pour id:
-// this.route.paramMap.subscribe((params: ParamMap) => {
-//   this.id = params.get('id');
-// });

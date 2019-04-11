@@ -28,6 +28,7 @@ import { JwtModule } from '@auth0/angular-jwt';
     FormsModule,
     JwtModule.forRoot({
       config: {
+        whitelistedDomains: ['open-reza.herokuapp.com'],
         tokenGetter: () => {
           return localStorage.getItem('token');
         },

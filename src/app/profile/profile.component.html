@@ -1,0 +1,163 @@
+<div class="container">
+
+    <h2 class="mt-4">MON PROFIL</h2>
+    
+          <form (ngSubmit)="onSubmit()" [formGroup]="profileForm" #myForm="ngForm">
+              <div class="row">
+                    
+                  <label class="col-6">
+                       <p class="label-txt">Firstname:</p>
+                     <input
+                        type="text"
+                        class="input" 
+                        formControlName="firstName"/>
+                      <div class="line-box">
+                        <div class="line"></div>
+                      </div>
+                  </label>
+                  
+                  <label class="col-6">
+                      <p class="label-txt">Lastname:</p>
+                     <input
+                         type="text"
+                         class="input"
+                         formControlName="lastName"/>
+                      <div class="line-box">
+                        <div class="line"></div>
+                      </div>
+                  </label>
+              </div>
+
+              <div class="row">
+                  
+                  <label class="col-4">
+                       <p class="label-txt">Siret:</p>
+                      <input
+                        type="number"
+                        class="input"
+                        formControlName="siret"/>
+                      <div class="line-box">
+                        <div class="line"></div>
+                      </div>
+                  </label>
+                  
+                  <label class="col-4">
+                      <p class="label-txt">Siren:</p>
+                     <input
+                       type="number"
+                       class="input"
+                       formControlName="siren"/>
+                     <div class="line-box">
+                       <div class="line"></div>
+                     </div>
+                  </label>
+                  
+                 <label class="col-4">
+                    <p class="label-txt">Key:</p>
+                   <input
+                     type="number"
+                     class="input"
+                     formControlName="key"/>
+                   <div class="line-box">
+                     <div class="line"></div>
+                   </div>
+                 </label>
+                  
+              </div>
+              
+              <h3>Mon adresse</h3>
+              
+              <div formGroupName="address">
+                  
+                  <label for="street">
+                      <p class="label-txt">Street:</p>
+                      <input
+                        type="text"
+                        class="input"
+                        formControlName="street"/>
+                      <div class="line-box">
+                        <div class="line"></div>
+                      </div>
+                  </label>
+                
+                <div class="row">
+                  <label class="col-4" for="zipCode">
+                      <p class="label-txt">Zipcode:</p>
+                      <input
+                        type="number"
+                        class="input"
+                        formControlName="zipCode"/>
+                      <div class="line-box">
+                        <div class="line"></div>
+                      </div>
+                  </label>
+                  
+                  <label class="col-4" for="city">
+                      <p class="label-txt">City:</p>
+                      <input
+                        type="text"
+                        class="input"
+                        formControlName="city"/>
+                      <div class="line-box">
+                        <div class="line"></div>
+                      </div>
+                  </label>
+                  
+                  <label class="col-4" for="number">
+                      <p class="label-txt">Number</p>
+                      <input
+                        type="number"
+                        class="input"
+                        formControlName="number"/>
+                      <div class="line-box">
+                        <div class="line"></div>
+                      </div>
+                  </label>
+                </div>
+              </div>
+              
+              <h3>Contact</h3>
+              
+              <div formGroupName="contact" class="row">
+                  
+                  <label class="col-4" for="fax">
+                      <p class="label-txt">Fax:</p>
+                      <input
+                        type="number"
+                        class="input"
+                        formControlName="fax"/>
+                      <div class="line-box">
+                        <div class="line"></div>
+                      </div>
+                  </label>
+            
+                  <label class="col-4" for="phone">
+                      <p class="label-txt">Phone:</p>
+                      <input
+                        type="number"
+                        class="input"
+                        formControlName="phone"/>
+                      <div class="line-box">
+                        <div class="line"></div>
+                      </div>
+                  </label>
+                  
+                  <label class="col-4" for="email">
+                      <p class="label-txt">Email:</p>
+                      <input
+                        type="email"
+                        class="input"
+                        formControlName="email"/>
+                      <div class="line-box">
+                        <div class="line"></div>
+                      </div>
+                  </label>
+              </div>
+              
+              <div class="d-flex justify-content-center mb-5">
+                <button type="submit">Valider</button>
+              </div>
+             
+          </form>
+    
+    </div>

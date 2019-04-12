@@ -11,6 +11,7 @@ import { EstablishmentHomepageComponent }
 from './establishment-homepage/establishment-homepage.component';
 import { UserHomepageComponent } from './user-homepage/user-homepage.component';
 import { EtablishmentComponent } from './etablishment/etablishment.component';
+import { ProfileComponent } from './profile/profile.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { BookingComponent } from './booking/booking.component';
 import { HttpClientModule } from  '@angular/common/http';
@@ -25,6 +26,7 @@ import { HttpClientModule } from  '@angular/common/http';
     UserHomepageComponent,
     EtablishmentComponent,
     BookingComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,6 +34,7 @@ import { HttpClientModule } from  '@angular/common/http';
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     JwtModule.forRoot({
       config: {
         whitelistedDomains: ['open-reza.herokuapp.com'],

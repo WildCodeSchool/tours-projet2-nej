@@ -10,7 +10,7 @@ export class ProfileService {
   constructor(public http: HttpClient) {}
 
   public getMyProfiles(): Observable<Profile> {
-    const  obs1:Observable<any> = this.http.get('https://open-reza.herokuapp.com/profil');
+    const  obs1:Observable<any> = this.http.get('https://open-reza.herokuapp.com/api/profiles');
 
     const  treatment  = (response:any) => {
       return  response as Profile;

@@ -2,48 +2,60 @@ import { Component, OnInit } from '@angular/core';
 import { Booking } from '../common/models/booking.model';
 import { BookingService } from '../common/services/booking.service';
 import { FormBuilder } from '@angular/forms';
+import { ParamMap, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-booking',
   templateUrl: './booking.component.html',
-  styleUrls: ['./booking.component.css']
+  styleUrls: ['./booking.component.css'],
 })
 export class BookingComponent implements OnInit {
-  constructor(private service: BookingService, private fb: FormBuilder) {}
+  id: string;
+  public bookings: Booking;
 
-  public booking: Booking;
-  public bookings: Booking[] = [];
+  constructor(
+    private service: BookingService,
+    private fb: FormBuilder,
+    public route: ActivatedRoute,
+  ) {}
 
   bookingForm = this.fb.group({
-    dateBooking: this.fb.group({
-      dateInBooking: [''],
-      dateOutBooking: [''],
+    date: this.fb.group({
+      start: [''],
+      end: [''],
     }),
-    ownerInfo: this.fb.group({
-      nameBooking:[''],
-      Adress: this.fb.group({
-        streetNameBooking: [''],
-        zipCodeBooking: [''],
-        townNameBooking: [''],
-        streetNumberBooking: [''],
+    owner: this.fb.group({
+      name: [''],
+      address: this.fb.group({
+        street: [''],
+        zipCode: [''],
+        city: [''],
+        number: [''],
       }),
-      Contact: this.fb.group({
-        phoneBooking: [''],
-        emailBooking: [''],
+      contact: this.fb.group({
+        phone: [''],
+        email: [''],
       }),
     }),
-    numberPersBooking: [''],
-    establishmentBooking: [''],
+    numbers: [''],
+    establishment: [''],
   });
 
-  onSubmit() {
-    console.log(this.bookingForm.value);
+  ngOnInit() {
+    // Route par id
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      const id = params.get('id');
+      // Récupération de getBooking depuis le service
+      this.service.getBooking(id).subscribe((bookingValues: Booking) => {
+        this.bookings = bookingValues;
+        // Le formulaire a pour valeurs par défaut les données récupérées
+        this.bookingForm.patchValue(bookingValues);
+      });
+    });
   }
 
-  ngOnInit() {
-
-    this.bookingForm.valueChanges.subscribe((value) => {
-      console.log('Valeurs saisies', value);
-    });
+  onSubmit() {
+    // Vérification des données saisies
+    console.log(JSON.stringify(this.bookingForm.value));
   }
 }

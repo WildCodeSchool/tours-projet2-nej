@@ -7,22 +7,20 @@ import { ParamMap, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-booking',
   templateUrl: './booking.component.html',
-  styleUrls: ['./booking.component.css'],
+  styleUrls: ['./booking.component.css']
 })
 export class BookingComponent implements OnInit {
-  id: string;
   public bookings: Booking;
-
   constructor(
     private service: BookingService,
     private fb: FormBuilder,
-    public route: ActivatedRoute,
+    public route: ActivatedRoute
   ) {}
 
   bookingForm = this.fb.group({
     date: this.fb.group({
       start: [''],
-      end: [''],
+      end: ['']
     }),
     owner: this.fb.group({
       name: [''],
@@ -30,32 +28,40 @@ export class BookingComponent implements OnInit {
         street: [''],
         zipCode: [''],
         city: [''],
-        number: [''],
+        number: ['']
       }),
       contact: this.fb.group({
         phone: [''],
-        email: [''],
-      }),
+        email: ['']
+      })
     }),
     numbers: [''],
-    establishment: [''],
+    establishment: ['']
   });
 
   ngOnInit() {
     // Route par id
     this.route.paramMap.subscribe((params: ParamMap) => {
       const id = params.get('id');
-      // Récupération de getBooking depuis le service
-      this.service.getBooking(id).subscribe((bookingValues: Booking) => {
-        this.bookings = bookingValues;
-        // Le formulaire a pour valeurs par défaut les données récupérées
-        this.bookingForm.patchValue(bookingValues);
-      });
+      if (id != undefined) {
+        this.service.getBooking(id).subscribe((bookingValues: Booking) => {
+          // Récupération de getBooking depuis le service
+          this.bookings = bookingValues;
+          // Le formulaire a pour valeurs par défaut les données récupérées
+          this.bookingForm.patchValue(bookingValues);
+        });
+      }
     });
   }
 
   onSubmit() {
     // Vérification des données saisies
     console.log(JSON.stringify(this.bookingForm.value));
+    // Méthode Create
+    this.service
+      .createBooking(this.bookingForm.value)
+      .subscribe((newbookingValues: Booking) => {
+        this.bookings = newbookingValues;
+      });
   }
 }

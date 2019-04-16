@@ -49,11 +49,12 @@ export class EtablishmentComponent implements OnInit {
         .subscribe((etablishment: Etablishment) => {
           this.etablishmentForm.patchValue(etablishment);
         });
-      }
-      this.service.postEtablishment(this.etablishmentForm.value)
+      }else {
+        this.service.postEtablishment(this.etablishmentForm.value)
       .subscribe((etablishment: Etablishment) => {
         this.etablishmentForm.patchValue(etablishment);
       });
+      }
     });
   }
 

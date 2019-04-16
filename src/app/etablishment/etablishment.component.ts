@@ -41,10 +41,20 @@ export class EtablishmentComponent implements OnInit {
   public onSubmit() {
     console.log(this.etablishmentForm.value);
 
-    this.service.postEtablishment(this.etablishmentForm.value)
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      const id = params.get('id');
+
+      if (id) {
+        this.service.putEtablishment(id, this.etablishmentForm.value)
+        .subscribe((etablishment: Etablishment) => {
+          this.etablishmentForm.patchValue(etablishment);
+        });
+      }
+      this.service.postEtablishment(this.etablishmentForm.value)
       .subscribe((etablishment: Etablishment) => {
         this.etablishmentForm.patchValue(etablishment);
       });
+    });
   }
 
   public ngOnInit(): void {

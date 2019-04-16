@@ -3,18 +3,18 @@ export class Profile {
   constructor(
     public firstName: string,
     public lastName: string,
-    public siret: number,
-    public siren: number,
+    public siret: string,
+    public siren: string,
     public key: string,
     public address: {
       street: string,
-      zipCode: number,
+      zipCode: string,
       city: string,
-      number: number,
+      string: string,
     },
     public contact: {
-      fax: number,
-      phone: number,
+      fax: string,
+      phone: string,
       email: string,
     },
   ) {}

@@ -57,11 +57,23 @@ export class BookingComponent implements OnInit {
   onSubmit() {
     // Vérification des données saisies
     console.log(JSON.stringify(this.bookingForm.value));
-    // Méthode Create
-    this.service
-      .createBooking(this.bookingForm.value)
-      .subscribe((newbookingValues: Booking) => {
-        this.bookings = newbookingValues;
-      });
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      const id = params.get('id');
+      console.log(id);
+      // Si id, MAJ des données
+      if (id) {
+        this.service
+          .updateBooking(this.bookingForm.value, id)
+          .subscribe((newbookingValues: Booking) => {
+            this.bookings = newbookingValues;
+          });
+      }
+      // Sans id, création d'une nouvelle réservation
+      this.service
+        .createBooking(this.bookingForm.value)
+        .subscribe((newbookingValues: Booking) => {
+          this.bookings = newbookingValues;
+        });
+    });
   }
 }

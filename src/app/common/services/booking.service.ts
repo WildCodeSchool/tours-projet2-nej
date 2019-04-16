@@ -11,7 +11,7 @@ export class BookingService {
 
   constructor(private http: HttpClient) {
   }
-  public api = 'http://open-reza.herokuapp.com:80/api/bookings/';
+  public api = 'http://open-reza.herokuapp.com/api/bookings/';
 
   public getBooking(id: string): Observable<Booking> {
     const bookingObs: Observable<any> = this.http.get(`${this.api}${id}`);
@@ -21,7 +21,11 @@ export class BookingService {
     return bookingObs.pipe(map(bookingArr));
   }
 
-  public createBooking(bookingForm): Observable<Booking> {
+  public createBooking(bookingForm:Booking): Observable<Booking> {
     return this.http.post<Booking>(this.api, bookingForm);
+  }
+
+  public updateBooking(bookingForm:Booking, id:any): Observable<Booking> {
+    return this.http.put<Booking>(`${this.api}${id}`, bookingForm);
   }
 }

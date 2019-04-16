@@ -67,13 +67,14 @@ export class BookingComponent implements OnInit {
           .subscribe((newbookingValues: Booking) => {
             this.bookings = newbookingValues;
           });
-      }
       // Sans id, création d'une nouvelle réservation
-      this.service
+      } else {
+        this.service
         .createBooking(this.bookingForm.value)
         .subscribe((newbookingValues: Booking) => {
           this.bookings = newbookingValues;
         });
+      }
     });
   }
 }

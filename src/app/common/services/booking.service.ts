@@ -23,13 +23,5 @@ export class BookingService {
 
   public createBooking(bookingForm): Observable<Booking> {
     return this.http.post<Booking>(this.api, bookingForm);
-  // .subscribe(
-  //       () => {
-  //         console.log('Enregistrement terminé !');
-  //       },
-  //       (error) => {
-  //         console.log('Erreur !');
-  //       },
-  //     );
   }
 }

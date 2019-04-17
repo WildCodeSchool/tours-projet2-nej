@@ -70,12 +70,14 @@ export class EtablishmentComponent implements OnInit {
 
     this.route.paramMap.subscribe((params: ParamMap) => {
       const id = params.get('id');
-      this.service.getEtablishment(id).subscribe(
+      if (id) {
+        this.service.getEtablishment(id).subscribe(
           (res: Etablishment) => {
             this.etablishments = res;
             this.etablishmentForm.patchValue(res);
           },
       );
+      }
     });
   }
 }

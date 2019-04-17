@@ -15,7 +15,7 @@ export class EtablishmentService {
   }
   public getEtablishment(id:string): Observable<Etablishment> {
     const obs1: Observable<any> = this.service.get(
-      `http://open-reza.herokuapp.com:80/api/establishments/${id}`);
+      `http://open-reza.herokuapp.com/api/establishments/${id}`);
 
     return obs1.pipe(
       map((paramEtablishment: any) => {

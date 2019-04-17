@@ -84,45 +84,47 @@
 
       <h3>Networks</h3>
 
-        <div formGroupName="networks">
-          <label for="name">
-            <p class="label-txt">Name</p>
-            <input type="text" class="input" id="name" formControlName="name" />
-            <div class="line-box">
-              <div class="line"></div>
-            </div>
-          </label>
+      <div formGroupName="networks">
+        <label for="name">
+          <p class="label-txt">Name</p>
+          <input type="text" class="input" id="name" formControlName="name" />
+          <div class="line-box">
+            <div class="line"></div>
+          </div>
+        </label>
 
-          <label for="link">
-            <p class="label-txt">Link</p>
-            <input type="text" class="input" id="link" formControlName="link" />
-            <div class="line-box">
-              <div class="line"></div>
-            </div>
-          </label>
-        </div>
+        <label for="link">
+          <p class="label-txt">Link</p>
+          <input type="text" class="input" id="link" formControlName="link" />
+          <div class="line-box">
+            <div class="line"></div>
+          </div>
+        </label>
+      </div>
 
-        <h3>Medias</h3>
+      <h3>Medias</h3>
 
-        <div formGroupName="medias">
-          <label for="url">
-            <p class="label-txt">Url</p>
-            <input type="text" class="input" id="url" formControlName="url" />
-            <div class="line-box">
-              <div class="line"></div>
-            </div>
-          </label>
+      <div formGroupName="medias">
+        <label for="url">
+          <p class="label-txt">Url</p>
+          <input type="text" class="input" id="url" formControlName="url" />
+          <div class="line-box">
+            <div class="line"></div>
+          </div>
+        </label>
 
-          <label for="order">
-            <p class="label-txt">Order</p>
-            <input type="number" class="input" id="order" formControlName="order" />
-            <div class="line-box">
-              <div class="line"></div>
-            </div>
-          </label>
-        </div>
-
-        <button type="submit">Sauvegarder</button>
+        <label for="order">
+          <p class="label-txt">Order</p>
+          <input type="number" class="input" id="order" formControlName="order" />
+          <div class="line-box">
+            <div class="line"></div>
+          </div>
+        </label>
+      </div>
+      <div class="d-flex justify-content-center mb-5">
+        <button class="saveBtn" type="submit">Sauvegarder</button>
+        <button class="resetBtn" type="button" (click)="deleteEtablishment()">Supprimer</button>
+      </div>
     </form>
   </div>
 </div>

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Booking } from '../common/models/booking.model';
 import { BookingService } from '../common/services/booking.service';
 import { FormBuilder } from '@angular/forms';
-import { ParamMap, ActivatedRoute } from '@angular/router';
+import { ParamMap, ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-booking',
@@ -15,6 +15,7 @@ export class BookingComponent implements OnInit {
     private service: BookingService,
     private fb: FormBuilder,
     public route: ActivatedRoute,
+    public router:Router,
   ) {}
 
   bookingForm = this.fb.group({
@@ -51,6 +52,15 @@ export class BookingComponent implements OnInit {
           this.bookingForm.patchValue(bookingValues);
         });
       }
+    });
+  }
+  public deleteBooking() {
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      const id = params.get('id');
+      this.service.deleteBooking(id)
+        .subscribe(() => {
+          this.router.navigate(['']);
+        });
     });
   }
 

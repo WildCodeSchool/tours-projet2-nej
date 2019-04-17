@@ -14,7 +14,7 @@ export class EstablishmentHomepageComponent implements OnInit {
   ngOnInit() {
     this.service.getAllEtablishment().subscribe((establismhents: any) => {
       this.establishmentsList = establismhents;
-      console.log(this.establishmentsList)
+      console.log(this.establishmentsList);
     });
   }
 }

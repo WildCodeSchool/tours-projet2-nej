@@ -9,10 +9,10 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
   styleUrls: ['./etablishment.component.css'],
 })
 export class EtablishmentComponent implements OnInit {
-  public id :string;
+  public id: string;
   public etablishments: Etablishment;
   constructor(private route: ActivatedRoute, private service: EtablishmentService,
-              private fb: FormBuilder) {}
+              private fb: FormBuilder) { }
   etablishmentForm = this.fb.group({
     name: [''],
     profile: [''],
@@ -32,24 +32,35 @@ export class EtablishmentComponent implements OnInit {
       name: [''],
       link: [''],
     }),
-    medias:this.fb.group({
+    medias: this.fb.group({
       url: [''],
-      order:[''],
+      order: [''],
     }),
   });
+
   public onSubmit() {
     console.log(this.etablishmentForm.value);
+
+    this.service.postEtablishment(this.etablishmentForm.value)
+      .subscribe((etablishment: Etablishment) => {
+        this.etablishmentForm.patchValue(etablishment);
+      });
   }
+
   public ngOnInit(): void {
 
     this.route.paramMap.subscribe((params: ParamMap) => {
       const id = params.get('id');
-      this.service.getEtablishment(id).subscribe(
+
+      if (id) {
+        this.service.getEtablishment(id).subscribe(
           (res: Etablishment) => {
             this.etablishments = res;
             this.etablishmentForm.patchValue(res);
           },
-      );
+        );
+      }
+
     });
   }
 }

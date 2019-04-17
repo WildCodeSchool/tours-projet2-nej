@@ -8,14 +8,15 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { EstablishmentHomepageComponent }
-from './establishment-homepage/establishment-homepage.component';
+  from './establishment-homepage/establishment-homepage.component';
 import { UserHomepageComponent } from './user-homepage/user-homepage.component';
 import { EtablishmentComponent } from './etablishment/etablishment.component';
 import { ProfileComponent } from './profile/profile.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { BookingComponent } from './booking/booking.component';
-import { HttpClientModule } from  '@angular/common/http';
-import { EstablishmentBookinglistComponent } from './establishment-bookinglist/establishment-bookinglist.component';
+import { HttpClientModule } from '@angular/common/http';
+import { EstablishmentBookinglistComponent }
+  from './establishment-bookinglist/establishment-bookinglist.component';
 
 @NgModule({
   declarations: [

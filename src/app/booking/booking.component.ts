@@ -10,9 +10,7 @@ import { ParamMap, ActivatedRoute } from '@angular/router';
   styleUrls: ['./booking.component.css'],
 })
 export class BookingComponent implements OnInit {
-  id: string;
   public bookings: Booking;
-
   constructor(
     private service: BookingService,
     private fb: FormBuilder,
@@ -45,17 +43,25 @@ export class BookingComponent implements OnInit {
     // Route par id
     this.route.paramMap.subscribe((params: ParamMap) => {
       const id = params.get('id');
-      // Récupération de getBooking depuis le service
-      this.service.getBooking(id).subscribe((bookingValues: Booking) => {
-        this.bookings = bookingValues;
-        // Le formulaire a pour valeurs par défaut les données récupérées
-        this.bookingForm.patchValue(bookingValues);
-      });
+      if (id) {
+        this.service.getBooking(id).subscribe((bookingValues: Booking) => {
+          // Récupération de getBooking depuis le service
+          this.bookings = bookingValues;
+          // Le formulaire a pour valeurs par défaut les données récupérées
+          this.bookingForm.patchValue(bookingValues);
+        });
+      }
     });
   }
 
   onSubmit() {
     // Vérification des données saisies
     console.log(JSON.stringify(this.bookingForm.value));
+    // Méthode Create
+    this.service
+      .createBooking(this.bookingForm.value)
+      .subscribe((newbookingValues: Booking) => {
+        this.bookings = newbookingValues;
+      });
   }
 }

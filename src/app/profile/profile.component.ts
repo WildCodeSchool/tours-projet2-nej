@@ -12,6 +12,8 @@ export class ProfileComponent implements OnInit {
 
   constructor(private service: ProfileService, private fb: FormBuilder) {}
 
+  clickMessage = '';
+
   profileForm = this.fb.group({
 
     firstName: [''],
@@ -37,7 +39,7 @@ export class ProfileComponent implements OnInit {
   public ngOnInit(): void {
     console.log(this.profileForm.value);
 
-    this.service.getMyProfiles().subscribe(
+    this.service.get().subscribe(
       (profile: Profile) => {
         this.profileForm.patchValue(profile);
       },
@@ -46,6 +48,12 @@ export class ProfileComponent implements OnInit {
 
   onSubmit() {
     console.log(this.profileForm.value);
-  }
 
+    this.service.put(this.profileForm.value).subscribe(
+      (profile: Profile) => {
+        this.profileForm.patchValue(profile);
+      },
+    );
+    this.clickMessage = 'Mon profil a bien été mis à jour!';
+  }
 }

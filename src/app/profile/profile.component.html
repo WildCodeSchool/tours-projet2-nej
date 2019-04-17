@@ -33,7 +33,7 @@
                   <label class="col-4">
                        <p class="label-txt">Siret:</p>
                       <input
-                        type="number"
+                        type="text"
                         class="input"
                         formControlName="siret"/>
                       <div class="line-box">
@@ -44,7 +44,7 @@
                   <label class="col-4">
                       <p class="label-txt">Siren:</p>
                      <input
-                       type="number"
+                       type="text"
                        class="input"
                        formControlName="siren"/>
                      <div class="line-box">
@@ -55,7 +55,7 @@
                  <label class="col-4">
                     <p class="label-txt">Key:</p>
                    <input
-                     type="number"
+                     type="text"
                      class="input"
                      formControlName="key"/>
                    <div class="line-box">
@@ -84,7 +84,7 @@
                   <label class="col-4" for="zipCode">
                       <p class="label-txt">Zipcode:</p>
                       <input
-                        type="number"
+                        type="text"
                         class="input"
                         formControlName="zipCode"/>
                       <div class="line-box">
@@ -106,7 +106,7 @@
                   <label class="col-4" for="number">
                       <p class="label-txt">Number</p>
                       <input
-                        type="number"
+                        type="text"
                         class="input"
                         formControlName="number"/>
                       <div class="line-box">
@@ -123,7 +123,7 @@
                   <label class="col-4" for="fax">
                       <p class="label-txt">Fax:</p>
                       <input
-                        type="number"
+                        type="text"
                         class="input"
                         formControlName="fax"/>
                       <div class="line-box">
@@ -134,7 +134,7 @@
                   <label class="col-4" for="phone">
                       <p class="label-txt">Phone:</p>
                       <input
-                        type="number"
+                        type="text"
                         class="input"
                         formControlName="phone"/>
                       <div class="line-box">
@@ -154,10 +154,12 @@
                   </label>
               </div>
               
+              
               <div class="d-flex justify-content-center mb-5">
-                <button type="submit">Valider</button>
+                <button type="submit">Sauvegarder</button>
               </div>
-             
+              {{clickMessage}}  
           </form>
+          
     
     </div>

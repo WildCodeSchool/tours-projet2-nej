@@ -59,7 +59,7 @@ label {
 
 button {
   display: inline-block;
-  padding: 12px 24px;
+  padding: 12px;
   background: rgb(220, 220, 220);
   font-weight: bold;
   color: rgb(120, 120, 120);
@@ -68,9 +68,15 @@ button {
   border-radius: 3px;
   cursor: pointer;
   transition: ease 0.3s;
+  margin: 10px;
 }
 
-button:hover {
+.saveBtn:hover {
   background: #8bc34a;
+  color: #ffffff;
+}
+
+.resetBtn:hover {
+  background: #e63010;
   color: #ffffff;
 }

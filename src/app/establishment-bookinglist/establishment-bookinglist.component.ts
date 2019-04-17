@@ -21,6 +21,13 @@ export class EstablishmentBookinglistComponent implements OnInit {
 
     public route: ActivatedRoute,
     ) {}
+
+    public deleteBooking(id, index) {
+      this.serviceB.deleteBooking(id).subscribe(() => {
+        this.bookingEstablishmentList.splice(index, 1);
+      });
+  }
+
   ngOnInit() {
 
     this.route.paramMap.subscribe((params: ParamMap) => {

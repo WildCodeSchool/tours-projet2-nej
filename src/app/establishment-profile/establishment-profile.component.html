@@ -1,1 +1,22 @@
 
+<div class="container-fluid">
+<div class="alert alert-secondary" role="alert">
+      Mes établissements
+</div>
+<div class="row">
+   <div class="col-md-4" *ngFor="let establishment of establishments">
+      <div class="card mb-4 text-white bg-dark">
+         <img class="card-img-top" [src]=getUrl() alt="establishment">
+         <div class="card-body">
+            <h5 class="card-title">{{establishment.name}}</h5>
+            <p class="card-text">{{establishment.description}}</p>
+            <div class="bouton">
+               <a class="btn btn-outline-light btn-sm">Réservations</a>
+               <a class="btn btn-outline-light btn-sm">Modifier</a>
+               <a class="btn btn-outline-light btn-sm">Supprimer</a>
+            </div>
+         </div>
+      </div>
+   </div>
+   </div>
+</div>{{establishment.medias[0].url}}

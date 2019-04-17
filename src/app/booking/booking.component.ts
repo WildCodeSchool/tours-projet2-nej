@@ -47,7 +47,7 @@ export class BookingComponent implements OnInit {
     this.route.paramMap.subscribe((params: ParamMap) => {
       const id = params.get('id');
       // Récupération de getBooking depuis le service
-      if (id){
+      if (id) {
         this.service.getBooking(id).subscribe((bookingValues: Booking) => {
           this.bookings = bookingValues;
         // Le formulaire a pour valeurs par défaut les données récupérées

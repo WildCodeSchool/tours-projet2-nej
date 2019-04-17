@@ -23,4 +23,29 @@ export class EtablishmentService {
       }),
     );
   }
+  // crée un etablissment
+  public postEtablishment(etablishementForm: any): Observable<Etablishment> {
+    const obs2: Observable<any> = this.service.post(
+      'http://open-reza.herokuapp.com/api/establishments', etablishementForm);
+
+    return obs2.pipe(
+      map((paramEtablishment: any) => {
+        return paramEtablishment as Etablishment;
+      }),
+    );
+  }
+  public putEtablishment(id: string, etablishementForm: any): Observable<Etablishment> {
+    const obs3: Observable<any> = this.service.put(
+      `http://open-reza.herokuapp.com/api/establishments/${id}`, etablishementForm);
+
+    return obs3.pipe(map((paramEtablishment: any) => {
+      return paramEtablishment as Etablishment;
+    }),
+    );
+  }
+  public deleteEtablishment(id: string): Observable<any> {
+    return this.service.delete(
+      `http://open-reza.herokuapp.com/api/establishments/${id}`);
+
+  }
 }

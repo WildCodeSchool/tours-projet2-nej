@@ -36,6 +36,7 @@ export class EtablishmentService {
       }),
     );
   }
+
   public putEtablishment(id: string, etablishementForm: any): Observable<Etablishment> {
     const obs: Observable<any> = this.service.put(
       `http://open-reza.herokuapp.com/api/establishments/${id}`, etablishementForm);
@@ -44,5 +45,10 @@ export class EtablishmentService {
       return paramEtablishment as Etablishment;
     }),
     );
+  }
+  public deleteEtablishment(id: string): Observable<any> {
+    return this.service.delete(
+      `http://open-reza.herokuapp.com/api/establishments/${id}`);
+
   }
 }

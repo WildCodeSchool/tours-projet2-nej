@@ -16,10 +16,10 @@ export class EtablishmentService {
   }
   // afiche un etablissement
   public getEtablishment(id: string): Observable<Etablishment> {
-    const obs1: Observable<any> = this.service.get(
+    const obs: Observable<any> = this.service.get(
       `http://open-reza.herokuapp.com/api/establishments/${id}`);
 
-    return obs1.pipe(
+    return obs.pipe(
       map((paramEtablishment: any) => {
         return paramEtablishment as Etablishment;
       }),
@@ -27,20 +27,20 @@ export class EtablishmentService {
   }
   // crée un etablissment
   public postEtablishment(etablishementForm: any): Observable<Etablishment> {
-    const obs2: Observable<any> = this.service.post(
+    const obs: Observable<any> = this.service.post(
       'http://open-reza.herokuapp.com/api/establishments', etablishementForm);
 
-    return obs2.pipe(
+    return obs.pipe(
       map((paramEtablishment: any) => {
         return paramEtablishment as Etablishment;
       }),
     );
   }
   public putEtablishment(id: string, etablishementForm: any): Observable<Etablishment> {
-    const obs3: Observable<any> = this.service.put(
+    const obs: Observable<any> = this.service.put(
       `http://open-reza.herokuapp.com/api/establishments/${id}`, etablishementForm);
 
-    return obs3.pipe(map((paramEtablishment: any) => {
+    return obs.pipe(map((paramEtablishment: any) => {
       return paramEtablishment as Etablishment;
     }),
     );

@@ -15,6 +15,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { BookingComponent } from './booking/booking.component';
 import { HttpClientModule } from  '@angular/common/http';
+import { EstablishmentBookinglistComponent } from './establishment-bookinglist/establishment-bookinglist.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { HttpClientModule } from  '@angular/common/http';
     EtablishmentComponent,
     BookingComponent,
     ProfileComponent,
+    EstablishmentBookinglistComponent,
   ],
   imports: [
     BrowserModule,

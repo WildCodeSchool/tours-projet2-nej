@@ -4,6 +4,8 @@ import { UserHomepageComponent } from './user-homepage/user-homepage.component';
 import { ProfileComponent } from './profile/profile.component';
 import { BookingComponent } from './booking/booking.component';
 import { EtablishmentComponent } from './etablishment/etablishment.component';
+import { EstablishmentBookinglistComponent }
+from './establishment-bookinglist/establishment-bookinglist.component';
 
 const routes: Routes = [
   { path: '', component: UserHomepageComponent },
@@ -13,6 +15,7 @@ const routes: Routes = [
   { path: 'booking', component: BookingComponent },
   { path: 'booking/:id', component: BookingComponent },
   { path: 'booking/:id/update', component: BookingComponent },
+  { path: 'etablishment/:id/bookings', component: EstablishmentBookinglistComponent },
 ];
 
 @NgModule({

@@ -7,6 +7,9 @@ import { map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class EtablishmentService {
+  getBookingListEstablishment(id: string) {
+    throw new Error("Method not implemented.");
+  }
   etablishement: Etablishment;
   private service: HttpClient;
   // tslint:disable-next-line: variable-name

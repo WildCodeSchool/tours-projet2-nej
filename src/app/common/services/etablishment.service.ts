@@ -26,4 +26,14 @@ export class EtablishmentService {
       }),
     );
   }
+
+  public getAllEtablishment(): Observable<Etablishment> {
+    const obs1: Observable<any> = this.service.get(
+      'http://open-reza.herokuapp.com:80/api/establishments/');
+    return obs1.pipe(
+      map((paramEtablishment: any) => {
+        return paramEtablishment as Etablishment;
+      }),
+    );
+  }
 }

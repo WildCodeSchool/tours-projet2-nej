@@ -17,6 +17,7 @@ import { BookingComponent } from './booking/booking.component';
 import { HttpClientModule } from  '@angular/common/http';
 // tslint:disable-next-line: max-line-length
 import { EstablishmentProfileComponent } from './establishment-profile/establishment-profile.component';
+import { UseraccountComponent } from './useraccount/useraccount.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { EstablishmentProfileComponent } from './establishment-profile/establish
     BookingComponent,
     ProfileComponent,
     EstablishmentProfileComponent,
+    UseraccountComponent,
   ],
   imports: [
     BrowserModule,

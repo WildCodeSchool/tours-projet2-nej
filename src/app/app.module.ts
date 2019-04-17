@@ -15,6 +15,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { BookingComponent } from './booking/booking.component';
 import { HttpClientModule } from  '@angular/common/http';
+// tslint:disable-next-line: max-line-length
+import { EstablishmentProfileComponent } from './establishment-profile/establishment-profile.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,7 @@ import { HttpClientModule } from  '@angular/common/http';
     EtablishmentComponent,
     BookingComponent,
     ProfileComponent,
+    EstablishmentProfileComponent,
   ],
   imports: [
     BrowserModule,

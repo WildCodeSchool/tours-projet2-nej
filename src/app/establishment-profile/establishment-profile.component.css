@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+a {
+    display: flex;
+    padding: 12px 24px;
+    background: rgb(220, 220, 220);
+    font-weight: bold;
+    color: rgb(120, 120, 120);
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: ease 0.3s;
+    justify-content: center;
+  }
+
+.card-title {
+    text-align: center;
+}

@@ -11,7 +11,8 @@ export class BookingService {
 
   constructor(private http: HttpClient) {
   }
-  public api = 'http://open-reza.herokuapp.com/api';
+
+  public api = 'http://open-reza.herokuapp.com/api/';
 
   public getBooking(id: string): Observable<Booking> {
     const bookingObs: Observable<any> = this.http.get(`${this.api}bookings/${id}`);

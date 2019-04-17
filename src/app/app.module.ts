@@ -14,9 +14,11 @@ import { EtablishmentComponent } from './etablishment/etablishment.component';
 import { ProfileComponent } from './profile/profile.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { BookingComponent } from './booking/booking.component';
-import { HttpClientModule } from  '@angular/common/http';
-// tslint:disable-next-line: max-line-length
-import { EstablishmentProfileComponent } from './establishment-profile/establishment-profile.component';
+import { HttpClientModule } from '@angular/common/http';
+import { EstablishmentBookinglistComponent }
+  from './establishment-bookinglist/establishment-bookinglist.component';
+import { EstablishmentProfileComponent }
+from './establishment-profile/establishment-profile.component';
 import { UseraccountComponent } from './useraccount/useraccount.component';
 
 @NgModule({
@@ -30,6 +32,7 @@ import { UseraccountComponent } from './useraccount/useraccount.component';
     EtablishmentComponent,
     BookingComponent,
     ProfileComponent,
+    EstablishmentBookinglistComponent,
     EstablishmentProfileComponent,
     UseraccountComponent,
   ],

@@ -17,6 +17,9 @@ import { BookingComponent } from './booking/booking.component';
 import { HttpClientModule } from '@angular/common/http';
 import { EstablishmentBookinglistComponent }
   from './establishment-bookinglist/establishment-bookinglist.component';
+import { EstablishmentProfileComponent }
+from './establishment-profile/establishment-profile.component';
+import { UseraccountComponent } from './useraccount/useraccount.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +33,8 @@ import { EstablishmentBookinglistComponent }
     BookingComponent,
     ProfileComponent,
     EstablishmentBookinglistComponent,
+    EstablishmentProfileComponent,
+    UseraccountComponent,
   ],
   imports: [
     BrowserModule,

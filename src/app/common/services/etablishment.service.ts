@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class EtablishmentService {
-  etablishement: Etablishment;
+
   private service: HttpClient;
 
   constructor(paramService: HttpClient) {

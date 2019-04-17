@@ -1,0 +1,38 @@
+<div class="container-fluid">
+  
+  
+  <!-- <div class="card col-3" style="width: 18rem"
+  *ngFor="let booking of bookingEstablishmentList">
+    <div class="card-body">
+      <h5 class="card-title">{{booking.owner.name}}</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <a routerLink='/booking/{{booking._id}}/update' class="btn btn-primary">Modifier la réservation</a>
+    </div>
+  </div> -->
+<h2 class="text-center mt-2">Les réservations en cours pour votre établissement :</h2>
+<h3 class="alert alert-secondary text-center " role="alert">{{establishmentInfo.name}}
+</h3>
+  <table class="table table-bordered mt-4 mb-4"
+  >
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Heure d'arrivée</th>
+        <th scope="col">Heure de départ</th>
+        <th scope="col">Adresse</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let booking of bookingEstablishmentList">
+        <th scope="row">{{booking._id}}</th>
+        <td>{{booking.owner.name}}</td>
+        <td>{{booking.date.start}}</td>
+        <td>{{booking.date.end}}</td>
+        <td>{{booking.owner.address.street}}</td>
+        <td><a routerLink='/booking/{{booking._id}}/update' class="btn btn-primary">Modifier la réservation</a></td>
+        <td><button class="btn btn-danger">Supprimer la réservation</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

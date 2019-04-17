@@ -1,33 +1,53 @@
 <div class="container-fluid">
-
-<h2 class="text-center mt-2">Les réservations en cours pour votre établissement :</h2>
-<h3 class="alert alert-secondary text-center " role="alert">{{establishmentInfo.name}}
-</h3>
-<div class="table-responsive-md">
-  <table class="table table-bordered mt-4 mb-4"
-  >
-    <thead>
-      <tr class="text-center">
-        <th scope="col">N° de réservation</th>
-        <th scope="col">Nom</th>
-        <th scope="col">Date d'arrivée</th>
-        <th scope="col">Date de départ</th>
-        <th scope="col">Adresse</th>
-        <th scope="col">Modifier / Supprimer</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let booking of bookingEstablishmentList, let i = index" class="text-center">
-        <th scope="row">{{booking._id}}</th>
-        <td>{{booking.owner.name}}</td>
-        <td>{{booking.date.start}}</td>
-        <td>{{booking.date.end}}</td>
-        <td>{{booking.owner.address.street}}</td>
-        <td><a routerLink='/booking/{{booking._id}}/update' class="btn btn-warning mr-3"><img class="icon" src='https://image.flaticon.com/icons/png/512/97/97871.png'></a>
-        <button class="btn btn-danger" (click)="deleteBooking(booking._id, i)" type="button"><img class="icon" src='https://image.flaticon.com/icons/png/512/65/65307.png'></button></td>
-        <div toastContainer></div>
-      </tr>
-    </tbody>
-  </table>
-</div>
+  <h2 class="text-center mt-2">
+    Les réservations en cours pour votre établissement :
+  </h2>
+  <h3 class="alert alert-secondary text-center " role="alert">
+    {{ establishmentInfo.name }}
+  </h3>
+  <div class="table-responsive-md">
+    <table class="table table-bordered mt-4 mb-4">
+      <thead class="thead-light">
+        <tr class="text-center">
+          <th scope="col">N° de réservation</th>
+          <th scope="col">Nom</th>
+          <th scope="col">Date d'arrivée</th>
+          <th scope="col">Date de départ</th>
+          <th scope="col">Adresse</th>
+          <th scope="col">Modifier / Supprimer</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let booking of bookingEstablishmentList; let i = index"
+          class="text-center"
+        >
+          <th scope="row">{{ booking._id }}</th>
+          <td>{{ booking.owner.name }}</td>
+          <td>{{ booking.date.start }}</td>
+          <td>{{ booking.date.end }}</td>
+          <td>{{ booking.owner.address.street }}</td>
+          <td>
+            <a
+              routerLink="/booking/{{ booking._id }}/update"
+              class="btn btn-warning mr-3"
+              ><img
+                class="icon"
+                src="https://image.flaticon.com/icons/png/512/97/97871.png"
+            /></a>
+            <button
+              class="btn btn-danger"
+              (click)="deleteBooking(booking._id, i)"
+              type="button"
+            >
+              <img
+                class="icon"
+                src="https://image.flaticon.com/icons/png/512/65/65307.png"
+              />
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

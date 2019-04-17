@@ -10,7 +10,6 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./establishment-bookinglist.component.css'],
 })
 export class EstablishmentBookinglistComponent implements OnInit {
-
   public bookingEstablishmentList: [] = [];
   public establishmentInfo: [] = [];
 
@@ -19,7 +18,7 @@ export class EstablishmentBookinglistComponent implements OnInit {
     private serviceE: EtablishmentService,
     private toastr: ToastrService,
     public route: ActivatedRoute,
-    ) {}
+  ) {}
 
   public deleteBooking(id, index) {
     const result = confirm('Confirmez-vous la suppression de la réservation ?');
@@ -27,19 +26,23 @@ export class EstablishmentBookinglistComponent implements OnInit {
       this.serviceB.deleteBooking(id).subscribe(() => {
         this.bookingEstablishmentList.splice(index, 1);
       });
-      this.toastr.warning('La réservation a bien été supprimé')
+      this.toastr.warning('La réservation a bien été supprimé');
     }
   }
 
   ngOnInit() {
     this.route.paramMap.subscribe((params: ParamMap) => {
       const id = params.get('id');
-      this.serviceB.getBookingByEstablishment(id).subscribe((bookinglist: any) => {
-        this.bookingEstablishmentList = bookinglist;
-        this.serviceE.getEtablishment(id).subscribe((etablishmentInfo: any) => {
-          this.establishmentInfo = etablishmentInfo;
+      this.serviceB
+        .getBookingByEstablishment(id)
+        .subscribe((bookinglist: any) => {
+          this.bookingEstablishmentList = bookinglist;
+          this.serviceE
+            .getEtablishment(id)
+            .subscribe((etablishmentInfo: any) => {
+              this.establishmentInfo = etablishmentInfo;
+            });
         });
-      });
     });
   }
 }

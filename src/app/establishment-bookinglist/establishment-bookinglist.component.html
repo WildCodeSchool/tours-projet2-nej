@@ -25,6 +25,7 @@
         <td>{{booking.owner.address.street}}</td>
         <td><a routerLink='/booking/{{booking._id}}/update' class="btn btn-warning mr-3"><img class="icon" src='https://image.flaticon.com/icons/png/512/97/97871.png'></a>
         <button class="btn btn-danger" (click)="deleteBooking(booking._id, i)" type="button"><img class="icon" src='https://image.flaticon.com/icons/png/512/65/65307.png'></button></td>
+        <div toastContainer></div>
       </tr>
     </tbody>
   </table>

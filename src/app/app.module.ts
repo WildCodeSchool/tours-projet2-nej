@@ -20,6 +20,8 @@ import { EstablishmentBookinglistComponent }
 import { EstablishmentProfileComponent }
 from './establishment-profile/establishment-profile.component';
 import { UseraccountComponent } from './useraccount/useraccount.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -53,6 +55,8 @@ import { UseraccountComponent } from './useraccount/useraccount.component';
     }),
     ReactiveFormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

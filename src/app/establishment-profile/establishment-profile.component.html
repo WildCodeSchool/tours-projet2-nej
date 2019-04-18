@@ -4,7 +4,7 @@
       Mes établissements
 </div>
 <div class="row">
-   <div class="col-md-4" *ngFor="let establishment of establishments">
+   <div class="col-md-4" *ngFor="let establishment of establishments, let i = index">
       <div class="card mb-4 text-white bg-dark">
          <img class="card-img-top" src="{{
             establishment.medias[0]?.url
@@ -15,9 +15,9 @@
             <h5 class="card-title">{{establishment.name}}</h5>
             <p class="card-text">{{establishment.description}}</p>
             <div class="bouton">
-               <a class="btn btn-outline-light btn-sm">Réservations</a>
-               <a class="btn btn-outline-light btn-sm">Modifier</a>
-               <a class="btn btn-outline-light btn-sm">Supprimer</a>
+               <a routerLink="{{ establishment._id }}/bookings" class="btn btn-outline-light btn-sm">Réservations</a>
+               <a routerLink="{{ establishment._id }}" class="btn btn-outline-light btn-sm">Modifier</a>
+               <a class="btn btn-danger" (click)="deleteEstablishment(establishment._id, i)">Supprimer</a>
             </div>
          </div>
       </div>

@@ -34,10 +34,9 @@ export class EstablishmentProfileComponent implements OnInit {
       this.serviceEstablishment.deleteEtablishment(id).subscribe(() => {
         this.establishments.splice(index, 1);
       });
-    };
+    }
     this.toastr.warning('La réservation a bien été supprimé', 'Suppression', {
       positionClass: 'toast-bottom-full-width',
     });
   }
 }
-

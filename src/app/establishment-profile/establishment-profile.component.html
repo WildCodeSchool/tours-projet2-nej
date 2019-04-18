@@ -6,7 +6,11 @@
 <div class="row">
    <div class="col-md-4" *ngFor="let establishment of establishments">
       <div class="card mb-4 text-white bg-dark">
-         <img class="card-img-top" [src]=getUrl() alt="establishment">
+         <img class="card-img-top" src="{{
+            establishment.medias[0]?.url
+               ? establishment.medias[0]?.url
+               : 'https://loremflickr.com/640/480/bar'
+            }}" alt="establishment">
          <div class="card-body">
             <h5 class="card-title">{{establishment.name}}</h5>
             <p class="card-text">{{establishment.description}}</p>
@@ -19,4 +23,4 @@
       </div>
    </div>
    </div>
-</div>{{establishment.medias[0].url}}
+</div>

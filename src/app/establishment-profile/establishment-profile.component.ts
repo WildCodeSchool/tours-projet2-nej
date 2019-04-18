@@ -20,8 +20,5 @@ export class EstablishmentProfileComponent implements OnInit {
       },
     );
   }
-  getUrl() {
-    
-  }
 
 }

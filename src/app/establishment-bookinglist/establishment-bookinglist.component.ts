@@ -26,7 +26,9 @@ export class EstablishmentBookinglistComponent implements OnInit {
       this.serviceB.deleteBooking(id).subscribe(() => {
         this.bookingEstablishmentList.splice(index, 1);
       });
-      this.toastr.warning('La réservation a bien été supprimé');
+      this.toastr.warning('La réservation a bien été supprimé', 'Suppression', {
+        positionClass: 'toast-bottom-full-width',
+      });
     }
   }
 

@@ -1,5 +1,9 @@
-.container {
+/* .container {
     display: flex;
     justify-items: flex-start;
     align-items: center; 
+} */
+
+.card{
+    width: 30rem;
 }

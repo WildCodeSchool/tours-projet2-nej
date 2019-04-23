@@ -3,6 +3,8 @@ import { Booking } from '../common/models/booking.model';
 import { BookingService } from '../common/services/booking.service';
 import { FormBuilder } from '@angular/forms';
 import { ParamMap, ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { EtablishmentService } from '../common/services/etablishment.service';
 
 @Component({
   selector: 'app-booking',
@@ -10,12 +12,17 @@ import { ParamMap, ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./booking.component.css'],
 })
 export class BookingComponent implements OnInit {
+
   public bookings: Booking;
+  public etablishmentValue: [] = [];
+
   constructor(
     private service: BookingService,
     private fb: FormBuilder,
     public route: ActivatedRoute,
     public router:Router,
+    private toastr: ToastrService,
+    private serviceEst: EtablishmentService,
   ) {}
 
   bookingForm = this.fb.group({
@@ -44,6 +51,9 @@ export class BookingComponent implements OnInit {
     // Route par id
     this.route.paramMap.subscribe((params: ParamMap) => {
       const id = params.get('id');
+      const est = params.get('est');
+
+       // Modification administrateur des réservations, récupération de l'ID de réservation
       if (id) {
         this.service.getBooking(id).subscribe((bookingValues: Booking) => {
           // Récupération de getBooking depuis le service
@@ -52,12 +62,11 @@ export class BookingComponent implements OnInit {
           this.bookingForm.patchValue(bookingValues);
         });
       }
-      // Récupération de getBooking depuis le service
-      if (id) {
-        this.service.getBooking(id).subscribe((bookingValues: Booking) => {
-          this.bookings = bookingValues;
-        // Le formulaire a pour valeurs par défaut les données récupérées
-          this.bookingForm.patchValue(bookingValues);
+     // Réservation utilisateurs, récupération de l'ID de l'établissement
+      if (est) {
+        this.serviceEst.getEtablishment(est).subscribe((etablishmentValue: any) => {
+          this.etablishmentValue = etablishmentValue;
+          this.bookingForm.controls.establishment.patchValue(est);
         });
       }
     });
@@ -85,6 +94,9 @@ export class BookingComponent implements OnInit {
           .updateBooking(this.bookingForm.value, id)
           .subscribe((newbookingValues: Booking) => {
             this.bookings = newbookingValues;
+            this.toastr.success('La réservation a bien été modifié', 'Modification', {
+              positionClass: 'toast-bottom-full-width',
+            });
           });
       // Sans id, création d'une nouvelle réservation
       } else {

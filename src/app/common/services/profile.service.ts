@@ -10,19 +10,19 @@ export class ProfileService {
   constructor(public http: HttpClient) {}
 
   public get(): Observable<Profile> {
-    const  obs1:Observable<any> = this.http.get('https://open-reza.herokuapp.com/api/profiles');
+    const  obs:Observable<any> = this.http.get('https://open-reza.herokuapp.com/api/profiles');
 
     const  treatment  = (response:any) => {
       return  response as Profile;
     };
-    return  obs1.pipe(map(treatment));
+    return  obs.pipe(map(treatment));
   }
   public put(profileForm: any): Observable<Profile> {
 // tslint:disable-next-line: max-line-length
-    const obs2: Observable<any> = this.http.put('https://open-reza.herokuapp.com/api/profiles', profileForm);
+    const obs: Observable<any> = this.http.put('https://open-reza.herokuapp.com/api/profiles', profileForm);
     const  treatment  = (response:any) => {
       return  response as Profile;
     };
-    return  obs2.pipe(map(treatment));
+    return  obs.pipe(map(treatment));
   }
 }

@@ -1,0 +1,11 @@
+.alert {
+    font-size: 2em;
+}
+.row {
+    display: flex;
+    justify-content: center;
+}
+.bouton {
+    display: flex;
+    justify-content: space-between;
+}

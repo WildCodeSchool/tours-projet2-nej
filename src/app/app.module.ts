@@ -17,6 +17,11 @@ import { BookingComponent } from './booking/booking.component';
 import { HttpClientModule } from '@angular/common/http';
 import { EstablishmentBookinglistComponent }
   from './establishment-bookinglist/establishment-bookinglist.component';
+import { EstablishmentProfileComponent }
+from './establishment-profile/establishment-profile.component';
+import { UseraccountComponent } from './useraccount/useraccount.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -30,6 +35,8 @@ import { EstablishmentBookinglistComponent }
     BookingComponent,
     ProfileComponent,
     EstablishmentBookinglistComponent,
+    EstablishmentProfileComponent,
+    UseraccountComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +55,8 @@ import { EstablishmentBookinglistComponent }
     }),
     ReactiveFormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

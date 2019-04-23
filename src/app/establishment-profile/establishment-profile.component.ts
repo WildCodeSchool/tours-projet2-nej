@@ -18,7 +18,6 @@ export class EstablishmentProfileComponent implements OnInit {
     private serviceEstablishment: EtablishmentService,
     private toastr: ToastrService,
 ) {}
-
   public ngOnInit(): void {
     this.service.get().subscribe(
       (establishment: Etablishment[]) => {

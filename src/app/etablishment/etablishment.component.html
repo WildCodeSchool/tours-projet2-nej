@@ -84,42 +84,51 @@
 
       <h3>Networks</h3>
 
-      <div formGroupName="networks">
-        <label for="name">
-          <p class="label-txt">Name</p>
-          <input type="text" class="input" id="name" formControlName="name" />
-          <div class="line-box">
-            <div class="line"></div>
-          </div>
-        </label>
+      <button (click)="addNetworks()">addNetworks</button>
 
-        <label for="link">
-          <p class="label-txt">Link</p>
-          <input type="text" class="input" id="link" formControlName="link" />
+      <div formArrayName="networks" *ngFor="let networks of etablishmentForm.controls.networks.controls; let i = index">
+        <ng-container [formGroupName]="i">
+          <label for="name">
+            <p class="label-txt">Name</p>
+          <input type="text" class="input" id="name"formControlName="name">
+          <div class="line-box">
+            <div class="line"></div>
+          </div>
+          
+          </label>
+          <label for="link">
+            <p class="label-txt">Link</p>
+          <input type="text" class="input" id="link" formControlName="link">
           <div class="line-box">
             <div class="line"></div>
           </div>
         </label>
+        <button (click)="deleteNetworks(i)">deleteNetworks</button>
+        </ng-container>
       </div>
 
       <h3>Medias</h3>
 
-      <div formGroupName="medias">
-        <label for="url">
-          <p class="label-txt">Url</p>
-          <input type="text" class="input" id="url" formControlName="url" />
-          <div class="line-box">
-            <div class="line"></div>
-          </div>
-        </label>
+      <button (click)="addMedias()">AddMedias</button>
 
-        <label for="order">
-          <p class="label-txt">Order</p>
-          <input type="number" class="input" id="order" formControlName="order" />
+      <div formArrayName="medias" *ngFor="let medias of etablishmentForm.controls.medias.controls; let i = index">
+        <ng-container [formGroupName]="i">
+          <label for="Url">
+            <p class="label-txt">Url</p>
+          <input type="url" class="input" id="url" formControlName="url">
           <div class="line-box">
             <div class="line"></div>
           </div>
         </label>
+        <label for="Order">
+          <p class="label-txt">Order</p>
+          <input type="text" class="input" id="order" formControlName="order">
+          <div class="line-box">
+            <div class="line"></div>
+          </div>
+        </label>
+        <button (click)="deleteMedias(i)">deleteMedias</button>
+        </ng-container>
       </div>
       <div class="d-flex justify-content-center mb-5">
         <button class="saveBtn" type="submit">Sauvegarder</button>

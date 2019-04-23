@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EtablishmentService } from '../common/services/etablishment.service';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
 import { Etablishment } from '../common/models/etablishment.models';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 @Component({
@@ -11,9 +11,10 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 export class EtablishmentComponent implements OnInit {
   public id: string;
   public etablishments: Etablishment;
-
+  // public form: FormGroup;
   constructor(private route: ActivatedRoute, private service: EtablishmentService,
-              private fb: FormBuilder, public router: Router) { }
+              private fb: FormBuilder, public router: Router) {
+  }
 
   etablishmentForm = this.fb.group({
     name: [''],
@@ -30,27 +31,22 @@ export class EtablishmentComponent implements OnInit {
       email: [''],
       site: [''],
     }),
-    networks: this.fb.group({
-      name: [''],
-      link: [''],
-    }),
-    medias: this.fb.group({
-      url: [''],
-      order: [''],
-    }),
+    networks: this.fb.array([]),
+    medias: this.fb.array([]),
   });
 
   public onSubmit() {
     console.log(this.etablishmentForm.value);
-
+    // ajout ou modification de l'etablissement dans l'API
     this.route.paramMap.subscribe((params: ParamMap) => {
       const id = params.get('id');
-
+// si un "id" est renseigné alors la modification est activé
       if (id) {
         this.service.putEtablishment(id, this.etablishmentForm.value)
           .subscribe((etablishment: Etablishment) => {
             this.etablishmentForm.patchValue(etablishment);
           });
+          // sinon l'ajout est activé
       } else {
         this.service.postEtablishment(this.etablishmentForm.value)
           .subscribe((etablishment: Etablishment) => {
@@ -59,7 +55,7 @@ export class EtablishmentComponent implements OnInit {
       }
     });
   }
-
+  // supprime un etablissement de l'API
   public deleteEtablishment() {
     this.route.paramMap.subscribe((params: ParamMap) => {
       const id = params.get('id');
@@ -71,7 +67,7 @@ export class EtablishmentComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-
+      // appel les infos de l'API pour l'etablissement séléctioné
     this.route.paramMap.subscribe((params: ParamMap) => {
       const id = params.get('id');
       if (id) {
@@ -83,5 +79,29 @@ export class EtablishmentComponent implements OnInit {
         );
       }
     });
+  }
+  // tableau des networks
+  public addNetworks() {
+    const networks = this.etablishmentForm.controls.networks as FormArray;
+    networks.push(this.fb.group({
+      name: '',
+      link: '',
+    }));
+  }
+  // tableau des medias
+  public addMedias() {
+    const medias = this.etablishmentForm.controls.medias as FormArray;
+    medias.push(this.fb.group({
+      url: '',
+      order: '',
+    }));
+  }
+  public deleteNetworks(index) {
+    const form = this.etablishmentForm.get('networks') as FormArray;
+    form.removeAt(index);
+  }
+  public deleteMedias(index) {
+    const form = this.etablishmentForm.get('medias') as FormArray;
+    form.removeAt(index);
   }
 }

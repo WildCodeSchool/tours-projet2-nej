@@ -1,6 +1,6 @@
 <div class="container">
 <div class="d-flex align-items-stretch row">
-<div class="col-sm-4" *ngFor="let establishment of establishmentsList"
+<div class="col-md-4" *ngFor="let establishment of establishmentsList"
 >
 <div
    class="card"
@@ -35,7 +35,7 @@
    </div>
    <div class="modal-body">
          <img
-         class="card-img-top "
+         class="card-img-top img-fluid"
          src="{{
          establishment.medias[0]?.url
             ? establishment.medias[0]?.url

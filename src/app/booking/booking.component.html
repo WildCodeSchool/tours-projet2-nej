@@ -2,7 +2,9 @@
 <h2 class="mt-4 ">Formulaire de réservation</h2>
 
 <form (ngSubmit)="onSubmit()" [formGroup]="bookingForm" #myForm="ngForm">
-   <h3>Date de réservation</h3>
+
+      <h2>{{etablishmentValue.name}}</h2>
+   <h3 class="mt-3">Date de réservation</h3>
 
    <div formGroupName="date" class="row">
       <label class="col-6">
@@ -124,7 +126,7 @@
       </div>
    </label>
 
-   <label for="establishmentBooking">
+   <label *ngIf="est" for="establishmentBooking">
       <p class="label-txt">Établissement</p>
       <input
       type="text"
@@ -139,7 +141,7 @@
 
    <div class="d-flex justify-content-center mb-5">
       <button class="saveBtn" type="submit">Sauvegarder</button>
-      <button class="resetBtn" type="button" (click)="deleteBooking()">Supprimer la réservation</button>
+      <button *ngIf="est" class="resetBtn" type="button" (click)="deleteBooking()">Supprimer la réservation</button>
    </div>
 </form>
 </div>

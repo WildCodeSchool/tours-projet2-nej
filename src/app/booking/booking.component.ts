@@ -13,7 +13,7 @@ import { EtablishmentService } from '../common/services/etablishment.service';
 })
 export class BookingComponent implements OnInit {
   public bookings: Booking;
-  public etablishmentNum: any;
+  public etablishmentValue: [] = [];
   constructor(
     private service: BookingService,
     private fb: FormBuilder,
@@ -51,7 +51,7 @@ export class BookingComponent implements OnInit {
     this.route.paramMap.subscribe((params: ParamMap) => {
       const id = params.get('id');
       const est = params.get('est');
-      console.log(est);
+     
       if (id) {
         this.service.getBooking(id).subscribe((bookingValues: Booking) => {
           // Récupération de getBooking depuis le service
@@ -60,10 +60,10 @@ export class BookingComponent implements OnInit {
           this.bookingForm.patchValue(bookingValues);
         });
       }
-     
+     // Réservation utilisateurs, récupération de l'ID de l'établissement
       if (est) {
         this.serviceEst.getEtablishment(est).subscribe((etablishmentValue: any) => {
-          this.etablishmentNum = etablishmentValue;
+          this.etablishmentValue = etablishmentValue;
         // Le formulaire a pour valeurs par défaut les données récupérées
           this.bookingForm.controls.establishment.patchValue(est);
         });

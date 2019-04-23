@@ -14,8 +14,8 @@ export class EstablishmentBookinglistComponent implements OnInit {
   public establishmentInfo: [] = [];
 
   constructor(
-    private serviceB: BookingService,
-    private serviceE: EtablishmentService,
+    private serviceBook: BookingService,
+    private serviceEst: EtablishmentService,
     private toastr: ToastrService,
     public route: ActivatedRoute,
   ) {}
@@ -23,7 +23,7 @@ export class EstablishmentBookinglistComponent implements OnInit {
   public deleteBooking(id, index) {
     const result = confirm('Confirmez-vous la suppression de la réservation ?');
     if (result) {
-      this.serviceB.deleteBooking(id).subscribe(() => {
+      this.serviceBook.deleteBooking(id).subscribe(() => {
         this.bookingEstablishmentList.splice(index, 1);
       });
       this.toastr.warning('La réservation a bien été supprimé', 'Suppression', {
@@ -35,11 +35,11 @@ export class EstablishmentBookinglistComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe((params: ParamMap) => {
       const id = params.get('id');
-      this.serviceB
+      this.serviceBook
         .getBookingByEstablishment(id)
         .subscribe((bookinglist: any) => {
           this.bookingEstablishmentList = bookinglist;
-          this.serviceE
+          this.serviceEst
             .getEtablishment(id)
             .subscribe((etablishmentInfo: any) => {
               this.establishmentInfo = etablishmentInfo;

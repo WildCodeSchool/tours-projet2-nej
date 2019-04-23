@@ -14,12 +14,12 @@ export class EstablishmentProfileComponent implements OnInit {
   establishmentList: any;
 
   constructor(
-    private service: EstablishmentProfileService,
-    private serviceEstablishment: EtablishmentService,
+    private serviceProfEst: EstablishmentProfileService,
+    private serviceEst: EtablishmentService,
     private toastr: ToastrService,
 ) {}
   public ngOnInit(): void {
-    this.service.get().subscribe(
+    this.serviceProfEst.get().subscribe(
       (establishment: Etablishment[]) => {
         this.establishments = establishment;
         console.log(establishment);
@@ -30,12 +30,12 @@ export class EstablishmentProfileComponent implements OnInit {
   public deleteEstablishment(id, index) {
     const result = confirm("Confirmez-vous la suppression de l'établissement ?");
     if (result) {
-      this.serviceEstablishment.deleteEtablishment(id).subscribe(() => {
+      this.serviceEst.deleteEtablishment(id).subscribe(() => {
         this.establishments.splice(index, 1);
+        this.toastr.warning('La réservation a bien été supprimé', 'Suppression', {
+          positionClass: 'toast-bottom-full-width',
+        });
       });
     }
-    this.toastr.warning('La réservation a bien été supprimé', 'Suppression', {
-      positionClass: 'toast-bottom-full-width',
-    });
   }
 }

@@ -10,19 +10,20 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class EstablishmentHomepageComponent implements OnInit {
   public pic: string;
   public establishmentsList: [] = [];
+
   constructor(
-    private service: EtablishmentService,
+    private serviceEst: EtablishmentService,
     private modalService: NgbModal) {}
 
   ngOnInit() {
-    this.service.getAllEtablishment().subscribe((establismhents: any) => {
+    this.serviceEst.getAllEtablishment().subscribe((establismhents: any) => {
       this.establishmentsList = establismhents;
       console.log(this.establishmentsList);
     });
   }
 
   open(content) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'})
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
   }
 
 }

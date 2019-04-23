@@ -12,8 +12,10 @@ import { EtablishmentService } from '../common/services/etablishment.service';
   styleUrls: ['./booking.component.css'],
 })
 export class BookingComponent implements OnInit {
+
   public bookings: Booking;
   public etablishmentValue: [] = [];
+
   constructor(
     private service: BookingService,
     private fb: FormBuilder,
@@ -21,7 +23,6 @@ export class BookingComponent implements OnInit {
     public router:Router,
     private toastr: ToastrService,
     private serviceEst: EtablishmentService,
-
   ) {}
 
   bookingForm = this.fb.group({
@@ -51,7 +52,8 @@ export class BookingComponent implements OnInit {
     this.route.paramMap.subscribe((params: ParamMap) => {
       const id = params.get('id');
       const est = params.get('est');
-     
+
+       // Modification administrateur des réservations, récupération de l'ID de réservation
       if (id) {
         this.service.getBooking(id).subscribe((bookingValues: Booking) => {
           // Récupération de getBooking depuis le service
@@ -64,7 +66,6 @@ export class BookingComponent implements OnInit {
       if (est) {
         this.serviceEst.getEtablishment(est).subscribe((etablishmentValue: any) => {
           this.etablishmentValue = etablishmentValue;
-        // Le formulaire a pour valeurs par défaut les données récupérées
           this.bookingForm.controls.establishment.patchValue(est);
         });
       }
@@ -93,10 +94,10 @@ export class BookingComponent implements OnInit {
           .updateBooking(this.bookingForm.value, id)
           .subscribe((newbookingValues: Booking) => {
             this.bookings = newbookingValues;
+            this.toastr.success('La réservation a bien été modifié', 'Modification', {
+              positionClass: 'toast-bottom-full-width',
+            });
           });
-        this.toastr.success('La réservation a bien été modifié', 'Modification', {
-          positionClass: 'toast-bottom-full-width',
-        });
       // Sans id, création d'une nouvelle réservation
       } else {
         this.service

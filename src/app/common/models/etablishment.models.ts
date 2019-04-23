@@ -1,5 +1,7 @@
+import { Url } from 'url';
+
 export class Etablishment {
-  constructor(public name: string,
+  constructor(public type: string, public name: string, public image: Url,
               public address: {
                 street: string,
                 zipCode: string,

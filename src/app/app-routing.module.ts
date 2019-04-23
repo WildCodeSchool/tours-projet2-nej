@@ -22,6 +22,7 @@ const routes: Routes = [
     component: EstablishmentBookinglistComponent },
   { path: 'userAccount', component: UseraccountComponent },
   { path: 'userAccount/establishment-profile', component: EstablishmentProfileComponent },
+  { path: 'etablishment/:id', component: EtablishmentComponent },
 ];
 
 @NgModule({

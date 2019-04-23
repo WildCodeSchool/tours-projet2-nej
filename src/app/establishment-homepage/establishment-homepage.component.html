@@ -1,10 +1,12 @@
-<div class="row">
+
+<div class="row card-group">
+<div class="col-4" *ngFor="let establishment of establishmentsList"
+>
 <div
-   *ngFor="let establishment of establishmentsList"
-   class="card mb-4 text-white bg-dark col-md-3"
+   class="card"
 >
    <img
-      class="card-img-top"
+      class="card-img-top "
       src="{{
       establishment.medias[0]?.url
          ? establishment.medias[0]?.url
@@ -14,12 +16,32 @@
    />
    <div class="card-body">
       <h5 class="card-title">{{ establishment.name }}</h5>
+      <p class="card-text text-truncate">{{ establishment.description }}</p>
+      <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button>
+   </div>
+
+</div>
+
+<ng-template #content let-modal>
+   <div class="modal-header">
+     <h4 class="modal-title" id="modal-basic-title">{{ establishment.name }}</h4>
+     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+       <span aria-hidden="true">&times;</span>
+     </button>
+   </div>
+   <div class="modal-body">
       <p class="card-text">{{ establishment.description }}</p>
+   </div>
+   <div class="modal-footer">
       <a
       routerLink="etablishment/{{ establishment._id }}/"
-      class="btn btn-outline-light btn-sm"
-      >Plus d'infos</a
-      >
+      (click)="modal.close()"
+      class="btn btn-sm"
+      >Réserver</a>
+      
    </div>
+ </ng-template>
+ 
 </div>
 </div>
+

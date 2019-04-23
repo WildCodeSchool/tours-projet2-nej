@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'etablishment', component: EtablishmentComponent },
   { path: 'userAccount/establishment-profile/:id', component: EtablishmentComponent },
   { path: 'userAccount/profile', component: ProfileComponent },
-  { path: 'booking', component: BookingComponent },
+  { path: 'booking/establishment/:est', component: BookingComponent },
   { path: 'booking/:id', component: BookingComponent },
   { path: 'booking/:id/update', component: BookingComponent },
   { path: 'userAccount/establishment-profile/:id/bookings',

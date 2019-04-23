@@ -1,9 +1,10 @@
 
+<div class="container">
 <div class="row card-group">
-<div class="col-4" *ngFor="let establishment of establishmentsList"
+<div class="col-sm-3" *ngFor="let establishment of establishmentsList"
 >
 <div
-   class="card"
+   class="card" style="height: 25rem"
 >
    <img
       class="card-img-top "
@@ -17,7 +18,7 @@
    <div class="card-body">
       <h5 class="card-title">{{ establishment.name }}</h5>
       <p class="card-text text-truncate">{{ establishment.description }}</p>
-      <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button>
+      <button class="btn btn-secondary" (click)="open(content)">Plus d'infos</button>
    </div>
 
 </div>
@@ -30,13 +31,35 @@
      </button>
    </div>
    <div class="modal-body">
-      <p class="card-text">{{ establishment.description }}</p>
+         <img
+         class="card-img-top "
+         src="{{
+         establishment.medias[0]?.url
+            ? establishment.medias[0]?.url
+            : 'https://loremflickr.com/640/480/bar'
+         }}"
+         alt="Card image cap"
+      />
+      <p>{{ establishment.description }}</p>
+      <div class="row">
+      <p class="col-12">Adresse:</p>
+      <p class="card-text col-3">{{ establishment.address.number }}</p>
+      <p class="card-text col-3">{{ establishment.address.street }}</p>
+      <p class="card-text col-3">{{ establishment.address.zipCode }}</p>
+      <p class="card-text col-3">{{ establishment.address.city }}</p>
+      <p class="col-12">Contact: </p>
+      <p class="card-text col-4">{{ establishment.contact.phone }}</p>
+      <p class="card-text col-4">{{ establishment.contact.email }}</p>
+      <p class="card-text col-4">{{ establishment.contact.site }}</p>
+   </div>
+   
+
    </div>
    <div class="modal-footer">
       <a
-      routerLink="etablishment/{{ establishment._id }}/"
+      routerLink="booking/establishment/{{establishment._id}}"
       (click)="modal.close()"
-      class="btn btn-sm"
+      class="btn btn-secondary"
       >Réserver</a>
       
    </div>
@@ -44,4 +67,4 @@
  
 </div>
 </div>
-
+</div>

@@ -4,6 +4,7 @@ import { BookingService } from '../common/services/booking.service';
 import { FormBuilder } from '@angular/forms';
 import { ParamMap, ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { EtablishmentService } from '../common/services/etablishment.service';
 
 @Component({
   selector: 'app-booking',
@@ -12,12 +13,14 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class BookingComponent implements OnInit {
   public bookings: Booking;
+  public etablishmentNum: any;
   constructor(
     private service: BookingService,
     private fb: FormBuilder,
     public route: ActivatedRoute,
     public router:Router,
     private toastr: ToastrService,
+    private serviceEst: EtablishmentService,
 
   ) {}
 
@@ -47,6 +50,8 @@ export class BookingComponent implements OnInit {
     // Route par id
     this.route.paramMap.subscribe((params: ParamMap) => {
       const id = params.get('id');
+      const est = params.get('est');
+      console.log(est);
       if (id) {
         this.service.getBooking(id).subscribe((bookingValues: Booking) => {
           // Récupération de getBooking depuis le service
@@ -55,12 +60,12 @@ export class BookingComponent implements OnInit {
           this.bookingForm.patchValue(bookingValues);
         });
       }
-      // Récupération de getBooking depuis le service
-      if (id) {
-        this.service.getBooking(id).subscribe((bookingValues: Booking) => {
-          this.bookings = bookingValues;
+     
+      if (est) {
+        this.serviceEst.getEtablishment(est).subscribe((etablishmentValue: any) => {
+          this.etablishmentNum = etablishmentValue;
         // Le formulaire a pour valeurs par défaut les données récupérées
-          this.bookingForm.patchValue(bookingValues);
+          this.bookingForm.controls.establishment.patchValue(est);
         });
       }
     });

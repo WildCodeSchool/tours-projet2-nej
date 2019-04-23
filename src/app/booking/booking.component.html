@@ -141,6 +141,8 @@
 
    <div class="d-flex justify-content-center mb-5">
       <button class="saveBtn" type="submit">Sauvegarder</button>
+      <a
+      routerLink="" *ngIf="!est" class="resetBtn">Annuler</a>
       <button *ngIf="est" class="resetBtn" type="button" (click)="deleteBooking()">Supprimer la réservation</button>
    </div>
 </form>

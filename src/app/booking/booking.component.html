@@ -1,148 +1,129 @@
 <div class="container">
-<h2 class="mt-4 ">Formulaire de réservation</h2>
+  <h2 class="mt-4 ">Formulaire de réservation</h2>
 
-<form (ngSubmit)="onSubmit()" [formGroup]="bookingForm" #myForm="ngForm">
-   <h3 class="alert alert-secondary text-center " role="alert">{{etablishmentValue.name}}</h3>
-   <h3 class="mt-3">Date de réservation</h3>
+  <button class="backBtn" type="button" routerLink="/">Retour</button>
 
-   <div formGroupName="date" class="row">
+  <form (ngSubmit)="onSubmit()" [formGroup]="bookingForm" #myForm="ngForm">
+    <h3 class="alert alert-secondary text-center " role="alert">{{etablishmentValue.name}}</h3>
+    <h3 class="mt-3">Date de réservation</h3>
+
+    <div formGroupName="date" class="row">
       <label class="col-6">
-      <p class="label-txt">Date de début</p>
-      <input type="datetime" class="input" formControlName="start" />
-      <div class="line-box">
-         <div class="line"></div>
-      </div>
+        <p class="label-txt">Date de début</p>
+        <input type="datetime" class="input" formControlName="start" ngbDatepicker #start="ngbDatepicker">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary calendar" (click)="start.toggle()" type="button"></button>
+          <div class="line-box">
+            <div class="line"></div>
+          </div>
+        </div>
+        <ngb-timepicker formControlName="start"></ngb-timepicker>
       </label>
 
       <label class="col-6">
-      <p class="label-txt">Date de fin</p>
-      <input type="datetime" class="input" formControlName="end" />
-      <div class="line-box">
-         <div class="line"></div>
-      </div>
+        <p class="label-txt">Date de fin</p>
+        <input type="datetime" class="input" formControlName="end" ngbDatepicker #="ngbDatepicker">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary calendar" (click)="end.toggle()" type="button"></button>
+          <div class="line-box">
+            <div class="line"></div>
+          </div>
+        </div>
+        <ngb-timepicker formControlName="end"></ngb-timepicker>
       </label>
-   </div>
+    </div>
 
-   <h3>Client</h3>
 
-   <div formGroupName="owner">
+    <h3>Client</h3>
+
+    <div formGroupName="owner">
       <label>
-      <p class="label-txt">Nom</p>
-      <input type="text" class="input" id="name" formControlName="name" />
-      <div class="line-box">
-         <div class="line"></div>
-      </div>
+        <p class="label-txt">Nom</p>
+        <input type="text" class="input" id="name" formControlName="name" />
+        <div class="line-box">
+          <div class="line"></div>
+        </div>
       </label>
 
       <h3>Adresse</h3>
 
       <div formGroupName="address" class="row">
-      <label class=" col-4" for="zipCode">
-         <p class="label-txt">Code postal</p>
-         <input
-            type="text"
-            class="input"
-            id="zipCode"
-            formControlName="zipCode"
-         />
-         <div class="line-box">
+        <label class=" col-4" for="zipCode">
+          <p class="label-txt">Code postal</p>
+          <input type="text" class="input" id="zipCode" formControlName="zipCode" />
+          <div class="line-box">
             <div class="line"></div>
-         </div>
-      </label>
+          </div>
+        </label>
 
-      <label class="col-8" for="townName">
-         <p class="label-txt">Ville</p>
-         <input
-            type="text"
-            class="input"
-            id="townName"
-            formControlName="city"
-         />
-         <div class="line-box">
+        <label class="col-8" for="townName">
+          <p class="label-txt">Ville</p>
+          <input type="text" class="input" id="townName" formControlName="city" />
+          <div class="line-box">
             <div class="line"></div>
-         </div>
-      </label>
+          </div>
+        </label>
 
-      <label class="col-4" for="streetNumber">
-         <p class="label-txt">Numéro de rue</p>
-         <input
-            type="text"
-            class="input"
-            id="streetNumber"
-            formControlName="number"
-         />
-         <div class="line-box">
+        <label class="col-4" for="streetNumber">
+          <p class="label-txt">Numéro de rue</p>
+          <input type="text" class="input" id="streetNumber" formControlName="number" />
+          <div class="line-box">
             <div class="line"></div>
-         </div>
-      </label>
+          </div>
+        </label>
 
-      <label class="col-8" for="streetName">
-         <p class="label-txt">Rue</p>
-         <input
-            type="text"
-            class="input"
-            id="streetName"
-            formControlName="street"
-         />
-         <div class="line-box">
+        <label class="col-8" for="streetName">
+          <p class="label-txt">Rue</p>
+          <input type="text" class="input" id="streetName" formControlName="street" />
+          <div class="line-box">
             <div class="line"></div>
-         </div>
-      </label>
+          </div>
+        </label>
       </div>
 
       <h3>Contact</h3>
 
       <div formGroupName="contact" class="row">
-      <label class="col-6" for="phone">
-         <p class="label-txt">Téléphone</p>
-         <input type="text" class="input" id="phone" formControlName="phone" />
-         <div class="line-box">
+        <label class="col-6" for="phone">
+          <p class="label-txt">Téléphone</p>
+          <input type="text" class="input" id="phone" formControlName="phone" />
+          <div class="line-box">
             <div class="line"></div>
-         </div>
-      </label>
+          </div>
+        </label>
 
-      <label class="col-6" for="email">
-         <p class="label-txt">Email</p>
-         <input type="text" class="input" id="email" formControlName="email" />
-         <div class="line-box">
+        <label class="col-6" for="email">
+          <p class="label-txt">Email</p>
+          <input type="text" class="input" id="email" formControlName="email" />
+          <div class="line-box">
             <div class="line"></div>
-         </div>
-      </label>
+          </div>
+        </label>
       </div>
-   </div>
+    </div>
 
-   <h3>Divers</h3>
-   <label for="numbersPers">
+    <h3>Divers</h3>
+    <label for="numbersPers">
       <p class="label-txt">Nombre de personnes</p>
-      <input
-      type="text"
-      class="input"
-      id="numbersPers"
-      formControlName="numbers"
-      />
+      <input type="text" class="input" id="numbersPers" formControlName="numbers" />
       <div class="line-box">
-      <div class="line"></div>
+        <div class="line"></div>
       </div>
-   </label>
+    </label>
 
-   <label *ngIf="est" for="establishmentBooking">
+    <label *ngIf="est" for="establishmentBooking">
       <p class="label-txt">Établissement</p>
-      <input
-      type="text"
-      class="input"
-      id="establishmentBooking"
-      formControlName="establishment"
-      />
+      <input type="text" class="input" id="establishmentBooking" formControlName="establishment" />
       <div class="line-box">
-      <div class="line"></div>
+        <div class="line"></div>
       </div>
-   </label>
+    </label>
 
-   <div class="d-flex justify-content-center mb-5">
+    <div class="d-flex justify-content-center mb-5">
       <button class="saveBtn" type="submit">Sauvegarder</button>
-      <a
-      routerLink="" *ngIf="!est"><button class="resetBtn" type="button">Annuler</button></a>
+      <a routerLink="" *ngIf="!est"><button class="resetBtn" type="button">Annuler</button></a>
       <button *ngIf="est" class="resetBtn" type="button" (click)="deleteBooking()">Supprimer la réservation</button>
-   </div>
-</form>
+      <button class="backBtn" type="button" routerLink="/">Retour</button>
+    </div>
+  </form>
 </div>

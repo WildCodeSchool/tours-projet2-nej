@@ -1,4 +1,9 @@
-.icon{
-   width: 22px;
-   height: 24px;
+.icon {
+  width: 22px;
+  height: 24px;
+}
+
+.backBtn:hover {
+  background: yellowgreen;
+  color: #ffffff;
 }

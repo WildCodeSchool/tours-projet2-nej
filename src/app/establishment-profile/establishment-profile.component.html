@@ -1,38 +1,53 @@
-
 <div class="container-fluid">
-<div class="alert alert-secondary" role="alert">
-      Mes établissements
-</div>
-<div class="row">
-   <div class="col-md-4" *ngFor="let establishment of establishments, let i = index">
-      <div class="card mb-4 text-white bg-dark">
-         <img class="card-img-top" src="{{
+  
+
+  <div class="alert alert-secondary" role="alert">
+    Mes établissements
+  </div>
+  <button class="backBtn" type="button" routerLink="/userAccount"> Retour</button>
+  <div class="container">
+
+    <div class="row">
+      <div class="col-md-4" *ngFor="let establishment of establishments, let i = index">
+        <div class="card mb-4 text-white bg-dark">
+          <img class="card-img-top" src="{{
             establishment.medias[0]?.url
                ? establishment.medias[0]?.url
                : 'https://loremflickr.com/640/480/bar'
             }}" alt="establishment">
-         <div class="card-body">
+          <div class="card-body">
             <h5 class="card-title">{{establishment.name}}</h5>
             <p class="card-text">{{establishment.description}}</p>
             <div class="bouton row">
-               <a routerLink="{{ establishment._id }}/bookings" class="btn btn-outline-light btn-sm col-lg-4">Réservations en cours</a>
-               <a routerLink="{{ establishment._id }}" class="btn btn-outline-light btn-sm col-lg-4">Modifier l'établissement</a>
-               <a class="btn btn-danger btn-sm col-lg-4" (click)="deleteEstablishment(establishment._id, i)">Supprimer l'établissement</a>
+              <a routerLink="{{ establishment._id }}/bookings"
+                class="btn btn-outline-light btn-sm col-lg-4">Réservations
+                en cours</a>
+              <a routerLink="{{ establishment._id }}" class="btn btn-outline-light btn-sm col-lg-4">Modifier
+                l'établissement</a>
+              <a class="btn btn-danger btn-sm col-lg-4" (click)="deleteEstablishment(establishment._id, i)">Supprimer
+                l'établissement</a>
             </div>
-         </div>
+          </div>
+        </div>
       </div>
-   </div>
-</div>
-   <div class="d-flex justify-content-center">
+    </div>
+    <div class="d-flex justify-content-center">
       <div class="card mb-4 text-white bg-dark col-md-4">
-         <img class="card-img-top" src="https://conseils.pmd-medical.com/hs-fs/hubfs/Plus-Sign.png?width=706&name=Plus-Sign.png" alt="establishment">
-         <div class="card-body">
-            <h5 class="card-title text-center">Nouvel établissement</h5>
-            <div class="bouton row">
-               <a routerLink="etablishment" class="btn btn-outline-light btn-sm col-md-4">Enregistrer un nouvel établissement</a>
-               
-            </div>
-         </div>
+        <img class="card-img-top"
+          src="https://conseils.pmd-medical.com/hs-fs/hubfs/Plus-Sign.png?width=706&name=Plus-Sign.png"
+          alt="establishment">
+        <div class="card-body">
+          <h5 class="card-title text-center">Nouvel établissement</h5>
+          <div class="bouton row">
+            <a routerLink="etablishment" class="btn btn-outline-light btn-sm col-md-4">Enregistrer un nouvel
+              établissement</a>
+
+          </div>
+        </div>
       </div>
-   </div>
+    </div>
+    <div class="d-flex justify-content-center mb-5">
+      <button class="backBtn" type="button" routerLink="/userAccount">Retour</button>
+    </div>
+  </div>
 </div>

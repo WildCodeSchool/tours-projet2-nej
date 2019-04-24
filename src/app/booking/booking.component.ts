@@ -13,6 +13,7 @@ import { EtablishmentService } from '../common/services/etablishment.service';
 })
 export class BookingComponent implements OnInit {
 
+  public myDateValue: Date;
   public bookings: Booking;
   public etablishmentValue: [] = [];
 

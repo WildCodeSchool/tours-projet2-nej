@@ -2,5 +2,14 @@
 margin: 3%;
 }
 
+img {
+   object-fit: none; 
+   object-position: center; 
+   width: 100%;
+   min-height: 15vw;
+   margin-bottom: 1rem;
+}
 
-
+.title {
+   height: 50px;
+}

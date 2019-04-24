@@ -1,10 +1,9 @@
-
 <div class="container">
 <div class="d-flex align-items-stretch row">
-<div class="col-sm-4" *ngFor="let establishment of establishmentsList"
+<div class="col-md-4" *ngFor="let establishment of establishmentsList"
 >
 <div
-   class="card"
+   class="card border border-secondary"
 >
    <img
       class="card-img-top "
@@ -18,8 +17,8 @@
    
    <div class="card-body">
          
-      <h5 class="text-center card-title">{{ establishment.name }}</h5>
-      <p class="card-text text-truncate">{{ establishment.description }}</p>
+      <h5 class="text-center card-title title">{{ establishment.name }}</h5>
+      <p class="card-text text-truncate">{{ establishment.description ? establishment.description : establishment.name }}</p>
       <div class="d-flex justify-content-center">
       <button class="btn btn-secondary" (click)="open(content)">Plus d'infos</button>
    </div>
@@ -36,7 +35,7 @@
    </div>
    <div class="modal-body">
          <img
-         class="card-img-top "
+         class="card-img-top img-fluid"
          src="{{
          establishment.medias[0]?.url
             ? establishment.medias[0]?.url
@@ -44,14 +43,11 @@
          }}"
          alt="Card image cap"
       />
-      <p>{{ establishment.description }}</p>
+      <p class="p-3 mb-2 bg-secondary text-white">{{ establishment.description }}</p>
       <div class="row">
-      <p class="col-12">Adresse:</p>
-      <p class="card-text col-3">{{ establishment.address.number }}</p>
-      <p class="card-text col-3">{{ establishment.address.street }}</p>
-      <p class="card-text col-3">{{ establishment.address.zipCode }}</p>
-      <p class="card-text col-3">{{ establishment.address.city }}</p>
-      <p class="col-12">Contact: </p>
+      <p class="col-12 p-3 m-2 bg-secondary text-white rounded">Adresse:</p>
+      <p class="card-text ml-4">{{ establishment.address.number }} {{ establishment.address.street }} {{ establishment.address.zipCode }} {{ establishment.address.city }}</p>
+      <p class="col-12 p-3 m-2 bg-secondary text-white rounded">Contact: </p>
       <p class="card-text col-4">{{ establishment.contact.phone }}</p>
       <p class="card-text col-4">{{ establishment.contact.email }}</p>
       <p class="card-text col-4">{{ establishment.contact.site }}</p>

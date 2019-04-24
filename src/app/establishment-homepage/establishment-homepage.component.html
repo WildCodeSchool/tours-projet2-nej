@@ -5,16 +5,16 @@
       <div class="d-flex justify-content-center row">
       <input
          type="text"
-         class="form-control col-6"
+         class="form-control col-sm-6"
          placeholder="Indiquez l'établissement recherché"
          formControlName="searchName"
          [(ngModel)]="model" [ngbTypeahead]="autocomplete"/>
-      <select class="typeBtn form-control col-4" formControlName="type">
+      <select class="typeBtn form-control col-sm-4" formControlName="type">
          <option *ngFor="let type of types" [value]="type.id">{{
             type.name
          }}</option>
       </select>
-      <button class="form-control bg-secondary text-white searchBtn col-2" type="submit">rechercher</button> 
+      <button class="form-control bg-secondary text-white searchBtn col-sm-2" type="submit">rechercher</button> 
       </div>
    </div>
 </form>

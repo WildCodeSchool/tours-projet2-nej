@@ -8,7 +8,7 @@ from './establishment-profile/establishment-profile.component';
 import { UseraccountComponent } from './useraccount/useraccount.component';
 import { EstablishmentBookinglistComponent }
 from './establishment-bookinglist/establishment-bookinglist.component';
-import { EstablishmentHomepageComponent } 
+import { EstablishmentHomepageComponent }
 from './establishment-homepage/establishment-homepage.component';
 
 const routes: Routes = [

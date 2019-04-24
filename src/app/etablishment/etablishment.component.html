@@ -1,9 +1,17 @@
 <div class="container">
-  <h1 class="mt-4">Establishment</h1>
+  <h1 class="mt-4">Mon établissement</h1>
   <div class="mt-3">
     <form (ngSubmit)="onSubmit()" [formGroup]="etablishmentForm" #myForm="ngForm">
+      <label for="type">
+        <p class="label-txt">Type</p>
+        <input type="text" id="type" class="input" formControlName="type" />
+        <div class="line-box">
+          <div class="line"></div>
+        </div>
+      </label>
+
       <label for="name">
-        <p class="label-txt">Name</p>
+        <p class="label-txt">Nom</p>
         <input type="text" id="name" class="input" formControlName="name" />
         <div class="line-box">
           <div class="line"></div>
@@ -30,7 +38,7 @@
 
       <div formGroupName="address">
         <label for="street">
-          <p class="label-txt">Street</p>
+          <p class="label-txt">Rue</p>
           <input type="text" class="input" id="name" formControlName="street" />
           <div class="line-box">
             <div class="line"></div>
@@ -38,7 +46,7 @@
         </label>
 
         <label for="Zipcode">
-          <p class="label-txt">zipCode</p>
+          <p class="label-txt">Code Postale</p>
           <input type="text" class="input" id="Zipcode" formControlName="zipCode" />
           <div class="line-box">
             <div class="line"></div>
@@ -46,7 +54,7 @@
         </label>
 
         <label for="city">
-          <p class="label-txt">City</p>
+          <p class="label-txt">Ville</p>
           <input type="text" class="input" id="City" formControlName="city" />
           <div class="line-box">
             <div class="line"></div>
@@ -54,7 +62,7 @@
         </label>
 
         <label for="number">
-          <p class="label-txt">Number</p>
+          <p class="label-txt">Numéro</p>
           <input type=" text" class="input" id="Number" formControlName="number" />
           <div class="line-box">
             <div class="line"></div>
@@ -66,7 +74,7 @@
 
       <div formGroupName="contact">
         <label for="phone">
-          <p class="label-txt">Phone</p>
+          <p class="label-txt">Telephone</p>
           <input type="text" class="input" id="phone" formControlName="phone" />
           <div class="line-box">
             <div class="line"></div>
@@ -82,57 +90,58 @@
         </label>
       </div>
 
-      <h3>Networks</h3>
+      <h3>Réseaux</h3>
 
-      <button (click)="addNetworks()">addNetworks</button>
+      <button (click)="addNetworks()">ajouter un Réseau</button>
 
       <div formArrayName="networks" *ngFor="let networks of etablishmentForm.controls.networks.controls; let i = index">
         <ng-container [formGroupName]="i">
           <label for="name">
-            <p class="label-txt">Name</p>
-          <input type="text" class="input" id="name"formControlName="name">
-          <div class="line-box">
-            <div class="line"></div>
-          </div>
-          
+            <p class="label-txt">Nom</p>
+            <input type="text" class="input" id="name" formControlName="name">
+            <div class="line-box">
+              <div class="line"></div>
+            </div>
+
           </label>
           <label for="link">
-            <p class="label-txt">Link</p>
-          <input type="text" class="input" id="link" formControlName="link">
-          <div class="line-box">
-            <div class="line"></div>
-          </div>
-        </label>
-        <button (click)="deleteNetworks(i)">deleteNetworks</button>
+            <p class="label-txt">Lien</p>
+            <input type="text" class="input" id="link" formControlName="link">
+            <div class="line-box">
+              <div class="line"></div>
+            </div>
+          </label>
+          <button (click)="deleteNetworks(i)">Supprimer un réseau</button>
         </ng-container>
       </div>
 
       <h3>Medias</h3>
 
-      <button (click)="addMedias()">AddMedias</button>
+      <button (click)="addMedias()">Ajouter une image</button>
 
       <div formArrayName="medias" *ngFor="let medias of etablishmentForm.controls.medias.controls; let i = index">
         <ng-container [formGroupName]="i">
           <label for="Url">
             <p class="label-txt">Url</p>
-          <input type="url" class="input" id="url" formControlName="url">
-          <div class="line-box">
-            <div class="line"></div>
-          </div>
-        </label>
-        <label for="Order">
-          <p class="label-txt">Order</p>
-          <input type="text" class="input" id="order" formControlName="order">
-          <div class="line-box">
-            <div class="line"></div>
-          </div>
-        </label>
-        <button (click)="deleteMedias(i)">deleteMedias</button>
+            <input type="url" class="input" id="url" formControlName="url">
+            <div class="line-box">
+              <div class="line"></div>
+            </div>
+          </label>
+          <label for="Order">
+            <p class="label-txt">Ordre</p>
+            <input type="text" class="input" id="order" formControlName="order">
+            <div class="line-box">
+              <div class="line"></div>
+            </div>
+          </label>
+          <button (click)="deleteMedias(i)">Supprimer une image</button>
         </ng-container>
       </div>
-      <div class="d-flex justify-content-center mb-5">
+      <div class="d-flex justify-content-center mt-5 mb-5">
         <button class="saveBtn" type="submit">Sauvegarder</button>
         <button class="resetBtn" type="button" (click)="deleteEtablishment()">Supprimer</button>
+        <button class="backBtn" type="button" routerLink="/userAccount/establishment-profile">Retour</button>
       </div>
     </form>
   </div>

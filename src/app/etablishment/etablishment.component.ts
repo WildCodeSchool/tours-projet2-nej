@@ -17,7 +17,9 @@ export class EtablishmentComponent implements OnInit {
   }
 
   etablishmentForm = this.fb.group({
+    type:[''],
     name: [''],
+    image: [''],
     profile: [''],
     description: [''],
     address: this.fb.group({

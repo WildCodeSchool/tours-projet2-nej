@@ -64,36 +64,15 @@ export class EtablishmentService {
   }
 
   public searchedEtablishment(type:string, word:string): Observable<Etablishment> {
+    let url = 'http://open-reza.herokuapp.com:80/api/establishments/search?';
+
     if (type) {
-      if (word) {
-        const obs: Observable<any> = this.service.get(
-        `http://open-reza.herokuapp.com:80/api/establishments/search?name=${word}&type=${type}`);
-        return obs.pipe(
-        map((paramEtablishment: any) => {
-          return paramEtablishment as Etablishment;
-        }),
-      );
-      }
-      const obs: Observable<any> = this.service.get(
-      `http://open-reza.herokuapp.com:80/api/establishments/search?type=${type}`);
-      return obs.pipe(
-      map((paramEtablishment: any) => {
-        return paramEtablishment as Etablishment;
-      }),
-    );
+      url = `${url}&type=${type}`;
     }
     if (word) {
-      const obs: Observable<any> = this.service.get(
-      `http://open-reza.herokuapp.com:80/api/establishments/search?name=${word}&type=${type}`);
-      return obs.pipe(
-      map((paramEtablishment: any) => {
-        return paramEtablishment as Etablishment;
-      }),
-    );
+      url = `${url}&name=${word}`;
     }
-    const obs: Observable<any> = this.service.get(
-      'http://open-reza.herokuapp.com:80/api/establishments/');
-
+    const obs: Observable<any> = this.service.get(url);
     return obs.pipe(
       map((paramEtablishment: any) => {
         return paramEtablishment as Etablishment;

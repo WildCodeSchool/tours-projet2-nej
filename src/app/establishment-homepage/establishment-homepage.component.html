@@ -2,21 +2,21 @@
 <form (ngSubmit)="search()" [formGroup]="searchBar" #myForm="ngForm">
    <div class="mb-5 mt-5">
       <label>Chercher un établissement</label>
-      <div class="d-flex justify-content-center">
+      <div class="d-flex justify-content-center row">
       <input
          type="text"
-         class="form-control"
+         class="form-control col-6"
          placeholder="Indiquez l'établissement recherché"
          formControlName="searchName"
-      />
-      <select class="typeBtn form-control" formControlName="type">
+         [(ngModel)]="model" [ngbTypeahead]="autocomplete"/>
+      <select class="typeBtn form-control col-4" formControlName="type">
          <option *ngFor="let type of types" [value]="type.id">{{
             type.name
          }}</option>
       </select>
+      <button class="form-control bg-secondary text-white searchBtn col-2" type="submit">rechercher</button> 
       </div>
    </div>
-   <button type="submit">rechercher</button>
 </form>
 <div class="d-flex align-items-stretch row">
    <div class="col-md-4" *ngFor="let establishment of establishmentsList">

@@ -20,6 +20,12 @@ input{
 } 
 
 .typeBtn{
+border-left: none;
+border-right: none;
+border-radius: 0px;
+}
+
+.searchBtn{
    border-left: none;
    border-radius: 0px 15px 15px 0px;
 }

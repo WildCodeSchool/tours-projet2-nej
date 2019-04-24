@@ -1,4 +1,19 @@
 <div class="container">
+      <div class="m-5">
+            <label>Chercher un établissement</label>
+            <div class="d-flex justify-content-center">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Indiquez l'établissement recherché"
+              />
+              <select class="typeBtn form-control">
+                  <option>Bars</option>
+                  <option>Restaurants</option>
+                  <option>Bars et Restaurants</option>
+              </select>
+            </div>
+          </div>
 <div class="d-flex align-items-stretch row">
 <div class="col-md-4" *ngFor="let establishment of establishmentsList"
 >

@@ -13,3 +13,13 @@ img {
 .title {
    height: 50px;
 }
+
+input{
+   border-right: none;
+   border-radius: 15px 0px 0px 15px;
+} 
+
+.typeBtn{
+   border-left: none;
+   border-radius: 0px 15px 15px 0px;
+}

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { UserHomepageComponent } from './user-homepage/user-homepage.component';
 import { ProfileComponent } from './profile/profile.component';
 import { BookingComponent } from './booking/booking.component';
 import { EtablishmentComponent } from './etablishment/etablishment.component';
@@ -9,9 +8,11 @@ from './establishment-profile/establishment-profile.component';
 import { UseraccountComponent } from './useraccount/useraccount.component';
 import { EstablishmentBookinglistComponent }
 from './establishment-bookinglist/establishment-bookinglist.component';
+import { EstablishmentHomepageComponent } 
+from './establishment-homepage/establishment-homepage.component';
 
 const routes: Routes = [
-  { path: '', component: UserHomepageComponent },
+  { path: '', component: EstablishmentHomepageComponent },
   { path: 'etablishment', component: EtablishmentComponent },
   { path: 'userAccount/establishment-profile/:id', component: EtablishmentComponent },
   { path: 'userAccount/profile', component: ProfileComponent },

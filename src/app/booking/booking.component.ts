@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Booking } from '../common/models/booking.model';
 import { BookingService } from '../common/services/booking.service';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ParamMap, ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { EtablishmentService } from '../common/services/etablishment.service';
@@ -12,7 +12,6 @@ import { EtablishmentService } from '../common/services/etablishment.service';
   styleUrls: ['./booking.component.css'],
 })
 export class BookingComponent implements OnInit {
-
   public myDateValue: Date;
   public bookings: Booking;
   public etablishmentValue: [] = [];
@@ -21,14 +20,16 @@ export class BookingComponent implements OnInit {
     private service: BookingService,
     private fb: FormBuilder,
     public route: ActivatedRoute,
-    public router:Router,
+    public router: Router,
     private toastr: ToastrService,
     private serviceEst: EtablishmentService,
-  ) {}
+  ) { }
 
   bookingForm = this.fb.group({
     date: this.fb.group({
+      date: [''],
       start: [''],
+      date2:[''],
       end: [''],
     }),
     owner: this.fb.group({
@@ -54,7 +55,7 @@ export class BookingComponent implements OnInit {
       const id = params.get('id');
       const est = params.get('est');
 
-       // Modification administrateur des réservations, récupération de l'ID de réservation
+      // Modification administrateur des réservations, récupération de l'ID de réservation
       if (id) {
         this.service.getBooking(id).subscribe((bookingValues: Booking) => {
           // Récupération de getBooking depuis le service
@@ -63,7 +64,7 @@ export class BookingComponent implements OnInit {
           this.bookingForm.patchValue(bookingValues);
         });
       }
-     // Réservation utilisateurs, récupération de l'ID de l'établissement
+      // Réservation utilisateurs, récupération de l'ID de l'établissement
       if (est) {
         this.serviceEst.getEtablishment(est).subscribe((etablishmentValue: any) => {
           this.etablishmentValue = etablishmentValue;
@@ -84,8 +85,36 @@ export class BookingComponent implements OnInit {
   }
 
   onSubmit() {
+    // appel le champs date du formulaire
+    const formDate = this.bookingForm.get('date');
+    // definis les champs de la date de début
+    const dateStart = new Date(
+      formDate.get('date').value.year,
+      formDate.get('date').value.month,
+      formDate.get('date').value.day,
+      formDate.get('start').value.hour,
+      formDate.get('start').value.minute,
+      formDate.get('start').value.second,
+    );
+    console.log(dateStart);
+      // definis les champs de la date de fin
+    const dateEnd = new Date(
+      formDate.get('date2').value.year,
+      formDate.get('date2').value.month,
+      formDate.get('date2').value.day,
+      formDate.get('end').value.hour,
+      formDate.get('end').value.minute,
+      formDate.get('end').value.second,
+    );
+
+    console.log(dateEnd);
+      // rassemble les champs de dateSart/dateEnd pour avoir le bon format(date)
+    const booking = this.bookingForm.value;
+    booking.date = {
+      start: dateStart,
+      end: dateEnd,
+    };
     // Vérification des données saisies
-    console.log(JSON.stringify(this.bookingForm.value));
     this.route.paramMap.subscribe((params: ParamMap) => {
       const id = params.get('id');
       console.log(id);
@@ -99,13 +128,13 @@ export class BookingComponent implements OnInit {
               positionClass: 'toast-bottom-full-width',
             });
           });
-      // Sans id, création d'une nouvelle réservation
+        // Sans id, création d'une nouvelle réservation
       } else {
         this.service
-        .createBooking(this.bookingForm.value)
-        .subscribe((newbookingValues: Booking) => {
-          this.bookings = newbookingValues;
-        });
+          .createBooking(this.bookingForm.value)
+          .subscribe((newbookingValues: Booking) => {
+            this.bookings = newbookingValues;
+          });
       }
     });
   }

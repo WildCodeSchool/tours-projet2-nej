@@ -10,6 +10,8 @@ import { EstablishmentBookinglistComponent }
 from './establishment-bookinglist/establishment-bookinglist.component';
 import { EstablishmentHomepageComponent }
 from './establishment-homepage/establishment-homepage.component';
+import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './common/guards/auth.guard';
 
 const routes: Routes = [
   { path: '', component: EstablishmentHomepageComponent },
@@ -21,9 +23,10 @@ const routes: Routes = [
   { path: 'booking/:id/update', component: BookingComponent },
   { path: 'userAccount/establishment-profile/:id/bookings',
     component: EstablishmentBookinglistComponent },
-  { path: 'userAccount', component: UseraccountComponent },
+  { path: 'userAccount', component: UseraccountComponent, canActivate: [AuthGuard] },
   { path: 'userAccount/establishment-profile', component: EstablishmentProfileComponent },
   { path: 'etablishment/:id', component: EtablishmentComponent },
+  { path: 'login', component: LoginComponent },
 ];
 
 @NgModule({

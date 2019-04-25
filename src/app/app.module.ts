@@ -20,6 +20,7 @@ from './establishment-profile/establishment-profile.component';
 import { UseraccountComponent } from './useraccount/useraccount.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     EstablishmentBookinglistComponent,
     EstablishmentProfileComponent,
     UseraccountComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

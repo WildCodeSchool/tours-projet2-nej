@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EtablishmentService } from '../common/services/etablishment.service';
-import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
+import { FormBuilder, FormArray } from '@angular/forms';
 import { Etablishment } from '../common/models/etablishment.models';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 @Component({

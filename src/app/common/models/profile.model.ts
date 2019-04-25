@@ -10,7 +10,7 @@ export class Profile {
       street: string,
       zipCode: string,
       city: string,
-      string: string,
+      number: string,
     },
     public contact: {
       fax: string,

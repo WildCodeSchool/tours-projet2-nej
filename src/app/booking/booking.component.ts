@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Booking } from '../common/models/booking.model';
 import { BookingService } from '../common/services/booking.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ParamMap, ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { EtablishmentService } from '../common/services/etablishment.service';
@@ -27,26 +27,26 @@ export class BookingComponent implements OnInit {
 
   bookingForm = this.fb.group({
     date: this.fb.group({
-      date: [''],
-      start: [''],
-      date2:[''],
-      end: [''],
+      date: ['', Validators.required],
+      start: ['', Validators.required],
+      date2:['', Validators.required],
+      end: ['', Validators.required],
     }),
     owner: this.fb.group({
-      name: [''],
+      name: ['', Validators.required],
       address: this.fb.group({
-        street: [''],
-        zipCode: [''],
-        city: [''],
-        number: [''],
+        street: ['', Validators.required],
+        zipCode: ['', Validators.required],
+        city: ['', Validators.required],
+        number: ['', Validators.required],
       }),
       contact: this.fb.group({
-        phone: [''],
-        email: [''],
+        phone: ['', Validators.required],
+        email: ['', Validators.required],
       }),
     }),
-    numbers: [''],
-    establishment: [''],
+    numbers: ['', Validators.required],
+    establishment: ['', Validators.required],
   });
 
   ngOnInit() {

@@ -1,179 +1,147 @@
 <div class="container">
 
   <h2 class="mt-4">CREER MON PROFIL</h2>
+  <div>
+    <button class="backBtn" type="button" routerLink="/">Retour</button>
+  </div>
+  <form>
+    <div class="row">
 
-        <form>
-            <div class="row">
+      <label class="col-6">
+        <p class="label-txt">Prénom</p>
+        <input type="text" class="input"/>
+        <div class="line-box">
+          <div class="line"></div>
+        </div>
+      </label>
 
-                <label class="col-6">
-                     <p class="label-txt">Prénom</p>
-                   <input
-                      type="text"
-                      class="input"
-                      formControlName="firstName"/>
-                    <div class="line-box">
-                      <div class="line"></div>
-                    </div>
-                </label>
+      <label class="col-6">
+        <p class="label-txt">Nom de famille</p>
+        <input type="text" class="input" />
+        <div class="line-box">
+          <div class="line"></div>
+        </div>
+      </label>
+    </div>
 
-                <label class="col-6">
-                    <p class="label-txt">Nom de famille</p>
-                   <input
-                       type="text"
-                       class="input"
-                       formControlName="lastName"/>
-                    <div class="line-box">
-                      <div class="line"></div>
-                    </div>
-                </label>
-            </div>
+    <div class="row">
 
-            <div class="row">
+      <label class="col-4">
+        <p class="label-txt">Siret:</p>
+        <input type="text" class="input" />
+        <div class="line-box">
+          <div class="line"></div>
+        </div>
+      </label>
 
-                <label class="col-4">
-                     <p class="label-txt">Siret:</p>
-                    <input
-                      type="text"
-                      class="input"
-                      formControlName="siret"/>
-                    <div class="line-box">
-                      <div class="line"></div>
-                    </div>
-                </label>
+      <label class="col-4">
+        <p class="label-txt">Siren:</p>
+        <input type="text" class="input" />
+        <div class="line-box">
+          <div class="line"></div>
+        </div>
+      </label>
 
-                <label class="col-4">
-                    <p class="label-txt">Siren:</p>
-                   <input
-                     type="text"
-                     class="input"
-                     formControlName="siren"/>
-                   <div class="line-box">
-                     <div class="line"></div>
-                   </div>
-                </label>
+      <label class="col-4">
+        <p class="label-txt">clé</p>
+        <input type="text" class="input" />
+        <div class="line-box">
+          <div class="line"></div>
+        </div>
+      </label>
 
-               <label class="col-4">
-                  <p class="label-txt">clé</p>
-                 <input
-                   type="text"
-                   class="input"
-                   formControlName="key"/>
-                 <div class="line-box">
-                   <div class="line"></div>
-                 </div>
-               </label>
+    </div>
 
-            </div>
+    <h3>Mon adresse</h3>
 
-            <h3>Mon adresse</h3>
+    <div>
 
-            <div formGroupName="address">
+      <label for="street">
+        <p class="label-txt">Rue</p>
+        <input type="text" class="input" />
+        <div class="line-box">
+          <div class="line"></div>
+        </div>
+      </label>
 
-                <label for="street">
-                    <p class="label-txt">Rue</p>
-                    <input
-                      type="text"
-                      class="input"
-                      formControlName="street"/>
-                    <div class="line-box">
-                      <div class="line"></div>
-                    </div>
-                </label>
+      <div class="row">
+        <label class="col-4" for="zipCode">
+          <p class="label-txt">Code Postale</p>
+          <input type="text" class="input" />
+          <div class="line-box">
+            <div class="line"></div>
+          </div>
+        </label>
 
-              <div class="row">
-                <label class="col-4" for="zipCode">
-                    <p class="label-txt">Code Postale</p>
-                    <input
-                      type="text"
-                      class="input"
-                      formControlName="zipCode"/>
-                    <div class="line-box">
-                      <div class="line"></div>
-                    </div>
-                </label>
+        <label class="col-4" for="city">
+          <p class="label-txt">Ville</p>
+          <input type="text" class="input" />
+          <div class="line-box">
+            <div class="line"></div>
+          </div>
+        </label>
 
-                <label class="col-4" for="city">
-                    <p class="label-txt">Ville</p>
-                    <input
-                      type="text"
-                      class="input"
-                      formControlName="city"/>
-                    <div class="line-box">
-                      <div class="line"></div>
-                    </div>
-                </label>
+        <label class="col-4" for="number">
+          <p class="label-txt">Numéro</p>
+          <input type="text" class="input" />
+          <div class="line-box">
+            <div class="line"></div>
+          </div>
+        </label>
+      </div>
+    </div>
 
-                <label class="col-4" for="number">
-                    <p class="label-txt">Numéro</p>
-                    <input
-                      type="text"
-                      class="input"
-                      formControlName="number"/>
-                    <div class="line-box">
-                      <div class="line"></div>
-                    </div>
-                </label>
-              </div>
-            </div>
+    <h3>Contact</h3>
 
-            <h3>Contact</h3>
+    <div class="row">
 
-            <div formGroupName="contact" class="row">
+      <label class="col-4" for="fax">
+        <p class="label-txt">Fax:</p>
+        <input type="text" class="input" />
+        <div class="line-box">
+          <div class="line"></div>
+        </div>
+      </label>
 
-                <label class="col-4" for="fax">
-                    <p class="label-txt">Fax:</p>
-                    <input
-                      type="text"
-                      class="input"
-                      formControlName="fax"/>
-                    <div class="line-box">
-                      <div class="line"></div>
-                    </div>
-                </label>
+      <label class="col-4" for="phone">
+        <p class="label-txt">Telephone:</p>
+        <input type="text" class="input" />
+        <div class="line-box">
+          <div class="line"></div>
+        </div>
+      </label>
 
-                <label class="col-4" for="phone">
-                    <p class="label-txt">Telephone:</p>
-                    <input
-                      type="text"
-                      class="input"
-                      formControlName="phone"/>
-                    <div class="line-box">
-                      <div class="line"></div>
-                    </div>
-                </label>
-
-                <label class="col-4" for="email">
-                    <p class="label-txt">Email:</p>
-                    <input
-                      type="email"
-                      class="input"
-                      formControlName="email"/>
-                    <div class="line-box">
-                      <div class="line"></div>
-                    </div>
-                </label>
-            </div>
+      <label class="col-4" for="email">
+        <p class="label-txt">Email:</p>
+        <input type="email" class="input"/>
+        <div class="line-box">
+          <div class="line"></div>
+        </div>
+      </label>
+    </div>
 
 
-            <div class="d-flex justify-content-center mb-5">
-              <button type="submit">Sauvegarder</button>
-            </div>
+    <div class="d-flex justify-content-center mb-5">
+      <button type="submit">Sauvegarder</button>
+      <button class="backBtn" type="button" routerLink="/">Retour</button>
+    </div>
 
+  </form>
 
-       </form>
+  <h1 class="mt-4">PROPOSER UN ETABLISSEMENT</h1>
+  <div class="mt-3">
+      <div class="d-flex justify-content-center">
+          <div class="card mb-4 text-white bg-dark col-md-4">
+            <img class="card-img-top"
+              src="https://conseils.pmd-medical.com/hs-fs/hubfs/Plus-Sign.png?width=706&name=Plus-Sign.png"
+              alt="establishment">
+            <div class="card-body">
+              <h5 class="card-title text-center">Nouvel établissement</h5>
+              <div class="bouton row">
+                <a routerLink="/etablishment" class="btn btn-outline-light btn-sm col-md-4">Enregistrer un nouvel
+                  établissement</a>
 
-        <h1 class="mt-4">PROPOSER UN ETABLISSEMENT</h1>
-        <div class="mt-3">
-          <div class="d-flex justify-content-center">
-            <div class="card mb-4 text-white bg-dark col-md-4">
-               <img class="card-img-top" src="https://conseils.pmd-medical.com/hs-fs/hubfs/Plus-Sign.png?width=706&name=Plus-Sign.png" alt="establishment">
-               <div class="card-body">
-                  <h5 class="card-title text-center">Nouvel établissement</h5>
-                  <div class="bouton row">
-                     <a routerLink="etablishment" class="btn btn-outline-light btn-sm col-md-4">Enregistrer un nouvel établissement</a>
-
-                  </div>
-               </div>
-            </div>
-         </div>
-
+          </div>
+        </div>
+      </div>
+    </div>

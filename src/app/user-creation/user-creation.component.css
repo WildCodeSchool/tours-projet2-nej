@@ -10,7 +10,6 @@ label {
   display: block;
   position: relative;
   margin: 40px 0px;
-
 }
 .label-txt {
   position: absolute;
@@ -75,7 +74,14 @@ button:hover {
   color: #ffffff;
 }
 
+.alert {
+  font-size: 2em;
+}
 .row {
   display: flex;
   justify-content: center;
+}
+.bouton {
+  display: flex;
+  justify-content: space-around;
 }

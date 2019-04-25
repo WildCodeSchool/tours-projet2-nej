@@ -1,7 +1,7 @@
 <!--Navbar-->
 <div class="container-fluid">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">
+  <a class="navbar-brand" [routerLink]="['']">
     NEJ
   </a>
 
@@ -10,16 +10,35 @@
   </button>
 
 
-  <div class="effondrement navbar-collapse">
-    <ul class="navbar-nav mr-auto ">
-      <li class=" élément-nav ">
-        <a class="nav-link" routerLink=""> S'inscrire </a>
-      </li>
-      <li class=" élément-nav ">
-        <a class="nav-link" routerLink="login"> Se connecter</a>
-      </li>
-    </ul>
-  </div>
+  <div *ngIf="loginService.user; then thenBlock; else elseBlock" class="effondrement navbar-collapse"></div>
+    <ng-template #thenBlock>
+        <ul class="navbar-nav mr-auto ">
+          <li class=" élément-nav ">
+            <a class="nav-link" [routerLink]="['']">Accueil</a>
+          </li>
+          <li class=" élément-nav ">
+            <a class="nav-link" [routerLink]="['userAccount']">Mon compte</a>
+          </li>
+          <li class=" élément-nav ">
+            <a class="nav-link" [routerLink]="['']" (click)="logout()"> Se déconnecter</a>
+          </li>
+        </ul>
+        <p>Bonjour!</p>
+    </ng-template>
+    <ng-template #elseBlock>
+        <ul class="navbar-nav mr-auto ">
+          <li class=" élément-nav ">
+            <a class="nav-link" [routerLink]="['']">Accueil</a>
+          </li>
+          <li class=" élément-nav ">
+            <a class="nav-link" [routerLink]="['creation']"> S'inscrire </a>
+          </li>
+          <li class=" élément-nav ">
+            <a class="nav-link" [routerLink]="['login']"> Se connecter</a>
+          </li>
+        </ul>
+    </ng-template>
+
 </nav>
 <!--carroussel-->
 
@@ -42,3 +61,6 @@
     </ng-template>
   </ngb-carousel>
 </div>
+
+
+

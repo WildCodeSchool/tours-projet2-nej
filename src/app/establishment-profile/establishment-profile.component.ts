@@ -10,7 +10,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class EstablishmentProfileComponent implements OnInit {
 
-  private establishments = [];
+  public establishments = [];
   establishmentList: any;
 
   constructor(

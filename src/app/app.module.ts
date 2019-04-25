@@ -21,6 +21,7 @@ import { UseraccountComponent } from './useraccount/useraccount.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
+import { UserCreationComponent } from './user-creation/user-creation.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { LoginComponent } from './login/login.component';
     EstablishmentProfileComponent,
     UseraccountComponent,
     LoginComponent,
+    UserCreationComponent,
   ],
   imports: [
     BrowserModule,

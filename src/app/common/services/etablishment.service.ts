@@ -63,19 +63,17 @@ export class EtablishmentService {
     );
   }
 
-  public searchedEtablishment(type:string, word:string): Observable<Etablishment> {
+  public searchedEtablishment(type:string, word:string): Observable<Etablishment[]> {
     let url = 'http://open-reza.herokuapp.com:80/api/establishments/search?';
-
     if (type) {
       url = `${url}&type=${type}`;
     }
     if (word) {
       url = `${url}&name=${word}`;
     }
-    const obs: Observable<any> = this.service.get(url);
-    return obs.pipe(
-      map((paramEtablishment: any) => {
-        return paramEtablishment as Etablishment;
+    return this.service.get(url).pipe(
+      map((searchedEstablishment: any) => {
+        return searchedEstablishment as Etablishment[];
       }),
     );
   }

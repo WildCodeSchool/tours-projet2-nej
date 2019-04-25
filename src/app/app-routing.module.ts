@@ -14,16 +14,18 @@ import { AuthGuard } from './common/guards/auth.guard';
 
 const routes: Routes = [
   { path: '', component: UserHomepageComponent },
-  { path: 'etablishment', component: EtablishmentComponent },
-  { path: 'userAccount/establishment-profile/:id', component: EtablishmentComponent },
-  { path: 'userAccount/profile', component: ProfileComponent },
+  { path: 'etablishment', component: EtablishmentComponent, canActivate: [AuthGuard] },
+// tslint:disable-next-line: max-line-length
+  { path: 'userAccount/establishment-profile/:id', component: EtablishmentComponent, canActivate: [AuthGuard] },
+  { path: 'userAccount/profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'booking/establishment/:est', component: BookingComponent },
   { path: 'booking/:id', component: BookingComponent },
   { path: 'booking/:id/update', component: BookingComponent },
   { path: 'userAccount/establishment-profile/:id/bookings',
-    component: EstablishmentBookinglistComponent },
+    component: EstablishmentBookinglistComponent, canActivate: [AuthGuard] },
   { path: 'userAccount', component: UseraccountComponent, canActivate: [AuthGuard] },
-  { path: 'userAccount/establishment-profile', component: EstablishmentProfileComponent },
+// tslint:disable-next-line: max-line-length
+  { path: 'userAccount/establishment-profile', component: EstablishmentProfileComponent, canActivate: [AuthGuard] },
   { path: 'etablishment/:id', component: EtablishmentComponent },
   { path: 'login', component: LoginComponent },
 ];

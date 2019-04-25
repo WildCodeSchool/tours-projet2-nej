@@ -22,8 +22,8 @@
         <tr *ngFor="let booking of bookingEstablishmentList; let i = index" class="text-center">
           <th scope="row">{{ booking._id }}</th>
           <td>{{ booking.owner.name }}</td>
-          <td>{{ booking.date.start }}</td>
-          <td>{{ booking.date.end }}</td>
+          <td>{{ booking.date.start | date:'dd/mm/yyyy à HH:mm'  }}</td>
+          <td>{{ booking.date.end | date:'dd/mm/yyyy à HH:mm' }}</td>
           <td>{{ booking.owner.address.street }}</td>
           <td>
             <a routerLink="/booking/{{ booking._id }}/update" class="btn btn-warning mr-3"><img class="icon"

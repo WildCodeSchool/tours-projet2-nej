@@ -11,6 +11,7 @@ import { EstablishmentBookinglistComponent }
 from './establishment-bookinglist/establishment-bookinglist.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './common/guards/auth.guard';
+import { UserCreationComponent } from './user-creation/user-creation.component';
 
 const routes: Routes = [
   { path: '', component: UserHomepageComponent },
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'userAccount/establishment-profile', component: EstablishmentProfileComponent, canActivate: [AuthGuard] },
   { path: 'etablishment/:id', component: EtablishmentComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'creation', component: UserCreationComponent },
 ];
 
 @NgModule({

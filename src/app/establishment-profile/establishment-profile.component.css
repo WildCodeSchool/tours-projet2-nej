@@ -1,11 +1,18 @@
 .alert {
-    font-size: 2em;
+  font-size: 2em;
 }
+
 .row {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
+
 .bouton {
-    display: flex;
-    justify-content: space-around;
+  display: flex;
+  justify-content: space-around;
+}
+
+.backBtn:hover {
+  background: yellowgreen;
+  color: #ffffff;
 }

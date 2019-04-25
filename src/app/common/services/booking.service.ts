@@ -41,6 +41,14 @@ export class BookingService {
   public deleteBooking(id: string): Observable<any> {
     return this.http.delete(
       `http://open-reza.herokuapp.com/api/bookings/${id}`);
+  }
 
+  public getAllBookings(): Observable<Booking[]> {
+    return this.http.get(
+        'http://open-reza.herokuapp.com/api/bookings/')
+        .pipe(map((allMyBookings: any) => {
+          return allMyBookings as Booking[];
+        }),
+      );
   }
 }

@@ -11,7 +11,7 @@
       <label class="col-6">
           <p class="label-txt">Date de début</p>
         <div class="d-flex justify-content-around align-items-center row">
-          <div class="col-8">
+          <div class="col-7">
         <input  type="datetime" class="input" formControlName="date1" ngbDatepicker #d="ngbDatepicker">
         <div class="line-box">
             <div class="line"></div>
@@ -20,14 +20,14 @@
         <div class="input-group-append col-1">
           <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
         </div>
-        <ngb-timepicker class ="col-3" formControlName="start"></ngb-timepicker>
+        <ngb-timepicker class ="col-4" formControlName="start"></ngb-timepicker>
       </div>
       </label>
 
       <label class="col-6">
         <p class="label-txt">Date de fin</p>
         <div class="d-flex justify-content-around align-items-center row">
-        <div class="col-8">
+        <div class="col-7">
         <input type="datetime" class="input" formControlName="date2" ngbDatepicker #f="ngbDatepicker">
         <div class="line-box">
             <div class="line"></div>
@@ -36,7 +36,7 @@
         <div class="input-group-append col-1">
           <button class="btn btn-outline-secondary calendar" (click)="f.toggle()" type="button"></button>
         </div>
-        <ngb-timepicker class ="col-3" formControlName="end"></ngb-timepicker>
+        <ngb-timepicker class ="col-4" formControlName="end"></ngb-timepicker>
       </div>
       </label>
     </div>

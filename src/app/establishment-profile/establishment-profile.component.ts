@@ -44,9 +44,14 @@ export class EstablishmentProfileComponent implements OnInit {
     );
   }
 
-  public showEstablishmentOrBookings() {
-    this.establishment = !this.establishment;
-    this.bookings = !this.bookings;
+  public showEstablishment() {
+    this.establishment = true;
+    this.bookings = false;
+  }
+
+  public showBookings() {
+    this.establishment = false;
+    this.bookings = true;
   }
 
   public deleteEstablishment(id, index) {
@@ -69,6 +74,9 @@ export class EstablishmentProfileComponent implements OnInit {
         return a.establishment.name.localeCompare(b.establishment.name);
       });
     } else {
+      this.nameUser = false;
+      this.dateStart = false;
+      this.dateEnd = false;
       return this.allMyBookings.reverse();
     }
   }
@@ -80,6 +88,9 @@ export class EstablishmentProfileComponent implements OnInit {
         return a.owner.name.localeCompare(b.owner.name);
       });
     } else {
+      this.nameOrder = false;
+      this.dateStart = false;
+      this.dateEnd = false;
       return this.allMyBookings.reverse();
     }
   }
@@ -91,6 +102,9 @@ export class EstablishmentProfileComponent implements OnInit {
         return a.date.start.localeCompare(b.date.start);
       });
     } else {
+      this.nameOrder = false;
+      this.nameUser = false;
+      this.dateEnd = false;
       return this.allMyBookings.reverse();
     }
   }
@@ -102,6 +116,9 @@ export class EstablishmentProfileComponent implements OnInit {
         return a.date.end.localeCompare(b.date.end);
       });
     } else {
+      this.nameOrder = false;
+      this.nameUser = false;
+      this.dateStart = false;
       return this.allMyBookings.reverse();
     }
   }

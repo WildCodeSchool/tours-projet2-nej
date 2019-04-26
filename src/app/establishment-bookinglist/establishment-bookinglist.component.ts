@@ -10,8 +10,11 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./establishment-bookinglist.component.css'],
 })
 export class EstablishmentBookinglistComponent implements OnInit {
-  public bookingEstablishmentList: [] = [];
+  public bookingEstablishmentList = [];
   public establishmentInfo: [] = [];
+  public nameUser: boolean = false;
+  public dateStart: boolean = false;
+  public dateEnd: boolean = false;
 
   constructor(
     private serviceBook: BookingService,
@@ -47,4 +50,45 @@ export class EstablishmentBookinglistComponent implements OnInit {
         });
     });
   }
+  
+
+  public sortNameUser() {
+    if (!this.nameUser) {
+      this.bookingEstablishmentList.sort((a, b) => {
+        this.nameUser = !this.nameUser;
+        return a.owner.name.localeCompare(b.owner.name);
+      });
+    } else {
+      this.dateStart = false;
+      this.dateEnd = false;
+      return this.bookingEstablishmentList.reverse();
+    }
+  }
+
+  public sortDateStart() {
+    if (!this.dateStart) {
+      this.bookingEstablishmentList.sort((a, b) => {
+        this.dateStart = !this.dateStart;
+        return a.date.start.localeCompare(b.date.start);
+      });
+    } else {
+      this.nameUser = false;
+      this.dateEnd = false;
+      return this.bookingEstablishmentList.reverse();
+    }
+  }
+
+  public sortDateEnd() {
+    if (!this.dateEnd) {
+      this.bookingEstablishmentList.sort((a, b) => {
+        this.dateEnd = !this.dateEnd;
+        return a.date.end.localeCompare(b.date.end);
+      });
+    } else {
+      this.nameUser = false;
+      this.dateStart = false;
+      return this.bookingEstablishmentList.reverse();
+    }
+  }
+
 }

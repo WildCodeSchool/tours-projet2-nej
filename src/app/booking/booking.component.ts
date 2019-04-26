@@ -15,7 +15,12 @@ export class BookingComponent implements OnInit {
   public myDateValue: Date;
   public bookings: Booking;
   public etablishmentValue: [] = [];
-
+  public dateStartUp: any;
+  public dateStartDate: any;
+  public dateStartTime: any;
+  public dateEndUp: any;
+  public dateEndDate: any;
+  public dateEndTime: any;
   constructor(
     private service: BookingService,
     private fb: FormBuilder,
@@ -23,13 +28,13 @@ export class BookingComponent implements OnInit {
     public router: Router,
     private toastr: ToastrService,
     private serviceEst: EtablishmentService,
-  ) { }
+  ) {}
 
   bookingForm = this.fb.group({
     date: this.fb.group({
-      date: [''],
+      date1: [''],
       start: [''],
-      date2:[''],
+      date2: [''],
       end: [''],
     }),
     owner: this.fb.group({
@@ -46,7 +51,7 @@ export class BookingComponent implements OnInit {
       }),
     }),
     numbers: [''],
-    establishment: [''],
+    establishment: ['']
   });
 
   ngOnInit() {
@@ -61,58 +66,99 @@ export class BookingComponent implements OnInit {
           // Récupération de getBooking depuis le service
           this.bookings = bookingValues;
           // Le formulaire a pour valeurs par défaut les données récupérées
-          this.bookingForm.patchValue(bookingValues);
+          this.bookingForm.patchValue(this.bookings);
+          this.dateStartUp = bookingValues.date.start.toString().split('T');
+          this.dateStartDate = this.dateStartUp[0].split('-');
+          this.dateStartTime = this.dateStartUp[1].split(':');
+          this.bookingForm
+            .get('date')
+            .get('date1')
+            .patchValue({
+              year: parseInt(this.dateStartDate[0], 10),
+              month: parseInt(this.dateStartDate[1], 10),
+              day: parseInt(this.dateStartDate[2], 10),
+            });
+          this.bookingForm
+            .get('date')
+            .get('start')
+            .patchValue({
+              hour: parseInt(this.dateStartTime[0], 10),
+              minute: parseInt(this.dateStartTime[1], 10),
+            });
+
+          this.dateEndUp = bookingValues.date.end.toString().split('T');
+          this.dateEndDate = this.dateEndUp[0].split('-');
+          this.dateEndTime = this.dateEndUp[1].split(':');
+          this.bookingForm
+            .get('date')
+            .get('date2')
+            .patchValue({
+              year: parseInt(this.dateEndDate[0], 10),
+              month: parseInt(this.dateEndDate[1], 10),
+              day: parseInt(this.dateEndDate[2], 10),
+            });
+          this.bookingForm
+            .get('date')
+            .get('end')
+            .patchValue({
+              hour: parseInt(this.dateEndTime[0], 10),
+              minute: parseInt(this.dateEndTime[1], 10),
+            });
         });
       }
       // Réservation utilisateurs, récupération de l'ID de l'établissement
       if (est) {
-        this.serviceEst.getEtablishment(est).subscribe((etablishmentValue: any) => {
-          this.etablishmentValue = etablishmentValue;
-          this.bookingForm.controls.establishment.patchValue(est);
-        });
+        this.serviceEst
+          .getEtablishment(est)
+          .subscribe((etablishmentValue: any) => {
+            this.etablishmentValue = etablishmentValue;
+            this.bookingForm.controls.establishment.patchValue(est);
+          });
       }
     });
+
   }
 
   public deleteBooking() {
     this.route.paramMap.subscribe((params: ParamMap) => {
       const id = params.get('id');
-      this.service.deleteBooking(id)
-        .subscribe(() => {
-          this.router.navigate(['']);
-        });
+      this.service.deleteBooking(id).subscribe(() => {
+        this.router.navigate(['']);
+      });
     });
   }
 
   onSubmit() {
     // appel le champs date du formulaire
     const formDate = this.bookingForm.get('date');
+    console.log(formDate.get('date1').value);
+    console.log(formDate.get('start').value);
     // definis les champs de la date de début
     const dateStart = new Date(
-      formDate.get('date').value.year,
-      formDate.get('date').value.month,
-      formDate.get('date').value.day,
+      formDate.get('date1').value.year,
+      formDate.get('date1').value.month,
+      formDate.get('date1').value.day,
       formDate.get('start').value.hour,
       formDate.get('start').value.minute,
-      formDate.get('start').value.second,
+      formDate.get('start').value.second
     );
     console.log(dateStart);
-      // definis les champs de la date de fin
+    // definis les champs de la date de fin
     const dateEnd = new Date(
       formDate.get('date2').value.year,
       formDate.get('date2').value.month,
       formDate.get('date2').value.day,
       formDate.get('end').value.hour,
       formDate.get('end').value.minute,
-      formDate.get('end').value.second,
+      formDate.get('end').value.second
     );
 
     console.log(dateEnd);
-      // rassemble les champs de dateSart/dateEnd pour avoir le bon format(date)
+    // rassemble les champs de dateSart/dateEnd pour avoir le bon format(date)
     const booking = this.bookingForm.value;
     booking.date = {
       start: dateStart,
-      end: dateEnd,
+      end: dateEnd
     };
     // Vérification des données saisies
     this.route.paramMap.subscribe((params: ParamMap) => {
@@ -124,9 +170,13 @@ export class BookingComponent implements OnInit {
           .updateBooking(this.bookingForm.value, id)
           .subscribe((newbookingValues: Booking) => {
             this.bookings = newbookingValues;
-            this.toastr.success('La réservation a bien été modifié', 'Modification', {
-              positionClass: 'toast-bottom-full-width',
-            });
+            this.toastr.success(
+              'La réservation a bien été modifié',
+              'Modification',
+              {
+                positionClass: 'toast-bottom-full-width'
+              }
+            );
           });
         // Sans id, création d'une nouvelle réservation
       } else {

@@ -1,8 +1,8 @@
 <div class="d-flex justify-content-around mt-3 mb-3">
-  <button (click)="showEstablishmentOrBookings()">
+  <button (click)="showEstablishment()">
     Gérer mes établissements
   </button>
-  <button (click)="showEstablishmentOrBookings()">
+  <button (click)="showBookings()">
     Gérer les réservations en cours
   </button>
 </div>
@@ -87,10 +87,10 @@
       <table class="table table-bordered mt-4 mb-4">
         <thead class="thead-light">
           <tr class="text-center">
-            <th scope="col">Nom de l'établissement  <button (click)="sortName()"><img  class ="sort" src="https://image.flaticon.com/icons/png/512/25/25756.png"></button></th>
-            <th scope="col">Nom <button (click)="sortNameUser()"><img  class ="sort" src="https://image.flaticon.com/icons/png/512/25/25756.png"></button></th>
-            <th scope="col">Date d'arrivée<button (click)="sortDateStart()"><img  class ="sort" src="https://image.flaticon.com/icons/png/512/25/25756.png"></button></th>
-            <th scope="col">Date de départ<button (click)="sortDateEnd()"><img  class ="sort" src="https://image.flaticon.com/icons/png/512/25/25756.png"></button></th>
+            <th scope="col">Nom de l'établissement  <button class="btn btn-light ml-4" (click)="sortName()"><img  class ="sort" src="https://image.flaticon.com/icons/png/512/25/25756.png"></button></th>
+            <th scope="col">Nom <button class="btn btn-light ml-4" (click)="sortNameUser()"><img  class ="sort" src="https://image.flaticon.com/icons/png/512/25/25756.png"></button></th>
+            <th scope="col">Date d'arrivée<button class="btn btn-light ml-4" (click)="sortDateStart()"><img  class ="sort" src="https://image.flaticon.com/icons/png/512/25/25756.png"></button></th>
+            <th scope="col">Date de départ<button class="btn btn-light ml-4" (click)="sortDateEnd()"><img  class ="sort" src="https://image.flaticon.com/icons/png/512/25/25756.png"></button></th>
             <th scope="col">Adresse</th>
             <th scope="col">Modifier / Supprimer</th>
           </tr>
@@ -102,8 +102,8 @@
           >
             <th scope="row">{{ booking.establishment.name }}</th>
             <td>{{ booking.owner.name }}</td>
-            <td>{{ booking.date.start }}</td>
-            <td>{{ booking.date.end }}</td>
+            <td>{{ booking.date.start | date:'dd MMMM yyyy à HH:mm' }}</td>
+            <td>{{ booking.date.end | date:'dd MMMM yyyy à HH:mm' }}</td>
             <td>{{ booking.owner.address.street }}</td>
             <td>
               <a

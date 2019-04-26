@@ -18,9 +18,9 @@ export class BookingComponent implements OnInit {
   public dateStartUp: any;
   public dateStartDate: any;
   public dateStartTime: any;
-  dateEndUp: any;
-  dateEndDate: any;
-  dateEndTime: any;
+  public dateEndUp: any;
+  public dateEndDate: any;
+  public dateEndTime: any;
   constructor(
     private service: BookingService,
     private fb: FormBuilder,
@@ -66,6 +66,7 @@ export class BookingComponent implements OnInit {
           // Récupération de getBooking depuis le service
           this.bookings = bookingValues;
           // Le formulaire a pour valeurs par défaut les données récupérées
+          this.bookingForm.patchValue(this.bookings);
           this.dateStartUp = bookingValues.date.start.toString().split('T');
           this.dateStartDate = this.dateStartUp[0].split('-');
           this.dateStartTime = this.dateStartUp[1].split(':');

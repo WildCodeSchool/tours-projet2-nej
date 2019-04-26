@@ -50,7 +50,6 @@ export class EstablishmentBookinglistComponent implements OnInit {
         });
     });
   }
-  
 
   public sortNameUser() {
     if (!this.nameUser) {

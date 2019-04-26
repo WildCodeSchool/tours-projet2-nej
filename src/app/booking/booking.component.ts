@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ParamMap, ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { EtablishmentService } from '../common/services/etablishment.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-booking',
@@ -21,6 +22,7 @@ export class BookingComponent implements OnInit {
   public dateEndUp: any;
   public dateEndDate: any;
   public dateEndTime: any;
+
   constructor(
     private service: BookingService,
     private fb: FormBuilder,
@@ -28,6 +30,7 @@ export class BookingComponent implements OnInit {
     public router: Router,
     private toastr: ToastrService,
     private serviceEst: EtablishmentService,
+    private location: Location,
   ) {}
 
   bookingForm = this.fb.group({
@@ -51,7 +54,7 @@ export class BookingComponent implements OnInit {
       }),
     }),
     numbers: [''],
-    establishment: ['']
+    establishment: [''],
   });
 
   ngOnInit() {
@@ -120,12 +123,21 @@ export class BookingComponent implements OnInit {
   }
 
   public deleteBooking() {
-    this.route.paramMap.subscribe((params: ParamMap) => {
-      const id = params.get('id');
-      this.service.deleteBooking(id).subscribe(() => {
-        this.router.navigate(['']);
+    const result = confirm('Confirmez-vous la suppression de la réservation ?');
+    if (result) {
+      this.route.paramMap.subscribe((params: ParamMap) => {
+        const id = params.get('id');
+        this.service.deleteBooking(id).subscribe(() => {
+          this.router.navigate(['']);
+        });
       });
-    });
+      this.toastr.warning(
+      'La réservation a bien été supprimée',
+      'Suppression', {
+        positionClass: 'toast-bottom-full-width',
+      },
+    );
+    }
   }
 
   onSubmit() {
@@ -140,7 +152,7 @@ export class BookingComponent implements OnInit {
       formDate.get('date1').value.day,
       formDate.get('start').value.hour,
       formDate.get('start').value.minute,
-      formDate.get('start').value.second
+      formDate.get('start').value.second,
     );
     console.log(dateStart);
     // definis les champs de la date de fin
@@ -150,7 +162,7 @@ export class BookingComponent implements OnInit {
       formDate.get('date2').value.day,
       formDate.get('end').value.hour,
       formDate.get('end').value.minute,
-      formDate.get('end').value.second
+      formDate.get('end').value.second,
     );
 
     console.log(dateEnd);
@@ -158,7 +170,7 @@ export class BookingComponent implements OnInit {
     const booking = this.bookingForm.value;
     booking.date = {
       start: dateStart,
-      end: dateEnd
+      end: dateEnd,
     };
     // Vérification des données saisies
     this.route.paramMap.subscribe((params: ParamMap) => {
@@ -174,8 +186,8 @@ export class BookingComponent implements OnInit {
               'La réservation a bien été modifié',
               'Modification',
               {
-                positionClass: 'toast-bottom-full-width'
-              }
+                positionClass: 'toast-bottom-full-width',
+              },
             );
           });
         // Sans id, création d'une nouvelle réservation
@@ -184,8 +196,19 @@ export class BookingComponent implements OnInit {
           .createBooking(this.bookingForm.value)
           .subscribe((newbookingValues: Booking) => {
             this.bookings = newbookingValues;
+            this.toastr.success(
+              'La réservation a bien été enregistré',
+              'Modification',
+              {
+                positionClass: 'toast-bottom-full-width',
+              },
+            );
           });
       }
     });
+  }
+// Revenir à la page précédente
+  public previousPage() {
+    this.location.back();
   }
 }

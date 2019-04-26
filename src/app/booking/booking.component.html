@@ -1,7 +1,7 @@
 <div class="container">
   <h2 class="mt-4 ">Formulaire de réservation</h2>
 
-  <button class="backBtn" type="button" routerLink="/">Retour</button>
+  <button class="backBtn" type="button" (click)="previousPage()">Retour</button>
 
   <form (ngSubmit)="onSubmit()" [formGroup]="bookingForm" #myForm="ngForm">
     <h3 class="alert alert-secondary text-center " role="alert">{{etablishmentValue.name}}</h3>
@@ -9,28 +9,36 @@
 
     <div formGroupName="date" class="row">
       <label class="col-6">
-        <p class="label-txt">Date de début</p>
-        <input type="datetime" class="input" formControlName="date1" ngbDatepicker #d="ngbDatepicker">
-        <div class="input-group-append">
-          <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
-          <div class="line-box">
+          <p class="label-txt">Date de début</p>
+        <div class="d-flex justify-content-around align-items-center row">
+          <div class="col-8">
+        <input  type="datetime" class="input" formControlName="date1" ngbDatepicker #d="ngbDatepicker">
+        <div class="line-box">
             <div class="line"></div>
-          </div>
         </div>
-        <ngb-timepicker formControlName="start"></ngb-timepicker>
+      </div>
+        <div class="input-group-append col-1">
+          <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+        </div>
+        <ngb-timepicker class ="col-3" formControlName="start"></ngb-timepicker>
+      </div>
       </label>
 
       <label class="col-6">
         <p class="label-txt">Date de fin</p>
+        <div class="d-flex justify-content-around align-items-center row">
+        <div class="col-8">
         <input type="datetime" class="input" formControlName="date2" ngbDatepicker #f="ngbDatepicker">
-        <div class="input-group-append">
-          <button class="btn btn-outline-secondary calendar" (click)="f.toggle()" type="button"></button>
-          <div class="line-box">
+        <div class="line-box">
             <div class="line"></div>
-          </div>
         </div>
-        <ngb-timepicker formControlName="end"></ngb-timepicker>
-      </label> 
+      </div>
+        <div class="input-group-append col-1">
+          <button class="btn btn-outline-secondary calendar" (click)="f.toggle()" type="button"></button>
+        </div>
+        <ngb-timepicker class ="col-3" formControlName="end"></ngb-timepicker>
+      </div>
+      </label>
     </div>
 
 

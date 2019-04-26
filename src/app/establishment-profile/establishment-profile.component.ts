@@ -54,7 +54,7 @@ export class EstablishmentProfileComponent implements OnInit {
     this.bookings = true;
   }
 
-  public deleteEstablishment(id, index) {
+  public deleteEstablishment(id: any, index: any) {
     const result = confirm("Confirmez-vous la suppression de l'établissement ?");
     if (result) {
       this.serviceEst.deleteEtablishment(id).subscribe(() => {

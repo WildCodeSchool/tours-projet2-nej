@@ -22,12 +22,11 @@ export class EstablishmentProfileComponent implements OnInit {
     this.serviceProfEst.get().subscribe(
       (establishment: Etablishment[]) => {
         this.establishments = establishment;
-        console.log(establishment);
       },
     );
   }
 
-  public deleteEstablishment(id, index) {
+  public deleteEstablishment(id: any, index: any) {
     const result = confirm("Confirmez-vous la suppression de l'établissement ?");
     if (result) {
       this.serviceEst.deleteEtablishment(id).subscribe(() => {

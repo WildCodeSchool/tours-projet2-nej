@@ -143,7 +143,7 @@
       <div class="line-box">
         <div class="line"></div>
       </div>
-      <div *ngIf="bookingForm.controls.numbers.errors">
+      <div *ngIf="bookingForm.get('numbers').invalid">
         numbers invalid
       </div>
     </label>

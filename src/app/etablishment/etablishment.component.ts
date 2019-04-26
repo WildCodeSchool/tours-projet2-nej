@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EtablishmentService } from '../common/services/etablishment.service';
-import { FormBuilder, FormArray } from '@angular/forms';
+import { FormBuilder, FormArray, Validators } from '@angular/forms';
 import { Etablishment } from '../common/models/etablishment.models';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 @Component({
@@ -17,21 +17,20 @@ export class EtablishmentComponent implements OnInit {
   }
 
   etablishmentForm = this.fb.group({
-    type:[''],
-    name: [''],
-    image: [''],
-    profile: [''],
-    description: [''],
+    type:['', Validators.required],
+    name: ['', Validators.required],
+    profile: ['', Validators.required],
+    description: ['', Validators.required],
     address: this.fb.group({
-      street: [''],
-      zipCode: [''],
-      city: [''],
-      number: [''],
+      street: ['', Validators.required],
+      zipCode: ['', Validators.required],
+      city: ['', Validators.required],
+      number: ['', Validators.required],
     }),
     contact: this.fb.group({
-      phone: [''],
-      email: [''],
-      site: [''],
+      phone: ['', Validators.required],
+      email: ['', Validators.required],
+      site: ['', Validators.required],
     }),
     networks: this.fb.array([]),
     medias: this.fb.array([]),
@@ -98,6 +97,7 @@ export class EtablishmentComponent implements OnInit {
       order: '',
     }));
   }
+
   public deleteNetworks(index) {
     const form = this.etablishmentForm.get('networks') as FormArray;
     form.removeAt(index);
@@ -105,5 +105,11 @@ export class EtablishmentComponent implements OnInit {
   public deleteMedias(index) {
     const form = this.etablishmentForm.get('medias') as FormArray;
     form.removeAt(index);
+  }
+  get address() {
+    return this.etablishmentForm.get('address');
+  }
+  get contact() {
+    return this.etablishmentForm.get('contact');
   }
 }

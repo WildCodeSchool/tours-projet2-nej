@@ -96,7 +96,7 @@ export class BookingComponent implements OnInit {
       formDate.get('start').value.minute,
       formDate.get('start').value.second,
     );
-    console.log(dateStart);
+
       // definis les champs de la date de fin
     const dateEnd = new Date(
       formDate.get('date2').value.year,
@@ -107,7 +107,6 @@ export class BookingComponent implements OnInit {
       formDate.get('end').value.second,
     );
 
-    console.log(dateEnd);
       // rassemble les champs de dateSart/dateEnd pour avoir le bon format(date)
     const booking = this.bookingForm.value;
     booking.date = {
@@ -150,11 +149,5 @@ export class BookingComponent implements OnInit {
   }
   get contact() {
     return this.owner.get('contact');
-  }
-  get numbers() {
-    return this.bookingForm.get('numbers');
-  }
-  get establishment() {
-    return this.bookingForm.get('establishment');
   }
 }

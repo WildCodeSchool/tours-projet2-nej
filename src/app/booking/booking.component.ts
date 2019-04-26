@@ -27,7 +27,7 @@ export class BookingComponent implements OnInit {
 
   bookingForm = this.fb.group({
     date: this.fb.group({
-      date: ['', Validators.required],
+      date1: ['', Validators.required],
       start: ['', Validators.required],
       date2:['', Validators.required],
       end: ['', Validators.required],
@@ -89,9 +89,9 @@ export class BookingComponent implements OnInit {
     const formDate = this.bookingForm.get('date');
     // definis les champs de la date de début
     const dateStart = new Date(
-      formDate.get('date').value.year,
-      formDate.get('date').value.month,
-      formDate.get('date').value.day,
+      formDate.get('date1').value.year,
+      formDate.get('date1').value.month,
+      formDate.get('date1').value.day,
       formDate.get('start').value.hour,
       formDate.get('start').value.minute,
       formDate.get('start').value.second,
@@ -137,5 +137,24 @@ export class BookingComponent implements OnInit {
           });
       }
     });
+  }
+
+  get date() {
+    return this.bookingForm.get('date');
+  }
+  get owner() {
+    return this.bookingForm.get('owner');
+  }
+  get address() {
+    return this.owner.get('address');
+  }
+  get contact() {
+    return this.owner.get('contact');
+  }
+  get numbers() {
+    return this.bookingForm.get('numbers');
+  }
+  get establishment() {
+    return this.bookingForm.get('establishment');
   }
 }

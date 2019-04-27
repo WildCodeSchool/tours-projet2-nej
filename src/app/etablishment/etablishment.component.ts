@@ -3,6 +3,7 @@ import { EtablishmentService } from '../common/services/etablishment.service';
 import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
 import { Etablishment } from '../common/models/etablishment.models';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-etablishment',
   templateUrl: './etablishment.component.html',
@@ -12,8 +13,12 @@ export class EtablishmentComponent implements OnInit {
   public id: string;
   public etablishments: Etablishment;
   // public form: FormGroup;
-  constructor(private route: ActivatedRoute, private service: EtablishmentService,
-              private fb: FormBuilder, public router: Router) {
+  constructor(private route: ActivatedRoute,
+              private service: EtablishmentService,
+              private fb: FormBuilder,
+              public router: Router,
+              private toastr: ToastrService,
+              ) {
   }
 
   etablishmentForm = this.fb.group({
@@ -48,24 +53,36 @@ export class EtablishmentComponent implements OnInit {
           .subscribe((etablishment: Etablishment) => {
             this.etablishmentForm.patchValue(etablishment);
           });
+        this.toastr.success("L'établissement a bien été modifié", 'Modification', {
+          positionClass: 'toast-bottom-full-width',
+        });
           // sinon l'ajout est activé
       } else {
         this.service.postEtablishment(this.etablishmentForm.value)
           .subscribe((etablishment: Etablishment) => {
             this.etablishmentForm.patchValue(etablishment);
           });
+        this.toastr.success("L'établissement a bien été créé", 'Création', {
+          positionClass: 'toast-bottom-full-width',
+        });
       }
     });
   }
   // supprime un etablissement de l'API
   public deleteEtablishment() {
-    this.route.paramMap.subscribe((params: ParamMap) => {
-      const id = params.get('id');
-      this.service.deleteEtablishment(id)
+    const result = confirm("Confirmez-vous la suppression de l'établissement' ?");
+    if (result) {
+      this.route.paramMap.subscribe((params: ParamMap) => {
+        const id = params.get('id');
+        this.service.deleteEtablishment(id)
         .subscribe(() => {
           this.router.navigate(['']);
         });
-    });
+      });
+      this.toastr.warning("L'établissement a bien été supprimé", 'Suppression', {
+        positionClass: 'toast-bottom-full-width',
+      });
+    }
   }
 
   public ngOnInit(): void {

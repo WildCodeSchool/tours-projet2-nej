@@ -23,7 +23,7 @@
             <a class="nav-link" [routerLink]="['']" (click)="logout()"> Se déconnecter</a>
           </li>
         </ul>
-        <p>Bonjour!</p>
+        <button type="button" class="btn btn-dark" [routerLink]="['userAccount']">Bienvenue {{name}}!</button>
     </ng-template>
     <ng-template #elseBlock>
         <ul class="navbar-nav mr-auto ">

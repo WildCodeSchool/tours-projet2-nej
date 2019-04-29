@@ -37,7 +37,7 @@ export class EstablishmentProfileComponent implements OnInit {
     this.serviceBooking.getAllBookings().subscribe(
       (bookings: Booking[]) => {
         this.bookings = bookings;
-        console.log(bookings);
+
       },
     );
   }

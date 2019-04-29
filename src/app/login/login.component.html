@@ -2,7 +2,7 @@
 
   <h2 class="mt-4">Mes identifiants</h2>
 
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <form #myForm="ngForm" (ngSubmit)="myForm.valid && onSubmit()" [formGroup]='loginForm'>
       <div class="row">
           <label class="col-6">
               <p class="label-txt">Email:</p>

@@ -40,7 +40,6 @@ export class ProfileComponent implements OnInit {
   });
 
   public ngOnInit(): void {
-    console.log(this.profileForm.value);
 
     this.service.get().subscribe(
       (profile: Profile) => {

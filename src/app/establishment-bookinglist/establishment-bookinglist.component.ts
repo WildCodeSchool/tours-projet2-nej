@@ -1,15 +1,15 @@
-import { Component, OnInit, Input } from "@angular/core";
-import { ActivatedRoute, ParamMap } from "@angular/router";
-import { BookingService } from "../common/services/booking.service";
-import { EtablishmentService } from "../common/services/etablishment.service";
-import { ToastrService } from "ngx-toastr";
-import { Booking } from "../common/models/booking.model";
-import { Etablishment } from "../common/models/etablishment.models";
+import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { BookingService } from '../common/services/booking.service';
+import { EtablishmentService } from '../common/services/etablishment.service';
+import { ToastrService } from 'ngx-toastr';
+import { Booking } from '../common/models/booking.model';
+import { Etablishment } from '../common/models/etablishment.models';
 
 @Component({
-  selector: "app-establishment-bookinglist",
-  templateUrl: "./establishment-bookinglist.component.html",
-  styleUrls: ["./establishment-bookinglist.component.css"]
+  selector: 'app-establishment-bookinglist',
+  templateUrl: './establishment-bookinglist.component.html',
+  styleUrls: ['./establishment-bookinglist.component.css'],
 })
 export class EstablishmentBookinglistComponent implements OnInit {
   @Input() public bookings: Booking[];
@@ -23,20 +23,20 @@ export class EstablishmentBookinglistComponent implements OnInit {
     private serviceBooking: BookingService,
     private serviceEstablishment: EtablishmentService,
     private toastr: ToastrService,
-    public route: ActivatedRoute
+    public route: ActivatedRoute,
   ) {}
 
   public deleteBooking(id, index) {
-    const result = confirm("Confirmez-vous la suppression de la réservation ?");
+    const result = confirm('Confirmez-vous la suppression de la réservation ?');
     if (result) {
       this.serviceBooking.deleteBooking(id).subscribe(() => {
         this.bookings.splice(index, 1);
         this.toastr.warning(
-          "La réservation a bien été supprimé",
-          "Suppression",
+          'La réservation a bien été supprimé',
+          'Suppression',
           {
-            positionClass: "toast-bottom-full-width"
-          }
+            positionClass: 'toast-bottom-full-width',
+          },
         );
       });
     }
@@ -44,7 +44,7 @@ export class EstablishmentBookinglistComponent implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe((params: ParamMap) => {
-      const id = params.get("id");
+      const id = params.get('id');
       if (id) {
         this.serviceBooking
           .getBookingByEstablishment(id)

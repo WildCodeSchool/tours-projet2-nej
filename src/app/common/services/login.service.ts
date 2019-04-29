@@ -11,8 +11,8 @@ export class LoginService {
 
   constructor(private http: HttpClient) { }
   login(email: string, password: string) {
-    // tslint:disable-next-line: max-line-length
-    return this.http.post<any>('https://open-reza.herokuapp.com/api/auth/signin', { email, password })
+    return this.http.post<any>(
+      'https://open-reza.herokuapp.com/api/auth/signin', { email, password })
 
       .pipe(tap((user) => {
         if (user) {

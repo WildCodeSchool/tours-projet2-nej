@@ -34,23 +34,21 @@ export class EstablishmentHomepageComponent implements OnInit {
   ngOnInit() {
     this.serviceEst.getAllEtablishment().subscribe((establismhents) => {
       this.establishmentsList = establismhents;
-      console.log(this.establishmentsList);
       // Création d'un tableau de nom pour l'autocomplétion
       for (let i = 0; i < this.establishmentsList.length; i += 1) {
         this.establishmentsName.push(establismhents[i].name);
       }
-      console.log(this.establishmentsName);
     });
     this.searchBar.valueChanges.subscribe((value) => {
-      console.log('Valeurs modifiées', value);
     });
     this.searchBar.controls['type'].patchValue(this.types[0].id);
   }
 
   public search() {
     // Envoi type et bar pour filtrer
-// tslint:disable-next-line: max-line-length
-    this.serviceEst.searchedEtablishment(this.searchBar.controls['type'].value, this.searchBar.controls['searchName'].value)
+
+    this.serviceEst.searchedEtablishment(
+      this.searchBar.controls['type'].value, this.searchBar.controls['searchName'].value)
     .subscribe((establismhents: any) => {
       this.establishmentsList = establismhents;
     });

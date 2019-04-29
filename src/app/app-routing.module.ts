@@ -19,8 +19,9 @@ const routes: Routes = [
   { path: 'userAccount/establishment-profile/:id', component: EtablishmentComponent },
   { path: 'userAccount/profile', component: ProfileComponent },
   { path: 'etablishment', component: EtablishmentComponent, canActivate: [AuthGuard] },
-// tslint:disable-next-line: max-line-length
-  { path: 'userAccount/establishment-profile/:id', component: EtablishmentComponent, canActivate: [AuthGuard] },
+
+  { path: 'userAccount/establishment-profile/:id',
+    component: EtablishmentComponent, canActivate: [AuthGuard] },
   { path: 'userAccount/profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'booking/establishment/:est', component: BookingComponent },
   { path: 'booking/:id', component: BookingComponent },
@@ -28,8 +29,9 @@ const routes: Routes = [
   { path: 'userAccount/establishment-profile/:id/bookings',
     component: EstablishmentBookinglistComponent, canActivate: [AuthGuard] },
   { path: 'userAccount', component: UseraccountComponent, canActivate: [AuthGuard] },
-// tslint:disable-next-line: max-line-length
-  { path: 'userAccount/establishment-profile', component: EstablishmentProfileComponent, canActivate: [AuthGuard] },
+
+  { path: 'userAccount/establishment-profile', 
+    component: EstablishmentProfileComponent, canActivate: [AuthGuard] },
   { path: 'etablishment/:id', component: EtablishmentComponent },
   { path: 'login', component: LoginComponent },
   { path: 'creation', component: UserCreationComponent },

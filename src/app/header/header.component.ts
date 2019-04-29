@@ -20,7 +20,6 @@ export class HeaderComponent implements OnInit {
               {}
 
   ngOnInit() {
-    console.log(this.name);
     this.service.get().subscribe(
       (param) => {
         this.name = param.firstName;

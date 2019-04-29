@@ -37,7 +37,6 @@ export class ProfileComponent implements OnInit {
   });
 
   public ngOnInit(): void {
-    console.log(this.profileForm.value);
 
     this.service.get().subscribe(
       (profile: Profile) => {
@@ -47,7 +46,6 @@ export class ProfileComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.profileForm.value);
 
     this.service.put(this.profileForm.value).subscribe(
       (profile: Profile) => {

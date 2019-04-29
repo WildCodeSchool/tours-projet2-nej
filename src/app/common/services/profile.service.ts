@@ -18,8 +18,9 @@ export class ProfileService {
     return  obs.pipe(map(treatment));
   }
   public put(profileForm: any): Observable<Profile> {
-// tslint:disable-next-line: max-line-length
-    const obs: Observable<any> = this.http.put('https://open-reza.herokuapp.com/api/profiles', profileForm);
+
+    const obs: Observable<any> = this.http.put(
+      'https://open-reza.herokuapp.com/api/profiles', profileForm);
     const  treatment  = (response:any) => {
       return  response as Profile;
     };

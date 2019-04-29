@@ -33,13 +33,11 @@ export class EstablishmentProfileComponent implements OnInit {
     this.serviceProfEst.get().subscribe(
       (establishment: Etablishment[]) => {
         this.myEstablishments = establishment;
-        console.log(establishment);
       },
     );
     this.serviceBooking.getAllBookings().subscribe(
       (bookings: Booking[]) => {
         this.allMyBookings = bookings;
-        console.log(bookings);
       },
     );
   }

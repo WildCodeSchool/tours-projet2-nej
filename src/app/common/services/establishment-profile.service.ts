@@ -9,8 +9,9 @@ export class EstablishmentProfileService {
 
   constructor(private http: HttpClient) {}
   public get(): Observable<Etablishment[]> {
-// tslint:disable-next-line: max-line-length
-    const  obs:Observable<any> = this.http.get('https://open-reza.herokuapp.com/api/profiles/establishments');
+
+    const  obs:Observable<any> = this.http.get(
+      'https://open-reza.herokuapp.com/api/profiles/establishments');
 
     const  treatment  = (response:any) => {
       return  response as Etablishment[];

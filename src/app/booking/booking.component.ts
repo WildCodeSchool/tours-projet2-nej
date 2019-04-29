@@ -24,7 +24,7 @@ export class BookingComponent implements OnInit {
     public route: ActivatedRoute,
     public router: Router,
     private toastr: ToastrService,
-    private serviceBooking: EtablishmentService,
+    private serviceEtablishment: EtablishmentService,
     private location: Location,
   ) { }
 
@@ -106,7 +106,7 @@ export class BookingComponent implements OnInit {
       }
       // Réservation utilisateurs, récupération de l'ID de l'établissement
       if (establishmentId) {
-        this.serviceBooking
+        this.serviceEtablishment
           .getEtablishment(establishmentId)
           .subscribe((etablishmentValue: any) => {
             this.etablishments = etablishmentValue;
@@ -122,13 +122,13 @@ export class BookingComponent implements OnInit {
     if (result) {
       this.service.deleteBooking(this.id).subscribe(() => {
         this.router.navigate(['']);
+        this.toastr.warning(
+          'La réservation a bien été supprimée',
+          'Suppression', {
+            positionClass: 'toast-bottom-full-width',
+          },
+        );
       });
-      this.toastr.warning(
-        'La réservation a bien été supprimée',
-        'Suppression', {
-          positionClass: 'toast-bottom-full-width',
-        },
-      );
     }
   }
 

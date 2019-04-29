@@ -14,8 +14,8 @@ import { Etablishment } from '../common/models/etablishment.models';
   styleUrls: ['./booking.component.css'],
 })
 export class BookingComponent implements OnInit {
-  public bookings: Booking[];
-  public etablishments: Etablishment;
+  public booking: Booking;
+  public etablishments: Etablishment[];
   public id: string;
 
   constructor(
@@ -62,10 +62,10 @@ export class BookingComponent implements OnInit {
       if (this.id) {
         this.service.getBooking(this.id).subscribe((bookingValues: Booking) => {
           // Récupération de getBooking depuis le service
-          this.bookings = bookingValues;
+          this.booking = bookingValues;
           // Le formulaire a pour valeurs par défaut les données récupérées
-          this.bookingForm.patchValue(this.bookings);
-          const dateStartUp = bookingValues.date.start.toString().split('T');
+          this.bookingForm.patchValue(this.booking);
+          const dateStartUp = this.booking.date.start.toString().split('T');
           const dateStartDate = dateStartUp[0].split('-');
           const dateStartTime = dateStartUp[1].split(':');
           this.bookingForm
@@ -165,7 +165,7 @@ export class BookingComponent implements OnInit {
       this.service
         .updateBooking(this.bookingForm.value, this.id)
         .subscribe((newbookingValues: Booking) => {
-          this.bookings = newbookingValues;
+          this.booking = newbookingValues;
 
           this.toastr.success(
             'La réservation a bien été modifié',
@@ -180,7 +180,7 @@ export class BookingComponent implements OnInit {
       this.service
         .createBooking(this.bookingForm.value)
         .subscribe((newbookingValues: Booking) => {
-          this.bookings = newbookingValues;
+          this.booking = newbookingValues;
           this.toastr.success(
             'La réservation a bien été enregistré',
             'Modification',

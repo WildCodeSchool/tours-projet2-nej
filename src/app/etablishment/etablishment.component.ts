@@ -18,11 +18,11 @@ export class EtablishmentComponent implements OnInit {
               private fb: FormBuilder,
               public router: Router,
               private toastr: ToastrService,
-              ) {
+  ) {
   }
 
   etablishmentForm = this.fb.group({
-    type:[''],
+    type: [''],
     name: [''],
     image: [''],
     profile: [''],
@@ -47,24 +47,24 @@ export class EtablishmentComponent implements OnInit {
     // ajout ou modification de l'etablissement dans l'API
     this.route.paramMap.subscribe((params: ParamMap) => {
       const id = params.get('id');
-// si un "id" est renseigné alors la modification est activé
+      // si un "id" est renseigné alors la modification est activé
       if (id) {
         this.service.putEtablishment(id, this.etablishmentForm.value)
           .subscribe((etablishment: Etablishment) => {
             this.etablishmentForm.patchValue(etablishment);
+            this.toastr.success("L'établissement a bien été modifié", 'Modification', {
+              positionClass: 'toast-bottom-full-width',
+            });
           });
-        this.toastr.success("L'établissement a bien été modifié", 'Modification', {
-          positionClass: 'toast-bottom-full-width',
-        });
-          // sinon l'ajout est activé
+        // sinon l'ajout est activé
       } else {
         this.service.postEtablishment(this.etablishmentForm.value)
           .subscribe((etablishment: Etablishment) => {
             this.etablishmentForm.patchValue(etablishment);
+            this.toastr.success("L'établissement a bien été créé", 'Création', {
+              positionClass: 'toast-bottom-full-width',
+            });
           });
-        this.toastr.success("L'établissement a bien été créé", 'Création', {
-          positionClass: 'toast-bottom-full-width',
-        });
       }
     });
   }
@@ -75,18 +75,18 @@ export class EtablishmentComponent implements OnInit {
       this.route.paramMap.subscribe((params: ParamMap) => {
         const id = params.get('id');
         this.service.deleteEtablishment(id)
-        .subscribe(() => {
-          this.router.navigate(['']);
-        });
-      });
-      this.toastr.warning("L'établissement a bien été supprimé", 'Suppression', {
-        positionClass: 'toast-bottom-full-width',
+          .subscribe(() => {
+            this.router.navigate(['']);
+            this.toastr.warning("L'établissement a bien été supprimé", 'Suppression', {
+              positionClass: 'toast-bottom-full-width',
+            });
+          });
       });
     }
   }
 
   public ngOnInit(): void {
-      // appel les infos de l'API pour l'etablissement séléctioné
+    // appel les infos de l'API pour l'etablissement séléctioné
     this.route.paramMap.subscribe((params: ParamMap) => {
       const id = params.get('id');
       if (id) {

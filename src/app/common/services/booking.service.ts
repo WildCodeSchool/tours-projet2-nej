@@ -30,10 +30,11 @@ export class BookingService {
     return this.http.put<Booking>(`${this.api}bookings/${id}`, bookingForm);
   }
 
-  public getBookingByEstablishment(id: string): Observable<Booking> {
-    const bookingObs: Observable<any> = this.http.get(`${this.api}establishments/${id}/bookings`);
+  public getBookingByEstablishment(id: string): Observable<Booking[]> {
+    const bookingObs =
+    this.http.get<Booking[]>(`${this.api}establishments/${id}/bookings`);
     const bookingArrByEst = (param: any) => {
-      return param as Booking;
+      return param as Booking[];
     };
     return bookingObs.pipe(map(bookingArrByEst));
   }

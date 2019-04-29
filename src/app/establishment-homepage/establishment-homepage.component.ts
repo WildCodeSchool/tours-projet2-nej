@@ -4,6 +4,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
+import { Etablishment } from '../common/models/etablishment.models';
 
 @Component({
   selector: 'app-establishment-homepage',
@@ -11,8 +12,7 @@ import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
   styleUrls: ['./establishment-homepage.component.css'],
 })
 export class EstablishmentHomepageComponent implements OnInit {
-  public pic: string;
-  public establishmentsList: any;
+  public establishments: Etablishment[];
   public establishmentsName = [];
 
   types: any[] = [
@@ -33,16 +33,11 @@ export class EstablishmentHomepageComponent implements OnInit {
 
   ngOnInit() {
     this.serviceEst.getAllEtablishment().subscribe((establismhents) => {
-      this.establishmentsList = establismhents;
-      console.log(this.establishmentsList);
+      this.establishments = establismhents;
       // Création d'un tableau de nom pour l'autocomplétion
-      for (let i = 0; i < this.establishmentsList.length; i += 1) {
+      for (let i = 0; i < this.establishments.length; i += 1) {
         this.establishmentsName.push(establismhents[i].name);
       }
-      console.log(this.establishmentsName);
-    });
-    this.searchBar.valueChanges.subscribe((value) => {
-      console.log('Valeurs modifiées', value);
     });
     this.searchBar.controls['type'].patchValue(this.types[0].id);
   }
@@ -52,7 +47,7 @@ export class EstablishmentHomepageComponent implements OnInit {
 // tslint:disable-next-line: max-line-length
     this.serviceEst.searchedEtablishment(this.searchBar.controls['type'].value, this.searchBar.controls['searchName'].value)
     .subscribe((establismhents: any) => {
-      this.establishmentsList = establismhents;
+      this.establishments = establismhents;
     });
   }
 // Modale

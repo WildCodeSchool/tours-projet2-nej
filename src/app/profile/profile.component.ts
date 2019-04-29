@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Profile } from '../common/models/profile.model';
 import { ProfileService } from '../common/services/profile.service';
 import { FormBuilder } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-profile',
@@ -10,7 +11,9 @@ import { FormBuilder } from '@angular/forms';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private service: ProfileService, private fb: FormBuilder) {}
+  constructor(private service: ProfileService,
+              private fb: FormBuilder,
+              public toastr: ToastrService) {}
 
   clickMessage = '';
 
@@ -47,13 +50,13 @@ export class ProfileComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.profileForm.value);
 
     this.service.put(this.profileForm.value).subscribe(
       (profile: Profile) => {
         this.profileForm.patchValue(profile);
-      },
+        this.toastr.success('Mon profil a bien été mis à jour!', 'Modification', {
+          positionClass: 'toast-bottom-full-width',
+        },
     );
-    this.clickMessage = 'Mon profil a bien été mis à jour!';
-  }
-}
+      });
+  }}

@@ -43,7 +43,6 @@ export class EtablishmentComponent implements OnInit {
   });
 
   public onSubmit() {
-    console.log(this.etablishmentForm.value);
     // ajout ou modification de l'etablissement dans l'API
     this.route.paramMap.subscribe((params: ParamMap) => {
       const id = params.get('id');

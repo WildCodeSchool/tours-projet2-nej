@@ -1,2 +1,6 @@
 @import"~bootstrap";
 @import '~ngx-toastr/toastr.css';
+html
+{
+  width: 100%;
+}

@@ -11,6 +11,7 @@ import { ProfileService } from '../common/services/profile.service';
 export class HeaderComponent implements OnInit {
 
   public name: string;
+  navbarOpen = false;
 
   constructor(public loginService: LoginService,
               public jwtHelper: JwtHelperService,
@@ -29,5 +30,8 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     this.loginService.logout();
+  }
+  toggleNavbar() {
+    this.navbarOpen = !this.navbarOpen;
   }
 }

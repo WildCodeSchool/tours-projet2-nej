@@ -80,11 +80,11 @@ export class BookingComponent implements OnInit {
             .get('date')
             .get('start')
             .patchValue({
-              hour: parseInt(dateStartTime[0], 10),
+              hour: parseInt(dateStartTime[1], 10),
               minute: parseInt(dateStartTime[1], 10),
             });
 
-          const dateEndUp = bookingValues.date.end.toString().split('T');
+          const dateEndUp = this.booking.date.end.toString().split('T');
           const dateEndDate = dateEndUp[0].split('-');
           const dateEndTime = dateEndUp[1].split(':');
           this.bookingForm
@@ -95,6 +95,7 @@ export class BookingComponent implements OnInit {
               month: parseInt(dateEndDate[1], 10),
               day: parseInt(dateEndDate[2], 10),
             });
+          console.log(dateEndTime);
           this.bookingForm
             .get('date')
             .get('end')
@@ -122,13 +123,13 @@ export class BookingComponent implements OnInit {
     if (result) {
       this.service.deleteBooking(this.id).subscribe(() => {
         this.router.navigate(['']);
+        this.toastr.warning(
+          'La réservation a bien été supprimée',
+          'Suppression', {
+            positionClass: 'toast-bottom-full-width',
+          },
+        );
       });
-      this.toastr.warning(
-        'La réservation a bien été supprimée',
-        'Suppression', {
-          positionClass: 'toast-bottom-full-width',
-        },
-      );
     }
   }
 
@@ -163,17 +164,15 @@ export class BookingComponent implements OnInit {
     // Si id, MAJ des données
     if (this.id) {
       this.service
-        .updateBooking(this.bookingForm.value, this.id)
+        .updateBooking(booking, this.id)
         .subscribe((newbookingValues: Booking) => {
           this.booking = newbookingValues;
-
           this.toastr.success(
             'La réservation a bien été modifié',
             'Modification',
             {
               positionClass: 'toast-bottom-full-width',
-            },
-          );
+            });
         });
       // Sans id, création d'une nouvelle réservation
     } else {
@@ -186,8 +185,7 @@ export class BookingComponent implements OnInit {
             'Modification',
             {
               positionClass: 'toast-bottom-full-width',
-            },
-          );
+            });
         });
     }
 

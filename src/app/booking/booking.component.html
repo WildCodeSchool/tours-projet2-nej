@@ -4,7 +4,7 @@
   <button class="backBtn" type="button" (click)="previousPage()">Retour</button>
 
   <form (ngSubmit)="onSubmit()" [formGroup]="bookingForm" #myForm="ngForm">
-    <h3 class="alert alert-secondary text-center " role="alert">{{etablishmentValue.name}}</h3>
+    <h3 class="alert alert-secondary text-center " role="alert">{{etablishments?.name}}</h3>
     <h3 class="mt-3">Date de réservation</h3>
 
     <div formGroupName="date" class="row">

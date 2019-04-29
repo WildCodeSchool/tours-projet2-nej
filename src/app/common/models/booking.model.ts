@@ -1,3 +1,5 @@
+import { Etablishment } from './etablishment.models';
+
 export class Booking {
   constructor(
     public date: {
@@ -18,6 +20,6 @@ export class Booking {
       };
     },
     public numbers: Number,
-    public establishment: string,
+    public establishment: Etablishment | string,
   ) {}
 }

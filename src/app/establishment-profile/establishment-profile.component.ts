@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { EstablishmentProfileService } from '../common/services/establishment-profile.service';
 import { Etablishment } from '../common/models/etablishment.models';
 import { EtablishmentService } from '../common/services/etablishment.service';

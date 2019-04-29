@@ -1,33 +1,97 @@
 <div class="container-fluid">
-  <h2 class="text-center mt-2">
-    Les réservations en cours pour votre établissement :
+  <ng-container *ngIf="!allBookings">
+    <h2 class="text-center mt-2">
+      Les réservations en cours pour votre établissement :
+    </h2>
+    <h3 class="alert alert-secondary text-center ">
+      {{ establishment?.name }}
+    </h3>
+  </ng-container>
+  <h2 *ngIf="allBookings" class="text-center mt-4">
+    Les réservations en cours pour vos établissements :
   </h2>
-  <h3 class="alert alert-secondary text-center " role="alert">
-    {{ establishmentInfo.name }}
-  </h3>
-  <button class="backBtn" type="button" routerLink="/userAccount/establishment-profile">Retour</button>
+  <button
+    class="backBtn"
+    type="button"
+    routerLink="/userAccount/establishment-profile"
+  >
+    Retour
+  </button>
+  <div></div>
   <div class="table-responsive">
     <table class="table table-bordered mt-4 mb-4">
       <thead class="thead-light">
         <tr class="text-center">
-            <th scope="col">Nom <button class="btn btn-light ml-4" (click)="sortNameUser()"><img  class ="sort" src="https://image.flaticon.com/icons/png/512/25/25756.png"></button></th>
-            <th scope="col">Date d'arrivée<button class="btn btn-light ml-4" (click)="sortDateStart()"><img  class ="sort" src="https://image.flaticon.com/icons/png/512/25/25756.png"></button></th>
-            <th scope="col">Date de départ<button class="btn btn-light ml-4" (click)="sortDateEnd()"><img  class ="sort" src="https://image.flaticon.com/icons/png/512/25/25756.png"></button></th>
-            <th scope="col">Adresse</th>
-            <th scope="col">Modifier / Supprimer</th>
+          <th *ngIf="allBookings" scope="col">
+            Nom de l'établissement
+            <button class="btn btn-light ml-4" (click)="sortName()">
+              <img
+                class="sort"
+                src="https://image.flaticon.com/icons/png/512/25/25756.png"
+              />
+            </button>
+          </th>
+          <th scope="col">
+            Nom
+            <button class="btn btn-light ml-4" (click)="sortNameUser()">
+              <img
+                class="sort"
+                src="https://image.flaticon.com/icons/png/512/25/25756.png"
+              />
+            </button>
+          </th>
+          <th scope="col">
+            Date d'arrivée<button
+              class="btn btn-light ml-4"
+              (click)="sortDateStart()"
+            >
+              <img
+                class="sort"
+                src="https://image.flaticon.com/icons/png/512/25/25756.png"
+              />
+            </button>
+          </th>
+          <th scope="col">
+            Date de départ<button
+              class="btn btn-light ml-4"
+              (click)="sortDateEnd()"
+            >
+              <img
+                class="sort"
+                src="https://image.flaticon.com/icons/png/512/25/25756.png"
+              />
+            </button>
+          </th>
+          <th scope="col">Adresse</th>
+          <th scope="col">Modifier / Supprimer</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let booking of bookingEstablishmentList; let i = index" class="text-center">
+        <tr *ngFor="let booking of bookings; let i = index" class="text-center">
+          <th *ngIf="allBookings" scope="row">
+            {{ booking.establishment.name }}
+          </th>
           <td>{{ booking.owner.name }}</td>
-          <td>{{ booking.date.start | date:'dd MMMM yyyy à HH:mm'  }}</td>
-          <td>{{ booking.date.end | date:'dd MMMM yyyy à HH:mm' }}</td>
+          <td>{{ booking.date.start | date: "dd MMMM yyyy à HH:mm" }}</td>
+          <td>{{ booking.date.end | date: "dd MMMM yyyy à HH:mm" }}</td>
           <td>{{ booking.owner.address.street }}</td>
           <td>
-            <a routerLink="/booking/{{ booking._id }}/update" class="btn btn-warning mr-3"><img class="icon"
-                src="https://image.flaticon.com/icons/png/512/97/97871.png" /></a>
-            <button class="btn btn-danger" (click)="deleteBooking(booking._id, i)" type="button">
-              <img class="icon" src="https://image.flaticon.com/icons/png/512/65/65307.png" />
+            <a
+              routerLink="/booking/{{ booking._id }}/update"
+              class="btn btn-warning mr-3"
+              ><img
+                class="icon"
+                src="https://image.flaticon.com/icons/png/512/97/97871.png"
+            /></a>
+            <button
+              class="btn btn-danger"
+              (click)="deleteBooking(booking._id, i)"
+              type="button"
+            >
+              <img
+                class="icon"
+                src="https://image.flaticon.com/icons/png/512/65/65307.png"
+              />
             </button>
           </td>
         </tr>
@@ -35,6 +99,12 @@
     </table>
   </div>
   <div class="d-flex justify-content-center mb-5">
-    <button class="backBtn" type="button" routerLink="/userAccount/establishment-profile">Retour</button>
+    <button
+      class="backBtn"
+      type="button"
+      routerLink="/userAccount/establishment-profile"
+    >
+      Retour
+    </button>
   </div>
 </div>

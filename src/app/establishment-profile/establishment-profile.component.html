@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-around mt-3 mb-3">
-  <button (click)="showEstablishment()">
+  <button (click)="showEstablishments()">
     Gérer mes établissements
   </button>
   <button (click)="showBookings()">
@@ -7,68 +7,34 @@
   </button>
 </div>
 <div class="container-fluid">
-  <div *ngIf="establishment">
+  <div *ngIf="isEstablishmentShow">
     <div class="alert alert-secondary" role="alert">
       Mes établissements
     </div>
     <div class="row">
-      <div
-        class="col-md-4"
-        *ngFor="let establishment of myEstablishments; let i = index"
-      >
+      <div class="col-md-4" *ngFor="let establishment of myEstablishments; let i = index">
         <div class="card mb-4 text-white bg-dark">
-          <img
-            class="card-img-top"
-            src="{{
+          <img class="card-img-top" src="{{
               establishment.medias[0]?.url
                 ? establishment.medias[0]?.url
                 : 'https://loremflickr.com/640/480/bar'
-            }}"
-            alt="establishment"
-          />
+            }}" alt="establishment" />
           <div class="card-body">
             <h5 class="card-title">{{ establishment.name }}</h5>
             <p class="card-text text-truncate">{{ establishment.description }}</p>
             <div class="bouton row">
-              <a
-                routerLink="{{ establishment._id }}/bookings"
-                class="btn btn-outline-light btn-sm col-lg-4"
-                >Réservations en cours</a
-              >
-              <a
-                routerLink="{{ establishment._id }}"
-                class="btn btn-outline-light btn-sm col-lg-4"
-                >Modifier l'établissement</a
-              >
-              <a
-                class="btn btn-danger btn-sm col-lg-4"
-                (click)="deleteEstablishment(establishment._id, i)"
-                >Supprimer l'établissement</a
-              >
+              <a routerLink="{{ establishment._id }}/bookings"
+                class="btn btn-outline-light btn-sm col-lg-4">Réservations en cours</a>
+              <a routerLink="{{ establishment._id }}" class="btn btn-outline-light btn-sm col-lg-4">Modifier
+                l'établissement</a>
+              <a class="btn btn-danger btn-sm col-lg-4" (click)="deleteEstablishment(establishment._id, i)">Supprimer
+                l'établissement</a>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="d-flex justify-content-center">
-      <div class="card mb-4 text-white bg-dark col-md-4">
-        <img
-          class="card-img-top"
-          src="https://conseils.pmd-medical.com/hs-fs/hubfs/Plus-Sign.png?width=706&name=Plus-Sign.png"
-          alt="establishment"
-        />
-        <div class="card-body">
-          <h5 class="card-title text-center">Nouvel établissement</h5>
-          <div class="bouton row">
-            <a
-              routerLink="etablishment"
-              class="btn btn-outline-light btn-sm col-md-4"
-              >Enregistrer un nouvel établissement</a
-            >
-          </div>
-        </div>
-      </div>
-    </div>
+    <app-etablishment-creation></app-etablishment-creation>
     <div class="d-flex justify-content-center mb-5">
       <button class="backBtn" type="button" routerLink="/userAccount">
         Retour
@@ -77,57 +43,9 @@
   </div>
 </div>
 
-<div *ngIf="bookings">
+<div *ngIf="isBookingsShow">
   <div class="container-fluid">
-    <h2 class="text-center mt-4">
-      Les réservations en cours pour vos établissements :
-    </h2>
-
-    <div class="table-responsive">
-      <table class="table table-bordered mt-4 mb-4">
-        <thead class="thead-light">
-          <tr class="text-center">
-            <th scope="col">Nom de l'établissement  <button class="btn btn-light ml-4" (click)="sortName()"><img  class ="sort" src="https://image.flaticon.com/icons/png/512/25/25756.png"></button></th>
-            <th scope="col">Nom <button class="btn btn-light ml-4" (click)="sortNameUser()"><img  class ="sort" src="https://image.flaticon.com/icons/png/512/25/25756.png"></button></th>
-            <th scope="col">Date d'arrivée<button class="btn btn-light ml-4" (click)="sortDateStart()"><img  class ="sort" src="https://image.flaticon.com/icons/png/512/25/25756.png"></button></th>
-            <th scope="col">Date de départ<button class="btn btn-light ml-4" (click)="sortDateEnd()"><img  class ="sort" src="https://image.flaticon.com/icons/png/512/25/25756.png"></button></th>
-            <th scope="col">Adresse</th>
-            <th scope="col">Modifier / Supprimer</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr
-            *ngFor="let booking of allMyBookings; let i = index"
-            class="text-center"
-          >
-            <th scope="row">{{ booking.establishment.name }}</th>
-            <td>{{ booking.owner.name }}</td>
-            <td>{{ booking.date.start | date:'dd MMMM yyyy à HH:mm' }}</td>
-            <td>{{ booking.date.end | date:'dd MMMM yyyy à HH:mm' }}</td>
-            <td>{{ booking.owner.address.street }}</td>
-            <td>
-              <a
-                routerLink="/booking/{{ booking._id }}/update"
-                class="btn btn-warning mr-3"
-                ><img
-                  class="icon"
-                  src="https://image.flaticon.com/icons/png/512/97/97871.png"
-              /></a>
-              <button
-                class="btn btn-danger"
-                (click)="deleteBooking(booking._id, i)"
-                type="button"
-              >
-                <img
-                  class="icon"
-                  src="https://image.flaticon.com/icons/png/512/65/65307.png"
-                />
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+   <app-establishment-bookinglist [bookings]="bookings" [allBookings]="true">
+   </app-establishment-bookinglist>
   </div>
 </div>
-

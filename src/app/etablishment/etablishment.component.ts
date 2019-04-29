@@ -11,7 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class EtablishmentComponent implements OnInit {
   public id: string;
-  public etablishments: Etablishment;
+  public etablishments: Etablishment[];
   // public form: FormGroup;
   constructor(private route: ActivatedRoute,
               private service: EtablishmentService,
@@ -91,7 +91,7 @@ export class EtablishmentComponent implements OnInit {
       const id = params.get('id');
       if (id) {
         this.service.getEtablishment(id).subscribe(
-          (res: Etablishment) => {
+          (res: Etablishment[]) => {
             this.etablishments = res;
             this.etablishmentForm.patchValue(res);
           },

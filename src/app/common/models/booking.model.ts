@@ -5,19 +5,19 @@ export class Booking {
       end: Date;
     },
     public owner: {
-      name: String;
+      name: string;
       address: {
-        street: String;
-        zipCode: String;
-        city: String;
+        street: string;
+        zipCode: string;
+        city: string;
         number: Number;
       };
       contact: {
-        phone: String;
-        email: String;
+        phone: string;
+        email: string;
       };
     },
     public numbers: Number,
-    public establishment: String,
+    public establishment: string,
   ) {}
 }

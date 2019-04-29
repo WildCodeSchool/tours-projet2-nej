@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { BookingService } from '../common/services/booking.service';
 import { EtablishmentService } from '../common/services/etablishment.service';
 import { ToastrService } from 'ngx-toastr';
+import { Booking } from '../common/models/booking.model';
+import { Etablishment } from '../common/models/etablishment.models';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-establishment-bookinglist',
@@ -10,15 +13,15 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./establishment-bookinglist.component.css'],
 })
 export class EstablishmentBookinglistComponent implements OnInit {
-  public bookingEstablishmentList = [];
-  public establishmentInfo: [] = [];
+  @Input() public bookings: Booking[];
+  public establishment: Etablishment[];
   public nameUser: boolean = false;
   public dateStart: boolean = false;
   public dateEnd: boolean = false;
 
   constructor(
-    private serviceBook: BookingService,
-    private serviceEst: EtablishmentService,
+    private serviceBooking: BookingService,
+    private serviceEstablishment: EtablishmentService,
     private toastr: ToastrService,
     public route: ActivatedRoute,
   ) {}
@@ -26,11 +29,11 @@ export class EstablishmentBookinglistComponent implements OnInit {
   public deleteBooking(id, index) {
     const result = confirm('Confirmez-vous la suppression de la réservation ?');
     if (result) {
-      this.serviceBook.deleteBooking(id).subscribe(() => {
-        this.bookingEstablishmentList.splice(index, 1);
-      });
-      this.toastr.warning('La réservation a bien été supprimé', 'Suppression', {
-        positionClass: 'toast-bottom-full-width',
+      this.serviceBooking.deleteBooking(id).subscribe(() => {
+        this.bookings.splice(index, 1);
+        this.toastr.warning('La réservation a bien été supprimé', 'Suppression', {
+          positionClass: 'toast-bottom-full-width',
+        });
       });
     }
   }
@@ -38,14 +41,14 @@ export class EstablishmentBookinglistComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe((params: ParamMap) => {
       const id = params.get('id');
-      this.serviceBook
+      this.serviceBooking
         .getBookingByEstablishment(id)
-        .subscribe((bookinglist: any) => {
-          this.bookingEstablishmentList = bookinglist;
-          this.serviceEst
+        .subscribe((bookingList: Booking[]) => {
+          this.bookings = bookingList;
+          this.serviceEstablishment
             .getEtablishment(id)
-            .subscribe((etablishmentInfo: any) => {
-              this.establishmentInfo = etablishmentInfo;
+            .subscribe((etablishmentInfo: Etablishment[]) => {
+              this.establishment = etablishmentInfo;
             });
         });
     });
@@ -53,40 +56,40 @@ export class EstablishmentBookinglistComponent implements OnInit {
 
   public sortNameUser() {
     if (!this.nameUser) {
-      this.bookingEstablishmentList.sort((a, b) => {
+      this.bookings.sort((a, b) => {
         this.nameUser = !this.nameUser;
         return a.owner.name.localeCompare(b.owner.name);
       });
     } else {
       this.dateStart = false;
       this.dateEnd = false;
-      return this.bookingEstablishmentList.reverse();
+      return this.bookings.reverse();
     }
   }
 
   public sortDateStart() {
     if (!this.dateStart) {
-      this.bookingEstablishmentList.sort((a, b) => {
+      this.bookings.sort((a, b) => {
         this.dateStart = !this.dateStart;
-        return a.date.start.localeCompare(b.date.start);
+        return a.date.start.getTime() - b.date.start.getTime();
       });
     } else {
       this.nameUser = false;
       this.dateEnd = false;
-      return this.bookingEstablishmentList.reverse();
+      return this.bookings.reverse();
     }
   }
 
   public sortDateEnd() {
     if (!this.dateEnd) {
-      this.bookingEstablishmentList.sort((a, b) => {
+      this.bookings.sort((a, b) => {
         this.dateEnd = !this.dateEnd;
-        return a.date.end.localeCompare(b.date.end);
+        return a.date.end.getTime() - b.date.end.getTime();
       });
     } else {
       this.nameUser = false;
       this.dateStart = false;
-      return this.bookingEstablishmentList.reverse();
+      return this.bookings.reverse();
     }
   }
 

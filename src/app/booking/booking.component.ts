@@ -166,6 +166,7 @@ export class BookingComponent implements OnInit {
         .updateBooking(this.bookingForm.value, this.id)
         .subscribe((newbookingValues: Booking) => {
           this.bookings = newbookingValues;
+
           this.toastr.success(
             'La réservation a bien été modifié',
             'Modification',
@@ -189,6 +190,7 @@ export class BookingComponent implements OnInit {
           );
         });
     }
+
   }
   // Revenir à la page précédente
   public previousPage() {

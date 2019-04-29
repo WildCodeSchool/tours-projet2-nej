@@ -24,8 +24,8 @@ export class EstablishmentProfileComponent implements OnInit {
 
   constructor(
     private serviceProfEst: EstablishmentProfileService,
-    private serviceEst: EtablishmentService,
-    private serviceBook: BookingService,
+    private serviceEstablishment: EtablishmentService,
+    private serviceBooking: BookingService,
     private toastr: ToastrService,
 ) {}
 
@@ -36,7 +36,7 @@ export class EstablishmentProfileComponent implements OnInit {
         console.log(establishment);
       },
     );
-    this.serviceBook.getAllBookings().subscribe(
+    this.serviceBooking.getAllBookings().subscribe(
       (bookings: Booking[]) => {
         this.allMyBookings = bookings;
         console.log(bookings);
@@ -57,7 +57,7 @@ export class EstablishmentProfileComponent implements OnInit {
   public deleteEstablishment(id: any, index: any) {
     const result = confirm("Confirmez-vous la suppression de l'établissement ?");
     if (result) {
-      this.serviceEst.deleteEtablishment(id).subscribe(() => {
+      this.serviceEstablishment.deleteEtablishment(id).subscribe(() => {
         this.myEstablishments.splice(index, 1);
         this.toastr.warning("L'établissement a bien été supprimé", 'Suppression', {
           positionClass: 'toast-bottom-full-width',
@@ -106,6 +106,18 @@ export class EstablishmentProfileComponent implements OnInit {
       this.nameUser = false;
       this.dateEnd = false;
       return this.allMyBookings.reverse();
+    }
+  }
+
+  public deleteBooking(id, index) {
+    const result = confirm('Confirmez-vous la suppression de la réservation ?');
+    if (result) {
+      this.serviceBooking.deleteBooking(id).subscribe(() => {
+        this.allMyBookings.splice(index, 1);
+        this.toastr.warning('La réservation a bien été supprimé', 'Suppression', {
+          positionClass: 'toast-bottom-full-width',
+        });
+      });
     }
   }
 

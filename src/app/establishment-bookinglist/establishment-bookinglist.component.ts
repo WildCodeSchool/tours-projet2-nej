@@ -5,7 +5,6 @@ import { EtablishmentService } from '../common/services/etablishment.service';
 import { ToastrService } from 'ngx-toastr';
 import { Booking } from '../common/models/booking.model';
 import { Etablishment } from '../common/models/etablishment.models';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-establishment-bookinglist',

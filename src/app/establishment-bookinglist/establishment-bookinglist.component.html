@@ -2,8 +2,8 @@
   <h2 class="text-center mt-2">
     Les réservations en cours pour votre établissement :
   </h2>
-  <h3 class="alert alert-secondary text-center " role="alert">
-    {{ establishmentInfo.name }}
+  <h3 class="alert alert-secondary text-center ">
+  {{ establishment?.name }}
   </h3>
   <button class="backBtn" type="button" routerLink="/userAccount/establishment-profile">Retour</button>
   <div class="table-responsive">
@@ -18,7 +18,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let booking of bookingEstablishmentList; let i = index" class="text-center">
+        <tr *ngFor="let booking of bookings; let i = index" class="text-center">
           <td>{{ booking.owner.name }}</td>
           <td>{{ booking.date.start | date:'dd MMMM yyyy à HH:mm'  }}</td>
           <td>{{ booking.date.end | date:'dd MMMM yyyy à HH:mm' }}</td>

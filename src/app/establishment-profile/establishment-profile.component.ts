@@ -12,15 +12,14 @@ import { Booking } from '../common/models/booking.model';
 })
 export class EstablishmentProfileComponent implements OnInit {
 
-  public nameOrder: boolean = false;
-  public nameUser: boolean = false;
-  public dateStart: boolean = false;
-  public dateEnd: boolean = false;
-  private allMyBookings = [];
+  public isNameOrder: boolean = false;
+  public isNameUser: boolean = false;
+  public isDateStart: boolean = false;
+  public isDateEnd: boolean = false;
+  private bookings: Booking[];
   private myEstablishments = [];
-  public establishmentList: any;
-  public establishment: boolean = true;
-  public bookings: boolean = false;
+  public isEstablishmentShow: boolean = true;
+  public isBookingsShow: boolean = false;
 
   constructor(
     private serviceProfEst: EstablishmentProfileService,
@@ -38,20 +37,20 @@ export class EstablishmentProfileComponent implements OnInit {
     );
     this.serviceBooking.getAllBookings().subscribe(
       (bookings: Booking[]) => {
-        this.allMyBookings = bookings;
+        this.bookings = bookings;
         console.log(bookings);
       },
     );
   }
 
-  public showEstablishment() {
-    this.establishment = true;
-    this.bookings = false;
+  public showEstablishments() {
+    this.isEstablishmentShow = true;
+    this.isBookingsShow = false;
   }
 
   public showBookings() {
-    this.establishment = false;
-    this.bookings = true;
+    this.isEstablishmentShow = false;
+    this.isBookingsShow = true;
   }
 
   public deleteEstablishment(id: any, index: any) {
@@ -68,44 +67,46 @@ export class EstablishmentProfileComponent implements OnInit {
 
   // Trier par noms d'établissements
   public sortName() {
-    if (!this.nameOrder) {
-      this.allMyBookings.sort((a, b) => {
-        this.nameOrder = !this.nameOrder;
+    if (!this.isNameOrder) {
+      this.bookings.sort((a, b) => {
+        this.isNameOrder = !this.isNameOrder;
+        a.establishment = a.establishment as Etablishment;
+        b.establishment = b.establishment as Etablishment;
         return a.establishment.name.localeCompare(b.establishment.name);
       });
     } else {
-      this.nameUser = false;
-      this.dateStart = false;
-      this.dateEnd = false;
-      return this.allMyBookings.reverse();
+      this.isNameUser = false;
+      this.isDateStart = false;
+      this.isDateEnd = false;
+      return this.bookings.reverse();
     }
   }
 
   public sortNameUser() {
-    if (!this.nameUser) {
-      this.allMyBookings.sort((a, b) => {
-        this.nameUser = !this.nameUser;
+    if (!this.isNameUser) {
+      this.bookings.sort((a, b) => {
+        this.isNameUser = !this.isNameUser;
         return a.owner.name.localeCompare(b.owner.name);
       });
     } else {
-      this.nameOrder = false;
-      this.dateStart = false;
-      this.dateEnd = false;
-      return this.allMyBookings.reverse();
+      this.isNameOrder = false;
+      this.isDateStart = false;
+      this.isDateEnd = false;
+      return this.bookings.reverse();
     }
   }
 
   public sortDateStart() {
-    if (!this.dateStart) {
-      this.allMyBookings.sort((a, b) => {
-        this.dateStart = !this.dateStart;
-        return a.date.start.localeCompare(b.date.start);
+    if (!this.isDateStart) {
+      this.bookings.sort((a, b) => {
+        this.isDateStart = !this.isDateStart;
+        return new Date(a.date.start).getTime() - new Date(b.date.start).getTime();
       });
     } else {
-      this.nameOrder = false;
-      this.nameUser = false;
-      this.dateEnd = false;
-      return this.allMyBookings.reverse();
+      this.isNameOrder = false;
+      this.isNameUser = false;
+      this.isDateEnd = false;
+      return this.bookings.reverse();
     }
   }
 
@@ -113,7 +114,7 @@ export class EstablishmentProfileComponent implements OnInit {
     const result = confirm('Confirmez-vous la suppression de la réservation ?');
     if (result) {
       this.serviceBooking.deleteBooking(id).subscribe(() => {
-        this.allMyBookings.splice(index, 1);
+        this.bookings.splice(index, 1);
         this.toastr.warning('La réservation a bien été supprimé', 'Suppression', {
           positionClass: 'toast-bottom-full-width',
         });
@@ -122,16 +123,16 @@ export class EstablishmentProfileComponent implements OnInit {
   }
 
   public sortDateEnd() {
-    if (!this.dateEnd) {
-      this.allMyBookings.sort((a, b) => {
-        this.dateEnd = !this.dateEnd;
-        return a.date.end.localeCompare(b.date.end);
+    if (!this.isDateEnd) {
+      this.bookings.sort((a, b) => {
+        this.isDateEnd = !this.isDateEnd;
+        return new Date(a.date.end).getTime() - new Date(b.date.end).getTime();
       });
     } else {
-      this.nameOrder = false;
-      this.nameUser = false;
-      this.dateStart = false;
-      return this.allMyBookings.reverse();
+      this.isNameOrder = false;
+      this.isNameUser = false;
+      this.isDateStart = false;
+      return this.bookings.reverse();
     }
   }
 }

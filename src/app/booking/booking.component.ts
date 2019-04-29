@@ -13,9 +13,8 @@ import {Location} from '@angular/common';
   styleUrls: ['./booking.component.css'],
 })
 export class BookingComponent implements OnInit {
-  public myDateValue: Date;
   public bookings: Booking;
-  public etablishmentValue: [] = [];
+  public etablishments: [] = [];
   public dateStartUp: any;
   public dateStartDate: any;
   public dateStartTime: any;
@@ -114,7 +113,7 @@ export class BookingComponent implements OnInit {
         this.serviceEst
           .getEtablishment(est)
           .subscribe((etablishmentValue: any) => {
-            this.etablishmentValue = etablishmentValue;
+            this.etablishments = etablishmentValue;
             this.bookingForm.controls.establishment.patchValue(est);
           });
       }

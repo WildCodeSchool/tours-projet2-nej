@@ -131,7 +131,7 @@
       <button class="saveBtn" type="submit">Sauvegarder</button>
       <a routerLink="" *ngIf="!est"><button class="resetBtn" type="button">Annuler</button></a>
       <button *ngIf="est" class="resetBtn" type="button" (click)="deleteBooking()">Supprimer la réservation</button>
-      <button class="backBtn" type="button" routerLink="/">Retour</button>
+      <button class="backBtn" type="button" (click)="previousPage()">Retour</button>
     </div>
   </form>
 </div>

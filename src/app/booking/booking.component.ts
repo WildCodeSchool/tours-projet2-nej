@@ -182,28 +182,28 @@ export class BookingComponent implements OnInit {
           .updateBooking(this.bookingForm.value, id)
           .subscribe((newbookingValues: Booking) => {
             this.bookings = newbookingValues;
-            this.toastr.success(
-              'La réservation a bien été modifié',
-              'Modification',
-              {
-                positionClass: 'toast-bottom-full-width',
-              },
-            );
           });
+          this.toastr.success(
+            'La réservation a bien été modifié',
+            'Modification',
+            {
+              positionClass: 'toast-bottom-full-width',
+            },
+          );
         // Sans id, création d'une nouvelle réservation
       } else {
         this.service
           .createBooking(this.bookingForm.value)
           .subscribe((newbookingValues: Booking) => {
             this.bookings = newbookingValues;
-            this.toastr.success(
-              'La réservation a bien été enregistré',
-              'Modification',
-              {
-                positionClass: 'toast-bottom-full-width',
-              },
-            );
           });
+        this.toastr.success(
+            'La réservation a bien été enregistré',
+            'Modification',
+          {
+          positionClass: 'toast-bottom-full-width',
+          },
+        );
       }
     });
   }

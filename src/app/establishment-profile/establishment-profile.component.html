@@ -6,46 +6,27 @@
     Gérer les réservations en cours
   </button>
 </div>
-<div class="container-fluid">
+
+<div class="container">
   <div *ngIf="isEstablishmentShow">
     <div class="alert alert-secondary" role="alert">
       Mes établissements
     </div>
     <div class="row">
-      <div class="col-md-4" *ngFor="let establishment of myEstablishments; let i = index">
-        <div class="card mb-4 text-white bg-dark">
-          <img class="card-img-top" src="{{
-              establishment.medias[0]?.url
-                ? establishment.medias[0]?.url
-                : 'https://loremflickr.com/640/480/bar'
-            }}" alt="establishment" />
-          <div class="card-body">
-            <h5 class="card-title">{{ establishment.name }}</h5>
-            <p class="card-text text-truncate">{{ establishment.description }}</p>
-            <div class="bouton row">
-              <a routerLink="{{ establishment._id }}/bookings"
-                class="btn btn-outline-light btn-sm col-lg-4">Réservations en cours</a>
-              <a routerLink="{{ establishment._id }}" class="btn btn-outline-light btn-sm col-lg-4">Modifier
-                l'établissement</a>
-              <a class="btn btn-danger btn-sm col-lg-4" (click)="deleteEstablishment(establishment._id, i)">Supprimer
-                l'établissement</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <app-etablishment-creation></app-etablishment-creation>
-    <div class="d-flex justify-content-center mb-5">
-      <button class="backBtn" type="button" routerLink="/userAccount">
-        Retour
-      </button>
-    </div>
+    <div *ngFor="let establishment of myEstablishments" class="col-md-4" >
+    <app-establishment-card [establishment]="establishment" [admin]="true" (delete)="splice(index)"></app-establishment-card>
+</div>
   </div>
+  <app-etablishment-creation></app-etablishment-creation>
+  <button class="backBtn" type="button" routerLink="/userAccount">
+    Retour
+  </button>
+</div>
+<ng-container *ngIf="isBookingsShow" class="col-md-4">
+    <app-establishment-bookinglist [bookings]="bookings" [allBookings]="true">
+    </app-establishment-bookinglist>
+  </ng-container>
+    <div class="d-flex justify-content-center mb-5">
+</div>
 </div>
 
-<div *ngIf="isBookingsShow">
-  <div class="container-fluid">
-   <app-establishment-bookinglist [bookings]="bookings" [allBookings]="true">
-   </app-establishment-bookinglist>
-  </div>
-</div>

@@ -10,8 +10,8 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./etablishment.component.css'],
 })
 export class EtablishmentComponent implements OnInit {
-  public id: string;
-  public etablishments: Etablishment[];
+  public id: string ;
+  public etablishments: Etablishment;
   // public form: FormGroup;
   constructor(private route: ActivatedRoute,
               private service: EtablishmentService,
@@ -42,61 +42,67 @@ export class EtablishmentComponent implements OnInit {
     medias: this.fb.array([]),
   });
 
-  public onSubmit() {
-    // ajout ou modification de l'etablissement dans l'API
+  public ngOnInit(): void {
+    // appel les infos de l'API pour l'etablissement séléctioné
     this.route.paramMap.subscribe((params: ParamMap) => {
-      const id = params.get('id');
-      // si un "id" est renseigné alors la modification est activé
-      if (id) {
-        this.service.putEtablishment(id, this.etablishmentForm.value)
-          .subscribe((etablishment: Etablishment) => {
-            this.etablishmentForm.patchValue(etablishment);
-            this.toastr.success("L'établissement a bien été modifié", 'Modification', {
-              positionClass: 'toast-bottom-full-width',
-            });
-          });
-        // sinon l'ajout est activé
-      } else {
-        this.service.postEtablishment(this.etablishmentForm.value)
-          .subscribe((etablishment: Etablishment) => {
-            this.etablishmentForm.patchValue(etablishment);
-            this.toastr.success("L'établissement a bien été créé", 'Création', {
-              positionClass: 'toast-bottom-full-width',
-            });
-          });
+      this.id = params.get('id');
+      if (this.id) {
+
+        this.service.getEtablishment(this.id).subscribe(
+          (res: Etablishment) => {
+            this.etablishments = res;
+            this.etablishmentForm.patchValue(res);
+
+            const medias = this.etablishmentForm.controls.medias as FormArray;
+
+            for (let i = 0; i < res.medias.length; i += 1) {
+              this.addMedias();
+              medias.at(i).patchValue(res.medias[i]);
+            }
+            const networks = this.etablishmentForm.controls.networks as FormArray;
+
+            for (let j = 0; j < res.networks.length; j += 1) {
+              this.addNetworks();
+              networks.at(j).patchValue(res.networks[j]);
+            }
+          },
+        );
       }
     });
+  }
+  public onSubmit() {
+    // si un "id" est renseigné alors la modification est activé
+    if (this.id) {
+      this.service.putEtablishment(this.id, this.etablishmentForm.value)
+        .subscribe((etablishment: Etablishment) => {
+          this.etablishmentForm.patchValue(etablishment);
+          this.toastr.success("L'établissement a bien été modifié", 'Modification', {
+            positionClass: 'toast-bottom-full-width',
+          });
+        });
+      // sinon l'ajout est activé
+    } else {
+      this.service.postEtablishment(this.etablishmentForm.value)
+        .subscribe((etablishment: Etablishment) => {
+          this.etablishmentForm.patchValue(etablishment);
+          this.toastr.success("L'établissement a bien été créé", 'Création', {
+            positionClass: 'toast-bottom-full-width',
+          });
+        });
+    }
   }
   // supprime un etablissement de l'API
   public deleteEtablishment() {
     const result = confirm("Confirmez-vous la suppression de l'établissement' ?");
     if (result) {
-      this.route.paramMap.subscribe((params: ParamMap) => {
-        const id = params.get('id');
-        this.service.deleteEtablishment(id)
-          .subscribe(() => {
-            this.router.navigate(['']);
-            this.toastr.warning("L'établissement a bien été supprimé", 'Suppression', {
-              positionClass: 'toast-bottom-full-width',
-            });
+      this.service.deleteEtablishment(this.id)
+        .subscribe(() => {
+          this.router.navigate(['']);
+          this.toastr.warning("L'établissement a bien été supprimé", 'Suppression', {
+            positionClass: 'toast-bottom-full-width',
           });
-      });
+        });
     }
-  }
-
-  public ngOnInit(): void {
-    // appel les infos de l'API pour l'etablissement séléctioné
-    this.route.paramMap.subscribe((params: ParamMap) => {
-      const id = params.get('id');
-      if (id) {
-        this.service.getEtablishment(id).subscribe(
-          (res: Etablishment[]) => {
-            this.etablishments = res;
-            this.etablishmentForm.patchValue(res);
-          },
-        );
-      }
-    });
   }
   // tableau des networks
   public addNetworks() {

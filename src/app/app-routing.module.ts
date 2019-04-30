@@ -30,7 +30,7 @@ const routes: Routes = [
     component: EstablishmentBookinglistComponent, canActivate: [AuthGuard] },
   { path: 'userAccount', component: UseraccountComponent, canActivate: [AuthGuard] },
 
-  { path: 'userAccount/establishment-profile', 
+  { path: 'userAccount/establishment-profile',
     component: EstablishmentProfileComponent, canActivate: [AuthGuard] },
   { path: 'etablishment/:id', component: EtablishmentComponent },
   { path: 'login', component: LoginComponent },

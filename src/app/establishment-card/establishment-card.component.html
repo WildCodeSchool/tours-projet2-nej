@@ -1,0 +1,106 @@
+
+
+  <div class="d-flex justify-content-center align-items-stretch row">
+      <div class="card border border-secondary">
+        <img
+          class="card-img-top img-fluid"
+          src="{{
+            establishment.medias[0]?.url
+              ? establishment.medias[0]?.url
+              : 'https://loremflickr.com/640/480/bar'
+          }}"
+          alt="Card image cap"
+        />
+
+        <div class="card-body">
+          <h5 class="text-center card-title title">{{ establishment.name }}</h5>
+          <div class="card-text desc text-center">
+            {{
+                  establishment.description
+                ? establishment.description
+                : establishment.name
+            }}
+          </div>
+          <div class="d-flex justify-content-center mb-4 mt-4">
+            <button *ngIf="!admin" class="btn btn-secondary" (click)="open(content)">
+              Plus d'infos
+            </button>
+            <div *ngIf="admin" class="bouton row">
+                <a
+                  routerLink="{{ establishment._id }}/bookings"
+                  class="btn btn-secondary btn-sm col-lg-4"
+                  >Réservations en cours</a
+                >
+                <a
+                  routerLink="{{ establishment._id }}"
+                  class="btn btn-secondary btn-sm col-lg-4"
+                  >Modifier l'établissement</a
+                >
+                <a
+                  class="btn btn-danger btn-sm col-lg-4"
+                  (click)="deleteEstablishment(establishment._id)"
+                  >Supprimer l'établissement</a
+                >
+              </div>
+          </div>
+        </div>
+          </div>
+
+
+      <ng-template #content let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">
+            {{ establishment.name }}
+          </h4>
+          <button
+            type="button"
+            class="close"
+            aria-label="Close"
+            (click)="modal.dismiss('Cross click')"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <img
+            class="card-img-top img-fluid"
+            src="{{
+              establishment.medias[0]?.url
+                ? establishment.medias[0]?.url
+                : 'https://loremflickr.com/640/480/bar'
+            }}"
+            alt="Card image cap"
+          />
+          <p class="p-3 mb-2 bg-secondary text-white">
+            {{ establishment.description }}
+          </p>
+          <div class="row">
+            <p class="col-12 p-3 m-2 bg-secondary text-white rounded">
+              Adresse:
+            </p>
+            <p class="card-text ml-4">
+              {{ establishment.address.number }}
+              {{ establishment.address.street }}
+              {{ establishment.address.zipCode }}
+              {{ establishment.address.city }}
+            </p>
+            <p class="col-12 p-3 m-2 bg-secondary text-white rounded">
+              Contact:
+            </p>
+            <p class="card-text col-4">{{ establishment.contact.phone }}</p>
+            <p class="card-text col-4">{{ establishment.contact.email }}</p>
+            <p class="card-text col-4">{{ establishment.contact.site }}</p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a
+            routerLink="booking/establishment/{{ establishment._id }}"
+            (click)="modal.close()"
+            class="btn btn-secondary"
+            >Réserver</a
+          >
+        </div>
+      </ng-template>
+    </div>
+
+

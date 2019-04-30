@@ -27,13 +27,15 @@ export class EstablishmentHomepageComponent implements OnInit {
   });
 
   constructor(
-    private serviceEst: EtablishmentService,
     private modalService: NgbModal,
-    private fb: FormBuilder) {}
+    private fb: FormBuilder,
+    private serviceEstablishment: EtablishmentService,
+    ) {}
 
   ngOnInit() {
-    this.serviceEst.getAllEtablishment().subscribe((establismhents) => {
+    this.serviceEstablishment.getAllEtablishment().subscribe((establismhents) => {
       this.establishments = establismhents;
+      console.log(establismhents);
       // Création d'un tableau de nom pour l'autocomplétion
       for (let i = 0; i < this.establishments.length; i += 1) {
         this.establishmentsName.push(establismhents[i].name);
@@ -42,21 +44,21 @@ export class EstablishmentHomepageComponent implements OnInit {
     this.searchBar.valueChanges.subscribe((value) => {
     });
     this.searchBar.controls['type'].patchValue(this.types[0].id);
+    this.serviceEstablishment.getAllEtablishment().subscribe((establismhents) => {
+      this.establishments = establismhents;
+    });
   }
 
   public search() {
     // Envoi type et bar pour filtrer
 
-    this.serviceEst.searchedEtablishment(
+    this.serviceEstablishment.searchedEtablishment(
       this.searchBar.controls['type'].value, this.searchBar.controls['searchName'].value)
     .subscribe((establismhents: any) => {
       this.establishments = establismhents;
     });
   }
-// Modale
-  public open(content) {
-    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
-  }
+
 // Autocomplétion de la barre de recherche
   public autocomplete = (text$: Observable<string>) =>
     text$.pipe(

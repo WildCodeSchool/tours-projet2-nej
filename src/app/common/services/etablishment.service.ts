@@ -15,12 +15,12 @@ export class EtablishmentService {
     this.service = paramService;
   }
   // afiche un etablissement
-  public getEtablishment(id: string): Observable<Etablishment[]> {
+  public getEtablishment(id: string): Observable<Etablishment> {
     const obs: Observable<any> = this.service.get(
       `http://open-reza.herokuapp.com/api/establishments/${id}`);
     return obs.pipe(
       map((paramEtablishment: any) => {
-        return paramEtablishment as Etablishment[];
+        return paramEtablishment as Etablishment;
       }),
     );
   }

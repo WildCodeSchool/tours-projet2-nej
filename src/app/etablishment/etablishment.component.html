@@ -92,7 +92,7 @@
 
       <h3>Réseaux</h3>
 
-      <button (click)="addNetworks()">ajouter un Réseau</button>
+      <button type="button" (click)="addNetworks()">ajouter un Réseau</button>
 
       <div formArrayName="networks" *ngFor="let networks of etablishmentForm.controls.networks.controls; let i = index">
         <ng-container [formGroupName]="i">
@@ -111,13 +111,13 @@
               <div class="line"></div>
             </div>
           </label>
-          <button (click)="deleteNetworks(i)">Supprimer un réseau</button>
+          <button type="button" (click)="deleteNetworks(i)">Supprimer un réseau</button>
         </ng-container>
       </div>
 
       <h3>Medias</h3>
 
-      <button (click)="addMedias()">Ajouter une image</button>
+      <button type="button" (click)="addMedias()">Ajouter une image</button>
 
       <div formArrayName="medias" *ngFor="let medias of etablishmentForm.controls.medias.controls; let i = index">
         <ng-container [formGroupName]="i">
@@ -135,7 +135,7 @@
               <div class="line"></div>
             </div>
           </label>
-          <button (click)="deleteMedias(i)">Supprimer une image</button>
+          <button type="button" (click)="deleteMedias(i)">Supprimer une image</button>
         </ng-container>
       </div>
       <div class="d-flex justify-content-center mt-5 mb-5">

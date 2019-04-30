@@ -14,7 +14,7 @@ import { Etablishment } from '../common/models/etablishment.models';
 export class EstablishmentBookinglistComponent implements OnInit {
   @Input() public bookings: Booking[];
   @Input() public allBookings: boolean;
-  public establishment: Etablishment[];
+  public establishments: Etablishment;
   public nameUser: boolean = false;
   public dateStart: boolean = false;
   public dateEnd: boolean = false;
@@ -52,8 +52,8 @@ export class EstablishmentBookinglistComponent implements OnInit {
             this.bookings = bookingList;
             this.serviceEstablishment
               .getEtablishment(id)
-              .subscribe((etablishmentInfo: Etablishment[]) => {
-                this.establishment = etablishmentInfo;
+              .subscribe((etablishmentInfo: Etablishment) => {
+                this.establishments = etablishmentInfo;
               });
           });
       }

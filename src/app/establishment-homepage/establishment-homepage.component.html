@@ -10,8 +10,9 @@
           formControlName="searchName"
           [(ngModel)]="model"
           [ngbTypeahead]="autocomplete"
+          (selectItem)="selectedItem($event)"
         />
-        <select class="typeBtn form-control col-sm-4" formControlName="type">
+        <select class="typeBtn form-control col-sm-4" formControlName="type" (change)="search()">
           <option *ngFor="let type of types" [value]="type.id">{{
             type.name
           }}</option>

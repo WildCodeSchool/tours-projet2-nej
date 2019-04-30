@@ -58,6 +58,11 @@ export class EstablishmentHomepageComponent implements OnInit {
     });
   }
 
+// Lorsque le résultation de l'autocomplétion est sélectionné, le résulat s'affiche
+  selectedItem($event) {
+    this.search();
+  }
+
 // Autocomplétion de la barre de recherche
   public autocomplete = (text$: Observable<string>) =>
     text$.pipe(

@@ -1,6 +1,6 @@
 <div class="container">
 
-  <h2 class="mt-4">Mes identifiants</h2>
+  <h2 class="mt-4">MES IDENTIFIANTS</h2>
 
   <form #myForm="ngForm" (ngSubmit)="myForm.valid && onSubmit()" [formGroup]='loginForm'>
       <div class="row">
@@ -32,4 +32,5 @@
       </div>
       <div *ngIf="error" class="alert alert-danger">L'email ou le mot de passe est incorrect!</div>
     </form>
+    <p class="inscription">Pas encore inscrit? Inscrivez-vous maintenant: <button class="btn btn-primary" type="submit" [routerLink]="['/creation']">S'inscrire</button></p>
 </div>

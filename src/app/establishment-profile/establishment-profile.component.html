@@ -14,19 +14,19 @@
     </div>
     <div class="row">
     <div *ngFor="let establishment of myEstablishments" class="col-md-4" >
-    <app-establishment-card [establishment]="establishment" [admin]="true" (delete)="splice(index)"></app-establishment-card>
+    <app-establishment-card [establishment]="establishment" [admin]="true" (delete)="splice($event)"></app-establishment-card>
 </div>
   </div>
   <app-etablishment-creation></app-etablishment-creation>
-  <button class="backBtn" type="button" routerLink="/userAccount">
-    Retour
-  </button>
 </div>
 <ng-container *ngIf="isBookingsShow" class="col-md-4">
     <app-establishment-bookinglist [bookings]="bookings" [allBookings]="true">
     </app-establishment-bookinglist>
   </ng-container>
-    <div class="d-flex justify-content-center mb-5">
+  <div class="d-flex justify-content-center">
+  <button class="backBtn" type="button" routerLink="/userAccount">
+    Retour
+  </button>
 </div>
 </div>
 

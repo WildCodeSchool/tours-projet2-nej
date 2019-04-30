@@ -13,3 +13,20 @@ margin-bottom: 1rem;
 .title {
 height: 50px;
 }
+
+.card-text{
+   overflow: hidden;
+   text-overflow: ellipsis;
+}
+/* .card-text-hover{
+   visibility: hidden;
+   transition: 2s;
+}
+.card-body:hover .card-text-hover{
+
+   visibility: visible;
+}
+
+.card-body:hover .card-text{
+   visibility: hidden;
+} */

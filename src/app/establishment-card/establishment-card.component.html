@@ -3,7 +3,7 @@
   <div class="d-flex justify-content-center align-items-stretch row">
       <div class="card border border-secondary">
         <img
-          class="card-img-top "
+          class="card-img-top img-fluid"
           src="{{
             establishment.medias[0]?.url
               ? establishment.medias[0]?.url
@@ -12,15 +12,22 @@
           alt="Card image cap"
         />
 
-        <div class="card-body bg-secondary">
+        <div class="card-body">
           <h5 class="text-center card-title title">{{ establishment.name }}</h5>
-          <p class="card-text text-truncate">
+          <span class="card-text">
             {{
                   establishment.description
                 ? establishment.description
                 : establishment.name
             }}
-          </p>
+          </span>
+          <span class="card-text-hover">
+            {{
+                  establishment.description
+                ? establishment.description
+                : establishment.name
+            }}
+          </span>
           <div class="d-flex justify-content-center">
             <button *ngIf="!admin" class="btn btn-secondary" (click)="open(content)">
               Plus d'infos
@@ -38,7 +45,7 @@
                 >
                 <a
                   class="btn btn-danger btn-sm col-lg-4"
-                  (click)="deleteEstablishment(establishment._id, i)"
+                  (click)="deleteEstablishment(establishment._id)"
                   >Supprimer l'établissement</a
                 >
               </div>

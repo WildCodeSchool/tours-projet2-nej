@@ -15,13 +15,12 @@ export class EstablishmentCardComponent implements OnInit {
 
   @Input() public establishment: Etablishment;
   @Input() public admin: boolean;
-  @Output() public delete: EventEmitter<any> = new EventEmitter();
+  @Output() public delete:  EventEmitter<any> = new EventEmitter();
 
   constructor(
     private serviceEstablishment: EtablishmentService,
     private modalService: NgbModal,
     private toastr: ToastrService,
-    private profileEstablishmentService: EstablishmentProfileService,
     ) {}
 
   ngOnInit() {
@@ -33,11 +32,11 @@ export class EstablishmentCardComponent implements OnInit {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
   }
 
-  public deleteEstablishment(id: any, index: any) {
+  public deleteEstablishment(id: any) {
     const result = confirm("Confirmez-vous la suppression de l'établissement ?");
     if (result) {
       this.serviceEstablishment.deleteEtablishment(id).subscribe(() => {
-        this.delete.emit(index);
+        this.delete.emit(id);
         this.toastr.warning("L'établissement a bien été supprimé", 'Suppression', {
           positionClass: 'toast-bottom-full-width',
         });

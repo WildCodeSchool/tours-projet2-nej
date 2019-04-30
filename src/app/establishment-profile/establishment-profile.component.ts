@@ -122,7 +122,9 @@ export class EstablishmentProfileComponent implements OnInit {
     }
   }
 
-  public splice(index) {
-    this.myEstablishments.splice(index, 1);
+
+  public splice($event) {
+    const index = this.myEstablishments.findIndex((e: Etablishment) => e._id === $event);
+    this.myEstablishments.splice(index);
   }
 }

@@ -26,6 +26,7 @@ import { registerLocaleData } from '@angular/common';
 // tslint:disable-next-line: import-name
 import localeFr from '@angular/common/locales/fr';
 import { EtablishmentCreationComponent } from './etablishment-creation/etablishment-creation.component';
+import { EstablishmentCardComponent } from './establishment-card/establishment-card.component';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -44,6 +45,7 @@ registerLocaleData(localeFr, 'fr');
     LoginComponent,
     UserCreationComponent,
     EtablishmentCreationComponent,
+    EstablishmentCardComponent,
   ],
   imports: [
     BrowserModule,

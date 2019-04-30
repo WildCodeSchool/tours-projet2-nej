@@ -25,7 +25,7 @@ export class EtablishmentService {
     );
   }
   // crée un etablissment
-  public postEtablishment(etablishementForm: any): Observable<any> {
+  public postEtablishment(etablishementForm: any): Observable<Etablishment> {
     const obs: Observable<any> = this.service.post(
       'http://open-reza.herokuapp.com/api/establishments', etablishementForm);
 

@@ -5,62 +5,60 @@
     NEJ
   </a>
 
-  <button class="navbar-toggler" (click)="toggleNavbar()" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" (click)="toggleNavbar()" type="button" data-toggle="collapse" 
+  data-target="#navbarNav"
+    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarNav" [ngClass]="{'show': navbarOpen}">
     <div *ngIf="loginService.user; then thenBlock; else elseBlock"></div>
-      <ng-template #thenBlock>
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" [routerLink]="['']">Accueil</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" [routerLink]="['userAccount']">Mon compte</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" [routerLink]="['']" (click)="logout()"> Se déconnecter</a>
-            </li>
-          </ul>
-          <button type="button" class="btn btn-dark" [routerLink]="['userAccount']">Bienvenue {{name}}!</button>
-      </ng-template>
-      <ng-template #elseBlock>
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" [routerLink]="['']">Accueil</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" [routerLink]="['creation']"> S'inscrire </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" [routerLink]="['login']"> Se connecter</a>
-            </li>
-          </ul>
-      </ng-template>
+    <ng-template #thenBlock>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['']">Accueil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['userAccount']">Mon compte</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['']" (click)="logout()"> Se déconnecter</a>
+        </li>
+      </ul>
+      <button type="button" class="btn btn-dark" [routerLink]="['userAccount']">Bienvenue {{name}}!</button>
+    </ng-template>
+    <ng-template #elseBlock>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['']">Accueil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['creation']"> S'inscrire </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['login']"> Se connecter</a>
+        </li>
+      </ul>
+    </ng-template>
   </div>
 </nav>
 <!--carroussel-->
 
 
-  <ngb-carousel>
-    <ng-template ngbSlide>
-      <img src="../assets/images/banner1.jpg" class="d-block" alt="Random first slide">
-      <div class="carousel-caption">
-      </div>
-    </ng-template>
-    <ng-template ngbSlide>
-      <img src="../assets/images/banner2.jpg" class="d-block" alt="Random second slide">
-      <div class="carousel-caption">
-      </div>
-    </ng-template>
-    <ng-template ngbSlide>
-      <img src="../assets/images/banner3.jpg" class="d-block" alt="Random third slide">
-      <div class="carousel-caption">
-      </div>
-    </ng-template>
-  </ngb-carousel>
-
-
-
-
+<ngb-carousel>
+  <ng-template ngbSlide>
+    <img src="../assets/images/banner1.jpg" class="d-block" alt="Random first slide">
+    <div class="carousel-caption">
+    </div>
+  </ng-template>
+  <ng-template ngbSlide>
+    <img src="../assets/images/banner2.jpg" class="d-block" alt="Random second slide">
+    <div class="carousel-caption">
+    </div>
+  </ng-template>
+  <ng-template ngbSlide>
+    <img src="../assets/images/banner3.jpg" class="d-block" alt="Random third slide">
+    <div class="carousel-caption">
+    </div>
+  </ng-template>
+</ngb-carousel>

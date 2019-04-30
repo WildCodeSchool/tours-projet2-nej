@@ -79,3 +79,10 @@ button:hover {
   display: flex;
   justify-content: center;
 }
+.inscription {
+  text-align: center;
+  color: blue;
+}
+.container {
+  margin: 5em;
+}

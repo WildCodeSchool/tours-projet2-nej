@@ -35,7 +35,6 @@ export class EstablishmentHomepageComponent implements OnInit {
   ngOnInit() {
     this.serviceEstablishment.getAllEtablishment().subscribe((establismhents) => {
       this.establishments = establismhents;
-      console.log(establismhents);
       // Création d'un tableau de nom pour l'autocomplétion
       for (let i = 0; i < this.establishments.length; i += 1) {
         this.establishmentsName.push(establismhents[i].name);

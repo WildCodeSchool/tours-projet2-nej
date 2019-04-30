@@ -2,6 +2,8 @@ button {
   font-size: 20px;
   position: relative;
   float: right;
+  white-space: nowrap;
+  overflow: hidden;
 }
 .navbar-toggler {
   width: auto;
@@ -11,5 +13,5 @@ button {
   border-radius:0;
 }
 .btn-dark{
-  margin-left: 65%
+  margin-left: 45%
 }

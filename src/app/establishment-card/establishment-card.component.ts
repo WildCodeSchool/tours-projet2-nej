@@ -24,7 +24,6 @@ export class EstablishmentCardComponent implements OnInit {
     ) {}
 
   ngOnInit() {
-    console.log(this.establishment);
   }
 
   // Modale

@@ -27,16 +27,14 @@ export class EstablishmentHomepageComponent implements OnInit {
   });
 
   constructor(
-    private serviceEst: EtablishmentService,
     private modalService: NgbModal,
     private fb: FormBuilder,
     private serviceEstablishment: EtablishmentService,
     ) {}
 
   ngOnInit() {
-    this.serviceEst.getAllEtablishment().subscribe((establismhents) => {
+    this.serviceEstablishment.getAllEtablishment().subscribe((establismhents) => {
       this.establishments = establismhents;
-      console.log(establismhents);
       // Création d'un tableau de nom pour l'autocomplétion
       for (let i = 0; i < this.establishments.length; i += 1) {
         this.establishmentsName.push(establismhents[i].name);
@@ -53,7 +51,7 @@ export class EstablishmentHomepageComponent implements OnInit {
   public search() {
     // Envoi type et bar pour filtrer
 
-    this.serviceEst.searchedEtablishment(
+    this.serviceEstablishment.searchedEtablishment(
       this.searchBar.controls['type'].value, this.searchBar.controls['searchName'].value)
     .subscribe((establismhents: any) => {
       this.establishments = establismhents;

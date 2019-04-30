@@ -14,21 +14,14 @@
 
         <div class="card-body">
           <h5 class="text-center card-title title">{{ establishment.name }}</h5>
-          <span class="card-text">
+          <div class="card-text desc text-center">
             {{
                   establishment.description
                 ? establishment.description
                 : establishment.name
             }}
-          </span>
-          <span class="card-text-hover">
-            {{
-                  establishment.description
-                ? establishment.description
-                : establishment.name
-            }}
-          </span>
-          <div class="d-flex justify-content-center">
+          </div>
+          <div class="d-flex justify-content-center mb-4 mt-4">
             <button *ngIf="!admin" class="btn btn-secondary" (click)="open(content)">
               Plus d'infos
             </button>

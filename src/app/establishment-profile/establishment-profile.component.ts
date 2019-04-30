@@ -5,6 +5,7 @@ import { EtablishmentService } from '../common/services/etablishment.service';
 import { ToastrService } from 'ngx-toastr';
 import { BookingService } from '../common/services/booking.service';
 import { Booking } from '../common/models/booking.model';
+import { ProfileService } from '../common/services/profile.service';
 @Component({
   selector: 'app-establishment-profile',
   templateUrl: './establishment-profile.component.html',
@@ -17,29 +18,26 @@ export class EstablishmentProfileComponent implements OnInit {
   public isDateStart: boolean = false;
   public isDateEnd: boolean = false;
   private bookings: Booking[];
-  private myEstablishments = [];
   public isEstablishmentShow: boolean = true;
   public isBookingsShow: boolean = false;
+  public myEstablishments: Etablishment[];
 
   constructor(
-    private serviceProfEst: EstablishmentProfileService,
-    private serviceEstablishment: EtablishmentService,
     private serviceBooking: BookingService,
     private toastr: ToastrService,
+    private profileEstablishmentService: EstablishmentProfileService,
 ) {}
 
   public ngOnInit(): void {
-    this.serviceProfEst.get().subscribe(
-      (establishment: Etablishment[]) => {
-        this.myEstablishments = establishment;
-      },
-    );
     this.serviceBooking.getAllBookings().subscribe(
       (bookings: Booking[]) => {
         this.bookings = bookings;
 
       },
     );
+    this.profileEstablishmentService.get().subscribe((myEstablishments) => {
+      this.myEstablishments = myEstablishments;
+    });
   }
 
   public showEstablishments() {
@@ -50,18 +48,7 @@ export class EstablishmentProfileComponent implements OnInit {
   public showBookings() {
     this.isEstablishmentShow = false;
     this.isBookingsShow = true;
-  }
-
-  public deleteEstablishment(id: any, index: any) {
-    const result = confirm("Confirmez-vous la suppression de l'établissement ?");
-    if (result) {
-      this.serviceEstablishment.deleteEtablishment(id).subscribe(() => {
-        this.myEstablishments.splice(index, 1);
-        this.toastr.warning("L'établissement a bien été supprimé", 'Suppression', {
-          positionClass: 'toast-bottom-full-width',
-        });
-      });
-    }
+    console.log(this.isBookingsShow);
   }
 
   // Trier par noms d'établissements
@@ -133,5 +120,9 @@ export class EstablishmentProfileComponent implements OnInit {
       this.isDateStart = false;
       return this.bookings.reverse();
     }
+  }
+
+  public splice(index) {
+    this.myEstablishments.splice(index, 1);
   }
 }

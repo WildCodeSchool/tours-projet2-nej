@@ -1,9 +1,41 @@
-/* .container {
-    display: flex;
-    justify-items: flex-start;
-    align-items: center;
-} */
 
-/* .card{
-    width: 30rem;
-} */
+.back {
+  margin-bottom: 4em;
+  margin-top: 3em;
+}
+button {
+  display: inline-block;
+  padding: 12px 24px;
+  background: rgb(220, 220, 220);
+  font-weight: bold;
+  color: rgb(120, 120, 120);
+  border: none;
+  outline: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: ease 0.3s;
+}
+
+.saveBtn:hover {
+  background: #8bc34a;
+  color: #ffffff;
+}
+.backBtn {
+  margin-bottom: 4em;
+}
+.backBtn:hover {
+  background: #306dc2;
+  color: #ffffff;
+}
+.alert {
+  font-size: 2em;
+  background-color: #343940;
+  color: white;
+}
+.card {
+  background-color: #dcdcdc;
+}
+.card:hover {
+  background-color: rgb(120, 120, 120);
+  font-size: 2em;
+}

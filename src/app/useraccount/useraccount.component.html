@@ -1,24 +1,29 @@
 <div class="container-fluid mb-5 mt-5">
+  <div class="back">
+    <button class="backBtn" type="button" routerLink="">Accueil</button>
+
+  <div class="alert alert-secondary" role="alert">
+        MON COMPTE
+  </div>
+</div>
 
   <div class="row align-items-center justify-content-around">
     <div class="col-sm-10 col-md-5">
-      <div class="card">
+      <div class="card" type="submit" routerLink="/userAccount/profile">
         <img src="/assets/images/profil.jpg" class="card-img-top" alt="profil">
         <div class="card-body">
-          <h5 class="card-title text-center">Mon profil</h5>
           <div class="text-center">
-          <a class="btn btn-primary" routerLink="/userAccount/profile">Voir</a>
+          <button class="saveBtn" routerLink="/userAccount/profile">Mon profil</button>
         </div>
         </div>
       </div>
     </div>
     <div class="col-sm-10 col-md-5">
-      <div class="card">
+      <div class="card" type="submit" routerLink="/userAccount/establishment-profile">
         <img src="/assets/images/house.jpg" class="card-img-top" alt="house">
         <div class="card-body">
-          <h5 class="card-title text-center">Mes établissements</h5>
           <div class="text-center">
-          <a class="btn btn-primary" routerLink="/userAccount/establishment-profile">Voir</a>
+          <button class="saveBtn" routerLink="/userAccount/establishment-profile">Mes établissements</button>
         </div>
         </div>
       </div>

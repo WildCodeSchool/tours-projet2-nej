@@ -1,6 +1,11 @@
 a{
     margin-left: 33%
 }
+.alert {
+  font-size: 2em;
+  background-color: #343940;
+  color: white;
+}
 .card {
   padding-top: 5%;
 }

@@ -1,11 +1,9 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { EstablishmentProfileService } from '../common/services/establishment-profile.service';
 import { Etablishment } from '../common/models/etablishment.models';
-import { EtablishmentService } from '../common/services/etablishment.service';
 import { ToastrService } from 'ngx-toastr';
 import { BookingService } from '../common/services/booking.service';
 import { Booking } from '../common/models/booking.model';
-import { ProfileService } from '../common/services/profile.service';
 @Component({
   selector: 'app-establishment-profile',
   templateUrl: './establishment-profile.component.html',
@@ -48,7 +46,6 @@ export class EstablishmentProfileComponent implements OnInit {
   public showBookings() {
     this.isEstablishmentShow = false;
     this.isBookingsShow = true;
-    console.log(this.isBookingsShow);
   }
 
   // Trier par noms d'établissements

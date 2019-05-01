@@ -1,19 +1,19 @@
 .alert {
   font-size: 2em;
+  background-color: #343940;
+  color: white;
 }
 
 .row {
   display: flex;
   justify-content: center;
 }
-
-.bouton {
-  display: flex;
-  justify-content: space-around;
+.backBtn {
+  margin-top: 3em;
+  margin-left: 3em;
 }
-
 .backBtn:hover {
-  background: yellowgreen;
+  background: #306dc2;
   color: #ffffff;
 }
 
@@ -25,4 +25,27 @@
 .sort{
   width: 10px;
   height: 10px;
+}
+button {
+  display: inline-block;
+  padding: 12px 24px;
+  background: rgb(220, 220, 220);
+  font-weight: bold;
+  color: rgb(120, 120, 120);
+  border: none;
+  outline: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: ease 0.3s;
+}
+
+.saveBtn:hover {
+  background: #8bc34a;
+  color: #ffffff;
+}
+.d-flex {
+  margin-top: 4em;
+}
+.container {
+  margin-top: 3em;
 }

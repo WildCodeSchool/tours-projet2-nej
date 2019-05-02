@@ -18,6 +18,7 @@ export class EstablishmentBookinglistComponent implements OnInit {
   public nameUser: boolean = false;
   public dateStart: boolean = false;
   public dateEnd: boolean = false;
+  public isName: boolean = false;
 
   constructor(
     private serviceBooking: BookingService,
@@ -69,6 +70,21 @@ export class EstablishmentBookinglistComponent implements OnInit {
     } else {
       this.dateStart = false;
       this.dateEnd = false;
+      this.isName = false;
+      return this.bookings.reverse();
+    }
+  }
+
+  public sortName() {
+    if (!this.isName) {
+      this.bookings.sort((a, b) => {
+        this.isName = !this.isName;
+        return a.owner.name.localeCompare(b.owner.name);
+      });
+    } else {
+      this.dateStart = false;
+      this.dateEnd = false;
+      this.nameUser = false;
       return this.bookings.reverse();
     }
   }
@@ -82,6 +98,7 @@ export class EstablishmentBookinglistComponent implements OnInit {
     } else {
       this.nameUser = false;
       this.dateEnd = false;
+      this.isName = false;
       return this.bookings.reverse();
     }
   }
@@ -95,6 +112,7 @@ export class EstablishmentBookinglistComponent implements OnInit {
     } else {
       this.nameUser = false;
       this.dateStart = false;
+      this.isName = false;
       return this.bookings.reverse();
     }
   }

@@ -1,5 +1,10 @@
+<div class="back">
+    <button class="backBtn" type="button" routerLink="/userAccount/establishment-profile">Retour</button>
+</div>
 <div class="container">
-  <h1 class="mt-4">Mon établissement</h1>
+  <div class="alert alert-secondary" role="alert">
+    MON ETABLISSEMENT
+  </div>
   <div class="mt-3">
     <form (ngSubmit)="onSubmit()" [formGroup]="etablishmentForm" #myForm="ngForm">
       <label for="type">
@@ -28,7 +33,7 @@
 
       <label for="description">
         <p class="label-txt">Description</p>
-        <input type="text" id="description" class="input" formControlName="description" />
+        <textarea type="text" id="description" class="input" formControlName="description"></textarea>
         <div class="line-box">
           <div class="line"></div>
         </div>
@@ -36,8 +41,17 @@
 
       <h3>Address</h3>
 
-      <div formGroupName="address">
-        <label for="street">
+      <div formGroupName="address" class="row">
+
+          <label for="number" class="col-sm-2">
+              <p class="label-txt">Numéro</p>
+              <input type=" text" class="input" id="Number" formControlName="number" />
+              <div class="line-box">
+                <div class="line"></div>
+              </div>
+            </label>
+
+        <label for="street" class="col-sm-10">
           <p class="label-txt">Rue</p>
           <input type="text" class="input" id="name" formControlName="street" />
           <div class="line-box">
@@ -45,7 +59,7 @@
           </div>
         </label>
 
-        <label for="Zipcode">
+        <label for="Zipcode" class="col-sm-4">
           <p class="label-txt">Code Postale</p>
           <input type="text" class="input" id="Zipcode" formControlName="zipCode" />
           <div class="line-box">
@@ -53,7 +67,7 @@
           </div>
         </label>
 
-        <label for="city">
+        <label for="city" class="col-sm-8">
           <p class="label-txt">Ville</p>
           <input type="text" class="input" id="City" formControlName="city" />
           <div class="line-box">
@@ -61,13 +75,7 @@
           </div>
         </label>
 
-        <label for="number">
-          <p class="label-txt">Numéro</p>
-          <input type=" text" class="input" id="Number" formControlName="number" />
-          <div class="line-box">
-            <div class="line"></div>
-          </div>
-        </label>
+
       </div>
 
       <h3>Contact</h3>

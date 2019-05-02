@@ -1,11 +1,11 @@
 <div class="container-fluid">
   <ng-container *ngIf="!allBookings">
-    <h2 class="text-center mt-2">
-      Les réservations en cours pour votre établissement :
-    </h2>
-    <h3 class="alert alert-secondary text-center ">
-      {{ establishment?.name }}
-    </h3>
+    <div class="back">
+      <button class="backBtn" type="button" routerLink="/userAccount/establishment-profile">Retour</button>
+  </div>
+    <div class="alert alert-secondary text-center" role="alert">
+      {{ establishments?.name }}
+    </div>
   </ng-container>
   <h2 *ngIf="allBookings" class="text-center mt-4">
     Les réservations en cours pour vos établissements :
@@ -16,6 +16,7 @@
       <thead class="thead-light">
         <tr class="text-center">
           <th *ngIf="allBookings" scope="col">
+            <div class="d-flex justify-content-center">
             Nom de l'établissement
             <button class="btn btn-light ml-4" (click)="sortName()">
               <img
@@ -23,8 +24,10 @@
                 src="https://image.flaticon.com/icons/png/512/25/25756.png"
               />
             </button>
+          </div>
           </th>
           <th scope="col">
+            <div class="d-flex justify-content-center">
             Nom
             <button class="btn btn-light ml-4" (click)="sortNameUser()">
               <img
@@ -32,8 +35,10 @@
                 src="https://image.flaticon.com/icons/png/512/25/25756.png"
               />
             </button>
+          </div>
           </th>
           <th scope="col">
+            <div class="d-flex justify-content-center">
             Date d'arrivée<button
               class="btn btn-light ml-4"
               (click)="sortDateStart()"
@@ -43,8 +48,10 @@
                 src="https://image.flaticon.com/icons/png/512/25/25756.png"
               />
             </button>
+          </div>
           </th>
           <th scope="col">
+            <div class="d-flex justify-content-center">
             Date de départ<button
               class="btn btn-light ml-4"
               (click)="sortDateEnd()"
@@ -54,6 +61,7 @@
                 src="https://image.flaticon.com/icons/png/512/25/25756.png"
               />
             </button>
+          </div>
           </th>
           <th scope="col">Adresse</th>
           <th scope="col">Modifier / Supprimer</th>

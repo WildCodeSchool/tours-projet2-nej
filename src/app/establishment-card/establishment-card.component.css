@@ -1,32 +1,50 @@
 .card {
-margin: 3%;
+  margin: 3%;
 }
 
 img {
-object-fit: none;
-object-position: center;
-width: 100%;
-min-height: 15vw;
-margin-bottom: 1rem;
+      width: 100%;
+      height: 15vw;
+      object-fit: cover;
 }
 
 .title {
-height: 50px;
+  height: 50px;
 }
 
-.card-text{
-   overflow: hidden;
-   text-overflow: ellipsis;
+.desc {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
+  opacity: 0.8;
 }
-/* .card-text-hover{
-   visibility: hidden;
-   transition: 2s;
+.card:hover .desc{
+  background-color: #9e9e9e;
+  opacity: 1;
+  display: inline-block;
+  overflow: visible; 
+  white-space: normal;
+  height:auto;
+  border-radius: 4%;
+  padding: 2px;
 }
-.card-body:hover .card-text-hover{
 
-   visibility: visible;
+.title{
+   -webkit-transition: all 1s ease;
+   transition: all 1s ease;
 }
 
-.card-body:hover .card-text{
-   visibility: hidden;
-} */
+.card:hover .title{
+   background-color: #9e9e9e;
+}
+
+.card{
+   -webkit-transition: all 1s ease;
+   transition: all 1s ease;
+}
+
+.card:hover{
+   border: 55px #9e9e9e;
+}

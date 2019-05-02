@@ -86,3 +86,13 @@ button:hover {
 .container {
   margin: 5em;
 }
+.alert {
+  font-size: 2em;
+  background-color: #343940;
+  color: white;
+  margin-top: 2em;
+}
+.backBtn:hover {
+  background: #306dc2;
+  color: #ffffff;
+}

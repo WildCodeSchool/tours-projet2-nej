@@ -3,6 +3,8 @@ import { Profile } from '../common/models/profile.model';
 import { ProfileService } from '../common/services/profile.service';
 import { FormBuilder } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { LoginService } from '../common/services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -12,7 +14,9 @@ import { ToastrService } from 'ngx-toastr';
 export class ProfileComponent implements OnInit {
 
   constructor(private service: ProfileService,
+              public loginService: LoginService,
               private fb: FormBuilder,
+              private router: Router,
               public toastr: ToastrService) {}
 
   clickMessage = '';
@@ -46,6 +50,13 @@ export class ProfileComponent implements OnInit {
         this.profileForm.patchValue(profile);
       },
     );
+  }
+  onClick() {
+    if (!this.loginService.isLogin()) {
+      this.router.navigate(['']);
+    } else {
+      this.router.navigate(['userAccount']);
+    }
   }
 
   onSubmit() {

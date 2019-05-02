@@ -26,3 +26,8 @@ button {
   width: 10px;
   height: 10px;
 }
+.alert {
+  font-size: 2em;
+  background-color: #343940;
+  color: white;
+}

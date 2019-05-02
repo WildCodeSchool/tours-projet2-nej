@@ -57,7 +57,7 @@ registerLocaleData(localeFr, 'fr');
     HttpClientModule,
     JwtModule.forRoot({
       config: {
-        whitelistedDomains: ['open-reza.herokuapp.com'],
+        whitelistedDomains: ['open-reza.herokuapp.com', 'open-reza-api.maxdhn.pw'],
         tokenGetter: () => {
           return localStorage.getItem('token');
         },

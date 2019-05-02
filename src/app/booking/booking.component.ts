@@ -65,45 +65,49 @@ export class BookingComponent implements OnInit {
           this.booking = bookingValues;
           // Le formulaire a pour valeurs par défaut les données récupérées
           this.bookingForm.patchValue(this.booking);
-          const dateStartUp = this.booking.date.start.toString().split('T');
-          const dateStartDate = dateStartUp[0].split('-');
-          const dateStartTime = dateStartUp[1].split(':');
-          this.bookingForm
-            .get('date')
-            .get('date1')
-            .patchValue({
-              year: parseInt(dateStartDate[0], 10),
-              month: parseInt(dateStartDate[1], 10),
-              day: parseInt(dateStartDate[2], 10),
-            });
-          this.bookingForm
-            .get('date')
-            .get('start')
-            .patchValue({
-              hour: parseInt(dateStartTime[1], 10),
-              minute: parseInt(dateStartTime[1], 10),
-            });
-
-          const dateEndUp = this.booking.date.end.toString().split('T');
-          const dateEndDate = dateEndUp[0].split('-');
-          const dateEndTime = dateEndUp[1].split(':');
-          this.bookingForm
-            .get('date')
-            .get('date2')
-            .patchValue({
-              year: parseInt(dateEndDate[0], 10),
-              month: parseInt(dateEndDate[1], 10),
-              day: parseInt(dateEndDate[2], 10),
-            });
-          console.log(dateEndTime);
-          this.bookingForm
-            .get('date')
-            .get('end')
-            .patchValue({
-              hour: parseInt(dateEndTime[0], 10),
-              minute: parseInt(dateEndTime[1], 10),
-            });
+          if (this.booking.date.start) {
+            const dateStartUp = this.booking.date.start.toString().split('T');
+            const dateStartDate = dateStartUp[0].split('-');
+            const dateStartTime = dateStartUp[1].split(':');
+            this.bookingForm
+              .get('date')
+              .get('date1')
+              .patchValue({
+                year: parseInt(dateStartDate[0], 10),
+                month: parseInt(dateStartDate[1], 10),
+                day: parseInt(dateStartDate[2], 10),
+              });
+            this.bookingForm
+              .get('date')
+              .get('start')
+              .patchValue({
+                hour: parseInt(dateStartTime[1], 10),
+                minute: parseInt(dateStartTime[1], 10),
+              });
+          }
+          if (this.booking.date.end) {
+            const dateEndUp = this.booking.date.end.toString().split('T');
+            const dateEndDate = dateEndUp[0].split('-');
+            const dateEndTime = dateEndUp[1].split(':');
+            this.bookingForm
+              .get('date')
+              .get('date2')
+              .patchValue({
+                year: parseInt(dateEndDate[0], 10),
+                month: parseInt(dateEndDate[1], 10),
+                day: parseInt(dateEndDate[2], 10),
+              });
+            console.log(dateEndTime);
+            this.bookingForm
+              .get('date')
+              .get('end')
+              .patchValue({
+                hour: parseInt(dateEndTime[0], 10),
+                minute: parseInt(dateEndTime[1], 10),
+              });
+          }
         });
+
       }
       // Réservation utilisateurs, récupération de l'ID de l'établissement
       if (establishmentId) {
@@ -143,7 +147,6 @@ export class BookingComponent implements OnInit {
       formDate.get('date1').value.day,
       formDate.get('start').value.hour,
       formDate.get('start').value.minute,
-      formDate.get('start').value.second,
     );
     // definis les champs de la date de fin
     const dateEnd = new Date(
@@ -152,7 +155,6 @@ export class BookingComponent implements OnInit {
       formDate.get('date2').value.day,
       formDate.get('end').value.hour,
       formDate.get('end').value.minute,
-      formDate.get('end').value.second,
     );
 
     // rassemble les champs de dateSart/dateEnd pour avoir le bon format(date)
@@ -177,7 +179,7 @@ export class BookingComponent implements OnInit {
       // Sans id, création d'une nouvelle réservation
     } else {
       this.service
-        .createBooking(this.bookingForm.value)
+        .createBooking(booking)
         .subscribe((newbookingValues: Booking) => {
           this.booking = newbookingValues;
           this.toastr.success(

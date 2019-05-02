@@ -11,7 +11,7 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarNav" [ngClass]="{'show': navbarOpen}">
-    <div *ngIf="loginService.user; then thenBlock; else elseBlock"></div>
+    <div *ngIf="loginService.isLogin() then thenBlock; else elseBlock"></div>
     <ng-template #thenBlock>
       <ul class="navbar-nav">
         <li class="nav-item">

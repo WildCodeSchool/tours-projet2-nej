@@ -13,12 +13,14 @@ from './establishment-homepage/establishment-homepage.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './common/guards/auth.guard';
 import { UserCreationComponent } from './user-creation/user-creation.component';
+// tslint:disable-next-line: max-line-length
+import { EtablishmentCreationComponent } from './etablishment-creation/etablishment-creation.component';
 
 const routes: Routes = [
   { path: '', component: EstablishmentHomepageComponent },
   { path: 'userAccount/establishment-profile/:id', component: EtablishmentComponent },
   { path: 'userAccount/profile', component: ProfileComponent },
-  { path: 'etablishment', component: EtablishmentComponent, canActivate: [AuthGuard] },
+  { path: 'etablishment', component: EtablishmentComponent },
 
   { path: 'userAccount/establishment-profile/:id',
     component: EtablishmentComponent, canActivate: [AuthGuard] },
@@ -35,6 +37,7 @@ const routes: Routes = [
   { path: 'etablishment/:id', component: EtablishmentComponent },
   { path: 'login', component: LoginComponent },
   { path: 'creation', component: UserCreationComponent },
+  { path: 'etablishmentCreation', component: EtablishmentCreationComponent }
 ];
 
 @NgModule({

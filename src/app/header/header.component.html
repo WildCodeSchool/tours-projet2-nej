@@ -1,9 +1,8 @@
 <!--Navbar-->
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" [routerLink]="['']">
-    NEJ
-  </a>
+  <img src="assets/images/logo.png" [routerLink]="['']" alt="logo" class="logo">
+    
 
   <button class="navbar-toggler" (click)="toggleNavbar()" type="button" data-toggle="collapse" 
   data-target="#navbarNav"
@@ -12,7 +11,7 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarNav" [ngClass]="{'show': navbarOpen}">
-    <div *ngIf="loginService.user; then thenBlock; else elseBlock"></div>
+    <div *ngIf="loginService.isLogin() then thenBlock; else elseBlock"></div>
     <ng-template #thenBlock>
       <ul class="navbar-nav">
         <li class="nav-item">

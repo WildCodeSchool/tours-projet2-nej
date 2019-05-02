@@ -52,10 +52,11 @@ export class ProfileComponent implements OnInit {
     );
   }
   onClick() {
-    if (this.loginService.isLogin()) {
+    if (!this.loginService.isLogin()) {
       this.router.navigate(['']);
+    } else {
+      this.router.navigate(['userAccount']);
     }
-    this.router.navigate(['userAccount']);
   }
 
   onSubmit() {

@@ -28,7 +28,7 @@ label {
   background: transparent;
   border: none;
   outline: none;
-  
+
 }
 
 .line-box {
@@ -81,7 +81,7 @@ button {
   color: #ffffff;
 }
 .backBtn:hover {
-  background: yellowgreen;
+  background: #306dc2;
   color: #ffffff;
 }
 button.calendar, button.calendar:active {

@@ -1,8 +1,8 @@
 <div class="container-fluid">
   <ng-container *ngIf="!allBookings">
-    <h2 class="text-center mt-2">
-      Les réservations en cours pour votre établissement :
-    </h2>
+    <div class="back">
+      <button class="backBtn" type="button" routerLink="/userAccount/establishment-profile">Retour</button>
+  </div>
     <h3 class="alert alert-secondary text-center ">
       {{ establishments?.name }}
     </h3>

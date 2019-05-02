@@ -2,12 +2,26 @@
   width: 22px;
   height: 24px;
 }
-
+.back {
+  margin-bottom: 3em;
+  margin-top: 3em;
+}
 .backBtn:hover {
-  background: yellowgreen;
+  background: #306dc2;
   color: #ffffff;
 }
-
+button {
+  display: inline-block;
+  padding: 12px 24px;
+  background: rgb(220, 220, 220);
+  font-weight: bold;
+  color: rgb(120, 120, 120);
+  border: none;
+  outline: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: ease 0.3s;
+}
 .sort{
   width: 10px;
   height: 10px;

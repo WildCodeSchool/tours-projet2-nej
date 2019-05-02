@@ -8,10 +8,7 @@
   display: flex;
   justify-content: center;
 }
-.backBtn {
-  margin-top: 3em;
-  margin-left: 3em;
-}
+
 .backBtn:hover {
   background: #306dc2;
   color: #ffffff;
@@ -48,4 +45,8 @@ button {
 }
 .container {
   margin-top: 3em;
+}
+.retour {
+  margin-top: 3em;
+  margin-left: 3em;
 }
